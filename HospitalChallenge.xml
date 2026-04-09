@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Servers>
+    <ServerGroup Name="Hospital Challenge" Logo="" Description="Escape Navezgane Hospital by fixing a broken gyrocopter before a mutant virus kills you — one life, no second chances.">
+        <Server Name="Hospital Challenge" Logo="">
+            <Description>
+                Navezgane Hospital Challenge is a permadeath challenge mod for 7 Days to Die V2.6. You wake up in Navezgane Hospital infected with the Voss-7 Virus — a mutated strain resistant to all standard antibiotics. The virus is killing you. The only cure is at Trader Jen's clinic 1.4km away. The only way to reach her is by gyrocopter. The only gyrocopter is broken on the hospital roof.
+				
+				Scavenge and craft 8 gyrocopter parts hidden throughout the hospital, manage your infection with home-brewed suppressants, survive blood moons, and escape before the virus kills you. Leave the hospital and a nightmare-speed horde will chase you every step of the way.
+				
+				One life. One hospital. One chance.
+				
+				Features: Permadeath · Custom virus mechanic with progressive debuffs · 8-part gyro repair · 3-tier suppressant crafting · Custom loot bags · Weapon choice at game start · Multiplayer supported · Target run time 7–10 days on Nomad
+
+                RECOMMENDED SETTINGS:
+
+                Loot Respawn: 5 days
+
+                EAC must be disabled.
+
+                Created by Frilioth
+                Twitch: twitch.tv/frilioth
+            </Description>
+
+            <Version>1.0.0</Version>
+            <EAC>Disabled</EAC>
+            <Discord></Discord>
+            <Donate></Donate>
+            <DownloadMode>Clone</DownloadMode>
+            <Downloads>
+                <Download>https://github.com/Frilioth/FrilHospitalChallenge</Download>
+            </Downloads>
+
+        </Server>
+    </ServerGroup>
+</Servers>
