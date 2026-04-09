@@ -1,0 +1,16 @@
+<configs>
+
+    <!--
+        gyroRepairStorage
+        8-slot storage container for the gyro repair block.
+        No loot entries — the player fills the slots manually.
+    -->
+
+    <append xpath="/lootcontainers">
+
+        <lootcontainer name="gyroRepairStorage" count="8" size="2,4">
+        </lootcontainer>
+
+    </append>
+
+</configs>

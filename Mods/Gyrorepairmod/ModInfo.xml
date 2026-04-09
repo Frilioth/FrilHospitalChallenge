@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+    <Name value="GyroRepairMod"/>
+    <DisplayName value="Gyrocopter Repair"/>
+    <Version value="1.0.0"/>
+    <Description value="Adds a repairable gyrocopter block. Place all 8 required parts inside to spawn a working gyrocopter."/>
+    <Author value="Frilioth"/>
+    <Website value="https://github.com/frilioth"/>
+</xml>

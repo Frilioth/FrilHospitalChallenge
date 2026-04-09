@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Game Events
+	Author: Frilioth
+	Version: 1.2.3
+	
+	Replaces first spawn loadout with hospital-appropriate items.
+	Weapon is given by DLL based on player's menu choice — not here.
+-->
+<configs>
+	<set xpath="/gameevents/action_sequence[@name='game_first_spawn']">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		<action class="Delay">
+			<property name="phase" value="1" />
+			<property name="time" value="5" />
+		</action>
+		<action class="SetItemSlots">
+			<property name="items_location" value="Toolbelt" />
+			<property name="items" value="hospitalSurvivalGuide,meleeToolRepairT0StoneAxe,medicalFirstAidBandage,drinkJarBoiledWater,foodCanChili,hospitalSuppressantStrong" />
+			<property name="item_counts" value="1,1,2,2,2,1" />
+			<property name="slot_numbers" value="0,1,2,3,4,5" />
+		</action>
+	</set>
+
+	<!-- Reward for completing Phase 1: Clear the Ward -->
+	<append xpath="/gameevents">
+		<action_sequence name="hospital_reward_assess">
+    <property name="action_type" value="Game" />
+    <action class="AddItems">
+        <property name="added_items" value="armorPrimitiveHelmet,armorPrimitiveOutfit,armorPrimitiveGloves,armorPrimitiveBoots,meleeToolSalvageT1Wrench,modArmorHelmetLight" />
+        <property name="added_item_counts" value="1,1,1,1,1,1" />
+    </action>
+    <action class="AddSkillPoints">
+        <property name="skill_points" value="4" />
+    </action>
+</action_sequence>
+	</append>
+</configs>

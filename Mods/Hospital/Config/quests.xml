@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Quests
+	Author: Frilioth
+	Version: 0.1.0
+
+	ADDS:
+	- quest_HospitalSurvivalGuide: triggered when player reads the
+	  Hospital Survival Guide note. Shows a large popup window with
+	  the full briefing text via ShowMessageWindow action.
+-->
+<configs>
+	<append xpath="/quests">
+		<quest id="quest_HospitalSurvivalGuide">
+			<property name="name_key" value="hospitalSurvivalGuide"/>
+			<property name="subtitle_key" value="hospitalSurvivalGuide"/>
+			<property name="description_key" value="hospitalSurvivalGuideDesc"/>
+			<property name="offer_key" value="hospitalSurvivalGuideDesc"/>
+			<property name="icon" value="ui_game_symbol_map_city"/>
+			<property name="category_key" value="challenge"/>
+			<property name="completiontype" value="AutoComplete"/>
+
+			<action type="ShowMessageWindow">
+				<property name="title" value="hospitalSurvivalGuide"/>
+				<property name="message" value="hospitalSurvivalGuideMessage"/>
+			</action>
+		</quest>
+	</append>
+</configs>

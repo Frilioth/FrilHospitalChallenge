@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Trader
+	Author: Frilioth
+	Version: 1.2.1
+	
+-->
+
+<configs>
+
+    <!-- *** FRIL HOSPITAL CHALLENGE — TRADER JEN OVERRIDE -->
+    <!-- Trader Jen (ID 2) sells only The Cure, for free, 24 hours, stock never resets.    -->
+    <!-- setattribute cannot add attributes that don't already exist on the node — it       -->
+    <!-- throws a null ref. So we remove the entire trader_info block and re-append it      -->
+    <!-- with all attributes baked in, same pattern used for Hugh in Area 7.                -->
+
+    <remove xpath="/traders/trader_info[@id='2']"/>
+
+    <append xpath="/traders">
+        <trader_info id="2" reset_interval="3" open_time="0:00" close_time="23:59" override_buy_markup="0">
+            <trader_items count="all">
+                <item name="hospitalTheCure" count="1" quality="0"/>
+            </trader_items>
+        </trader_info>
+    </append>
+
+</configs>

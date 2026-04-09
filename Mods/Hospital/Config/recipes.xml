@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Recipes
+	Author: Frilioth
+	Version: 1.2.4
+	
+	REMOVES:
+	- All drugAntibiotics recipes (campfire + chemistry station)
+	- All drugHerbalAntibiotics recipes (campfire + chemistry station)
+	- Workbench crafting recipe (player must use POI workbench)
+	- Chemistry station crafting recipe (player must use POI chemistry station)
+	- keystoneBlock (land claim block — players cannot place LCBs during a run)
+	
+	ADDS:
+	- 3-tier Virus Suppressant recipes (all at chemistry station)
+	- Control Cables crafting recipe (at workbench)
+	- Rotor Blades crafting recipe (at workbench — fallback if AC units don't drop them)
+-->
+<configs>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE ANTIBIOTIC RECIPES                                    -->
+	<!-- ============================================================ -->
+	
+	<remove xpath="//recipe[@name='drugAntibiotics']"/>
+	<remove xpath="//recipe[@name='drugHerbalAntibiotics']"/>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE WORKSTATION CRAFTING RECIPES                          -->
+	<!-- Player must use the indestructible POI versions              -->
+	<!-- ============================================================ -->
+	
+	<remove xpath="//recipe[@name='workbench']"/>
+	<remove xpath="//recipe[@name='chemistryStation']"/>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE LAND CLAIM BLOCK RECIPE                               -->
+	<!-- Players cannot place LCBs during a run                       -->
+	<!-- ============================================================ -->
+
+	<remove xpath="/recipes/recipe[@name='keystoneBlock']"/>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE ALL VEHICLE CRAFTING RECIPES                          -->
+	<!-- Player cannot build vehicles — must repair the rooftop gyro  -->
+	<!-- ============================================================ -->
+	
+	<!-- Bicycle -->
+	<remove xpath="//recipe[@name='vehicleBicycleChassis']"/>
+	<remove xpath="//recipe[@name='vehicleBicycleHandlebars']"/>
+	<remove xpath="//recipe[@name='vehicleBicyclePlaceable']"/>
+	<!-- Minibike -->
+	<remove xpath="//recipe[@name='vehicleMinibikeChassis']"/>
+	<remove xpath="//recipe[@name='vehicleMinibikeHandlebars']"/>
+	<remove xpath="//recipe[@name='vehicleMinibikePlaceable']"/>
+	<!-- Motorcycle -->
+	<remove xpath="//recipe[@name='vehicleMotorcycleChassis']"/>
+	<remove xpath="//recipe[@name='vehicleMotorcycleHandlebars']"/>
+	<remove xpath="//recipe[@name='vehicleMotorcyclePlaceable']"/>
+	<!-- 4x4 Truck -->
+	<remove xpath="//recipe[@name='vehicleTruck4x4Accessories']"/>
+	<remove xpath="//recipe[@name='vehicleTruck4x4Chassis']"/>
+	<remove xpath="//recipe[@name='vehicleTruck4x4Placeable']"/>
+	<!-- Gyrocopter -->
+	<remove xpath="//recipe[@name='vehicleGyroCopterAccessories']"/>
+	<remove xpath="//recipe[@name='vehicleGyroCopterChassis']"/>
+	<remove xpath="//recipe[@name='vehicleGyrocopterPlaceable']"/>
+
+	<!-- ============================================================ -->
+	<!-- VOSS-7 REAGENT — 1 acid → 5 reagent                          -->
+	<!-- ============================================================ -->
+
+	<append xpath="/recipes">
+		<recipe name="hospitalVoss7Reagent" count="5" craft_area="chemistryStation" craft_time="10">
+			<ingredient name="resourceAcid" count="1"/>
+			<ingredient name="medicalBloodBag" count="1"/>
+			<ingredient name="foodRottingFlesh" count="10"/>
+		</recipe>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- 3-TIER VIRUS SUPPRESSANT RECIPES                             -->
+	<!-- All crafted at chemistry station                             -->
+	<!-- Weak: -2%/2min | Standard: -5%/5min | Strong: -10%/10min     -->
+	<!-- ============================================================ -->
+	
+	<!-- Weak: 1 painkiller + 1 reagent -->
+	<append xpath="/recipes">
+		<recipe name="hospitalSuppressantWeak" count="1" craft_area="chemistryStation" craft_time="15">
+			<ingredient name="drugPainkillers" count="1"/>
+			<ingredient name="hospitalVoss7Reagent" count="1"/>
+		</recipe>
+	</append>
+	
+	<!-- Standard: 2 painkillers + 2 reagent -->
+	<append xpath="/recipes">
+		<recipe name="hospitalSuppressantStandard" count="1" craft_area="chemistryStation" craft_time="20">
+			<ingredient name="drugPainkillers" count="2"/>
+			<ingredient name="hospitalVoss7Reagent" count="2"/>
+		</recipe>
+	</append>
+	
+	<!-- Strong: 3 painkillers + 3 reagent -->
+	<append xpath="/recipes">
+		<recipe name="hospitalSuppressantStrong" count="1" craft_area="chemistryStation" craft_time="30">
+			<ingredient name="drugPainkillers" count="3"/>
+			<ingredient name="hospitalVoss7Reagent" count="3"/>
+		</recipe>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- GYRO PART RECIPES — Crafted at workbench                    -->
+	<!-- Gated behind Vehicle Adventures magazines                   -->
+	<!-- Cables: level 5 | Tail Assembly: level 10 | Engine: level 15-->
+	<!-- Engine: 5min craft | Tail Assembly: 3min | Cables: 30s      -->
+	<!-- ============================================================ -->
+
+<append xpath="/recipes">
+    <recipe name="smallEngine" count="1" craft_area="workbench" craft_time="300" tags="perkGreaseMonkey,learnable,workbenchCrafting,smallEngine">
+        <ingredient name="resourceForgedIron" count="20"/>
+        <ingredient name="resourceMechanicalParts" count="20"/>
+        <ingredient name="resourceElectricParts" count="10"/>
+        <ingredient name="resourceDuctTape" count="10"/>
+        <ingredient name="resourceSpring" count="10"/>
+    </recipe>
+
+    <recipe name="hospitalGyroTailAssembly" count="1" craft_area="workbench" craft_time="180" tags="perkGreaseMonkey,learnable,workbenchCrafting,hospitalGyroTailAssembly">
+        <ingredient name="resourceForgedIron" count="10"/>
+        <ingredient name="resourceMechanicalParts" count="10"/>
+        <ingredient name="resourceDuctTape" count="10"/>
+        <ingredient name="resourceSpring" count="5"/>
+    </recipe>
+
+    <recipe name="hospitalGyroControlCables" count="1" craft_area="workbench" craft_time="30" tags="perkGreaseMonkey,learnable,workbenchCrafting,hospitalGyroControlCables">
+        <ingredient name="resourceElectricParts" count="10"/>
+        <ingredient name="resourceMechanicalParts" count="10"/>
+        <ingredient name="resourceDuctTape" count="5"/>
+    </recipe>
+
+    <!-- Rotor Blades — fallback if AC units don't drop them. Requires crucible (forged steel). -->
+    <recipe name="hospitalGyroBlades" count="1" craft_area="workbench" craft_time="120" tags="perkGreaseMonkey,workbenchCrafting,hospitalGyroBlades">
+        <ingredient name="resourceForgedSteel" count="40"/>
+    </recipe>
+</append>
+
+<!-- ========================================
+     CAR BATTERY RECIPE
+     Remove resourceLegendaryParts from the vanilla carBattery recipe —
+     players shouldn't need legendary parts to craft a battery.
+     ======================================== -->
+
+	<remove xpath="//recipe[@name='carBattery']/ingredient[@name='resourceLegendaryParts']"/>
+
+<!-- ========================================
+     DUKES RECIPE
+     Diamonds, Gold and Silver can be crafted into Dukes
+     ======================================== -->
+
+	<append xpath="/recipes">
+		<recipe name="casinoCoin" count="100" craft_time="60">
+			<ingredient name="resourceSilverNugget" count="1"/>
+		</recipe>
+		<recipe name="casinoCoin" count="250" craft_time="60">
+			<ingredient name="resourceGoldNugget" count="1"/>
+		</recipe>
+		<recipe name="casinoCoin" count="500" craft_time="60">
+			<ingredient name="resourceRawDiamond" count="1"/>
+		</recipe>
+	</append>
+<!-- ========================================
+     FARM PLOT RECIPE
+     Reduce cost — players need farm plots to grow aloe.
+     Remove rotting flesh, reduce potassium nitrate and clay to 16 each.
+     ======================================== -->
+
+	<remove xpath="//recipe[@name='farmPlotBlockVariantHelper']/ingredient[@name='foodRottingFlesh']"/>
+	<set xpath="//recipe[@name='farmPlotBlockVariantHelper']/ingredient[@name='resourcePotassiumNitratePowder']/@count">16</set>
+	<set xpath="//recipe[@name='farmPlotBlockVariantHelper']/ingredient[@name='resourceClayLump']/@count">16</set>
+<!-- ========================================
+     SEED RECIPES
+     Reduce all seed recipes to require only 2 food items instead of vanilla count.
+     Makes farming accessible without trivialising it.
+     ======================================== -->
+
+	<set xpath="/recipes/recipe[@name='plantedAloe1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedBlueberry1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedCoffee1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedCorn1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedMushroom1']/ingredient[@name='foodCropMushrooms']/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedPotato1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedPumpkin1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedYucca1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedCotton1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedGoldenrod1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedChrysanthemum1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedHop1']/ingredient/@count">2</set>
+	<set xpath="/recipes/recipe[@name='plantedGraceCorn1']/ingredient/@count">2</set>
+
+</configs>

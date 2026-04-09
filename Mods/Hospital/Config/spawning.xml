@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Navezgane Hospital Challenge - Spawning
+    Author: Frilioth
+    Version: 1.2.0
+
+    Reduces night biome spawn density to approximately half of v1.0.0 levels.
+    Night zombie groups are preserved (ZombiesNight etc.) so flavour is unchanged.
+
+    Only biome wandering spawns are touched. EntitySpawner classes are untouched.
+
+    Affected biomes: pine_forest, burnt_forest, desert, snow, wasteland
+-->
+<configs>
+
+    <!-- =====================================================================
+         PINE FOREST - night spawns halved from v1.0.0
+    ===================================================================== -->
+
+    <!-- nz02: commercial/industrial night (v1.0.0: 0.3 maxcount=2) -->
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@respawndelay">0.6</set>
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@maxcount">1</set>
+
+    <!-- nz03: downtown night (v1.0.0: 0.3) -->
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz03']/@respawndelay">0.6</set>
+
+    <!-- =====================================================================
+         BURNT FOREST - night spawns halved from v1.0.0
+    ===================================================================== -->
+
+    <!-- nz02: commercial/industrial night (v1.0.0: 0.25 maxcount=3) -->
+    <set xpath="//biome[@name='burnt_forest']/spawn[@id='nz02']/@respawndelay">0.5</set>
+    <set xpath="//biome[@name='burnt_forest']/spawn[@id='nz02']/@maxcount">2</set>
+
+    <!-- nz03: downtown night (v1.0.0: 0.15 maxcount=3) -->
+    <set xpath="//biome[@name='burnt_forest']/spawn[@id='nz03']/@respawndelay">0.3</set>
+    <set xpath="//biome[@name='burnt_forest']/spawn[@id='nz03']/@maxcount">2</set>
+
+    <!-- =====================================================================
+         DESERT - night spawns halved from v1.0.0
+    ===================================================================== -->
+
+    <!-- nz02: commercial/industrial night (v1.0.0: 0.2) -->
+    <set xpath="//biome[@name='desert']/spawn[@id='nz02']/@respawndelay">0.4</set>
+
+    <!-- nz03: downtown night (v1.0.0: 0.2 maxcount=3) -->
+    <set xpath="//biome[@name='desert']/spawn[@id='nz03']/@respawndelay">0.4</set>
+    <set xpath="//biome[@name='desert']/spawn[@id='nz03']/@maxcount">2</set>
+
+    <!-- =====================================================================
+         SNOW - night spawns halved from v1.0.0
+    ===================================================================== -->
+
+    <!-- nz02: commercial/industrial night (v1.0.0: 0.09) -->
+    <set xpath="//biome[@name='snow']/spawn[@id='nz02']/@respawndelay">0.18</set>
+
+    <!-- nz03: downtown night (v1.0.0: 0.07) -->
+    <set xpath="//biome[@name='snow']/spawn[@id='nz03']/@respawndelay">0.14</set>
+
+    <!-- =====================================================================
+         WASTELAND - night spawns halved from v1.0.0
+    ===================================================================== -->
+
+    <!-- nz01: open wilderness night (v1.0.0: 0.3 maxcount=1) -->
+    <set xpath="//biome[@name='wasteland']/spawn[@id='nz01']/@respawndelay">0.6</set>
+    <set xpath="//biome[@name='wasteland']/spawn[@id='nz01']/@maxcount">1</set>
+
+    <!-- nz02: commercial/industrial night (v1.0.0: 0.033) -->
+    <set xpath="//biome[@name='wasteland']/spawn[@id='nz02']/@respawndelay">0.066</set>
+
+    <!-- nz03: downtown night (v1.0.0: 0.0167) — brought in line with other biomes -->
+    <set xpath="//biome[@name='wasteland']/spawn[@id='nz03']/@respawndelay">0.3</set>
+    <set xpath="//biome[@name='wasteland']/spawn[@id='nz03']/@maxcount">2</set>
+
+</configs>

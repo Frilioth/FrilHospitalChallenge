@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Entity Classes
+	Author: Frilioth
+	Version: 0.4.0
+
+	BAG TYPES:
+	- HospitalYellow  : medical supplies — Nurse, Lab, Hazmat
+	- HospitalCops    : acid + tail assembly — FatCop, Soldier, Mutated
+	- HospitalBiker   : spark plugs — Biker, Lumberjack
+	- HospitalHeavy   : engine parts — UtilityWorker, Janitor
+	- HospitalBooks   : skill mags — generic zombies (Boe, Joe, Marlene, etc.)
+
+	All bag drops via DLL: HospitalBagClass / HospitalBagProb
+	No direct inventory drops — all parts via bags or world loot only.
+-->
+<configs>
+
+	<!-- ============================================================ -->
+	<!-- LOOT BAG ENTITY CLASSES                                       -->
+	<!-- ============================================================ -->
+
+	<append xpath="/entity_classes">
+
+		<!-- Yellow bag: medical / hospital supplies -->
+		<entity_class name="EntityLootContainerHospitalYellow" extends="EntityLootContainerRegular">
+			<property name="LootListOnDeath" value="HospitalYellow"/>
+			<property name="OverrideName" value="lootHospitalYellow"/>
+			<property name="SizeScale" value="0.9"/>
+		</entity_class>
+
+		<!-- Books rucksack: skill magazines -->
+		<entity_class name="EntityLootContainerHospitalBooks" extends="EntityLootContainerRegular">
+			<property name="LootListOnDeath" value="HospitalBooks"/>
+			<property name="OverrideName" value="lootHospitalBooks"/>
+			<property name="Mesh" value="@:Entities/LootContainers/backpack_vehicleDroppedPrefab.prefab"/>
+			<property name="SizeScale" value="0.75"/>
+		</entity_class>
+
+		<!-- Cops bag: acid + tail assembly -->
+		<entity_class name="EntityLootContainerHospitalCops" extends="EntityLootContainerRegular">
+			<property name="LootListOnDeath" value="HospitalCops"/>
+			<property name="OverrideName" value="lootHospitalCops"/>
+			<property name="SizeScale" value="0.9"/>
+		</entity_class>
+
+		<!-- Biker bag: spark plugs -->
+		<entity_class name="EntityLootContainerHospitalBiker" extends="EntityLootContainerRegular">
+			<property name="LootListOnDeath" value="HospitalBiker"/>
+			<property name="OverrideName" value="lootHospitalBiker"/>
+			<property name="SizeScale" value="0.85"/>
+		</entity_class>
+
+		<!-- Heavy bag: engine parts -->
+		<entity_class name="EntityLootContainerHospitalHeavy" extends="EntityLootContainerRegular">
+			<property name="LootListOnDeath" value="HospitalHeavy"/>
+			<property name="OverrideName" value="lootHospitalHeavy"/>
+			<property name="SizeScale" value="0.9"/>
+		</entity_class>
+
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- YELLOW BAG — Nurse, Lab, Hazmat                              -->
+	<!-- ============================================================ -->
+
+	<append xpath="//entity_class[@name='zombieNurse']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieNurseFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieNurseRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLab']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLabFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLabRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMaleHazmat']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMaleHazmatFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMaleHazmatRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalYellow"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- COPS BAG — FatCop, Soldier, Mutated                         -->
+	<!-- Contains: acid + tail assembly                               -->
+	<!-- ============================================================ -->
+
+	<append xpath="//entity_class[@name='zombieFatCop']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieFatCopFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieFatCopRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSoldier']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSoldierFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSoldierRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMutated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMutatedFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalCops"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- BIKER BAG — Biker, Lumberjack                               -->
+	<!-- Contains: spark plugs                                        -->
+	<!-- ============================================================ -->
+
+	<append xpath="//entity_class[@name='zombieBiker']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieBikerFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieBikerRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLumberjack']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLumberjackFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieLumberjackRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBiker"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- HEAVY BAG — UtilityWorker, Janitor                          -->
+	<!-- Contains: engine parts                                       -->
+	<!-- ============================================================ -->
+
+	<append xpath="//entity_class[@name='zombieUtilityWorker']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalHeavy"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieUtilityWorkerFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalHeavy"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieUtilityWorkerRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalHeavy"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieJanitor']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalHeavy"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieJanitorFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalHeavy"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- BOOKS BAG — generic zombies                                  -->
+	<!-- ============================================================ -->
+
+	<append xpath="//entity_class[@name='zombieBoe']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieJoe']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSteve']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMoe']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieYo']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieArlene']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieDarlene']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieMarlene']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSkateboarder']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieFatHawaiian']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieTomClark']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieBowler']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieFemaleFat']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieBusinessMan']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieSpider']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieWightFeral']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+	<append xpath="//entity_class[@name='zombieWightRadiated']">
+		<property name="HospitalBagClass" value="EntityLootContainerHospitalBooks"/>
+		<property name="HospitalBagProb" value="0.20"/>
+	</append>
+
+</configs>

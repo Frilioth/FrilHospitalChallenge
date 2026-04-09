@@ -1,0 +1,59 @@
+<configs>
+
+    <append xpath="/windows">
+
+        <window name="windowGyroRepairStatus" width="228" height="320" panel="Right" cursor_area="true">
+
+            <panel style="header.panel">
+                <sprite style="header.icon" sprite="ui_game_symbol_wrench"/>
+                <label style="header.name" text="Repair Status"/>
+            </panel>
+
+            <rect name="content" pos="3,-49" height="265">
+                <rect pos="5,-5" height="30">
+                    <sprite depth="1" color="[darkGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroEngine" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Engine" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-38" height="30">
+                    <sprite depth="1" color="[darkestGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroBattery" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Battery" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-71" height="30">
+                    <sprite depth="1" color="[darkGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroSparkPlugs" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Spark Plugs" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-104" height="30">
+                    <sprite depth="1" color="[darkestGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroControlCables" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Control Cables" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-137" height="30">
+                    <sprite depth="1" color="[darkGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroTailAssembly" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Tail Assembly" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-170" height="30">
+                    <sprite depth="1" color="[darkestGrey]" type="sliced" height="28"/>
+                    <label name="status_hospitalGyroBlades" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Rotor Blades" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-203" height="30">
+                    <sprite depth="1" color="[darkGrey]" type="sliced" height="28"/>
+                    <label name="status_resourceRadiator" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Radiator" justify="left" color="[white]"/>
+                </rect>
+
+                <rect pos="5,-236" height="30">
+                    <sprite depth="1" color="[darkestGrey]" type="sliced" height="28"/>
+                    <label name="status_drinkJarRiverWater" depth="3" pos="8,-4" width="210" height="26" font_size="20" text="[ ] Coolant Water" justify="left" color="[white]"/>
+                </rect>
+
+            </rect>
+
+        </window>
+
+    </append>
+
+</configs>

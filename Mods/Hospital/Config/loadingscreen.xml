@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loadingscreen>
+    <!-- Remove vanilla loading screen tips -->
+    <remove xpath="doc/tips/tip"/>
+    <!-- Hospital Challenge loading tips -->
+    <append xpath="doc/tips">
+        <tip key="hospitalLoadingTip01"/>
+        <tip key="hospitalLoadingTip02"/>
+        <tip key="hospitalLoadingTip03"/>
+        <tip key="hospitalLoadingTip04"/>
+        <tip key="hospitalLoadingTip05"/>
+        <tip key="hospitalLoadingTip06"/>
+        <tip key="hospitalLoadingTip07"/>
+        <tip key="hospitalLoadingTip08"/>
+        <tip key="hospitalLoadingTip09"/>
+        <tip key="hospitalLoadingTip10"/>
+        <tip key="hospitalLoadingTip11"/>
+    </append>
+</loadingscreen>

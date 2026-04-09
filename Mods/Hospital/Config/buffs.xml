@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Buffs
+	Author: Frilioth
+	Version: 1.2.3
+	
+	VIRUS SYSTEM:
+	- buffHospitalVirus: permanent, ticks hospitalVirusLevel +0.0035/sec (~+1% per 5 min, death day 8)
+	- Progressive debuffs at 25/50/75/90/99%
+	- Visual effects: Drunk at 75%, Trippy at 99% (vanilla screen effects)
+	- 3-tier suppressants: budget counter pattern, fully stackable (3x weak ≠ 1x strong)
+	  Weak +60 budget, Standard +150, Strong +375. Virus reduced at -0.01667/sec while budget > 0.
+	  Ingredients use Voss-7 Reagent (1 acid → 5 reagent). Zombie hits blocked while budget > 0. Floor 0.1%.
+	- buffHospitalPermadeath: kills on respawn after first death
+	
+	VERIFIED VANILLA EFFECT NAMES:
+	- Screen: ModifyScreenEffect effect_name="Drunk" / "Trippy"
+	- Speed: RunSpeed, WalkSpeed (perc_subtract)
+	- Stamina: StaminaChangeOT (perc_subtract)
+	- Weapon: WeaponHandling (perc_add, negative = worse)
+-->
+<configs>
+
+	<!-- Remove Duke's note from starting loadout -->
+	<remove xpath="/buffs/buff[@name='buffDukeNote']"/>
+
+	<!-- Remove Newbie Coat — XP death penalty protection (levels 1-5) -->
+	<remove xpath="/buffs/buff[@name='buffNewbieCoat']"/>
+
+	<!-- Apply virus buff every time player enters the world -->
+	<append xpath="/buffs/buff[@name='buffStatusCheck01']/effect_group[1]">
+		<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" buff="buffHospitalVirus"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE VANILLA INFECTION SYSTEM                              -->
+	<!-- We replace it entirely with our virus system                 -->
+	<!-- ============================================================ -->
+	
+	<remove xpath="/buffs/buff[@name='buffInfectionMain']"/>
+	<remove xpath="/buffs/buff[@name='buffInfectionCatch']"/>
+	<remove xpath="/buffs/buff[@name='buffInfectionGetsWorse']"/>
+	<remove xpath="/buffs/buff[@name='buffInfectionAddCure']"/>
+	<remove xpath="/buffs/buff[@name='buffInfectionCureDisplay']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection01Untreated']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection01GetBetter']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection02Untreated']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection02GetBetter']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection03Untreated']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection03GetBetter']"/>
+	<remove xpath="/buffs/buff[@name='buffInfection04']"/>
+	<remove xpath="/buffs/buff[@name='buffInfectionImmunity']"/>
+
+	<!-- ============================================================ -->
+	<!-- HOSPITAL VIRUS — Permanent ticking infection                 -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/buffs">
+		<buff name="buffHospitalVirus" hidden="false" name_key="buffHospitalVirusName" description_key="buffHospitalVirusDesc" icon="ui_game_symbol_infection" icon_color="200,50,50">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value_key value="{0:0.0}%"/>
+			<display_value value=".infectionDisplayPerc"/>
+			
+			<!-- Start at 5% infected, initialise suppressant budget to 0 -->
+			<effect_group name="virus init">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalVirusLevel" operation="set" value="5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="set" value="0"/>
+			</effect_group>
+			
+			<!-- Tick virus: +0.0035/sec = ~+1% per 5 min = death day 8 from 5% start -->
+			<!-- Paused while suppressant budget > 0 OR increasing infection is disabled -->
+			<effect_group name="virus tick">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				<requirement name="CVarCompare" cvar="hospitalIncreasingInfection" operation="GTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalVirusLevel" operation="add" value=".0035"/>
+			</effect_group>
+			
+			<!-- Suppressant active: drain virus and budget simultaneously -->
+			<effect_group name="virus suppress">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="GT" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalVirusLevel" operation="add" value="-0.01667"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="add" value="-1"/>
+			</effect_group>
+			
+			<!-- Floor at 0.1% — suppressants cannot reduce below this -->
+			<effect_group name="virus suppress floor">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalVirusLevel" operation="set" value="0.1">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="LT" value="0.1"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- Clamp budget at 0 — don't let it go negative -->
+			<effect_group name="virus budget clamp">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="set" value="0">
+					<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LT" value="0"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- Add yellow display buff while suppressant is active -->
+			<effect_group name="virus suppress display add">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="GT" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffVirusSuppressantActive">
+					<requirement name="!HasBuff" buff="buffVirusSuppressantActive"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- Mirror to vanilla infection HUD display -->
+			<effect_group name="virus display">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".infectionDisplayPerc" operation="set" value="@hospitalVirusLevel"/>
+			</effect_group>
+			
+			<!-- Zombie hits make it worse: +0.2% per hit — blocked while suppressant active OR increasing infection disabled -->
+			<effect_group name="virus zombie hits">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				<requirement name="CVarCompare" cvar="hospitalIncreasingInfection" operation="GTE" value="1"/>
+				<triggered_effect trigger="onOtherAttackedSelf" action="ModifyCVar" cvar="hospitalVirusLevel" operation="add" value="0.2"/>
+			</effect_group>
+			
+			<!-- Cap at 100 — don't let it overshoot -->
+			<effect_group name="virus cap">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="hospitalVirusLevel" operation="set" value="100">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GT" value="100"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- Kill at 100% — massive health drain -->
+			<effect_group name="virus lethal">
+				<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="100"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="999"/>
+			</effect_group>
+			
+			<!-- ================================================ -->
+			<!-- PROGRESSIVE DEBUFFS                              -->
+			<!-- ================================================ -->
+			
+			<!-- 25%+ : -10% stamina regen -->
+			<effect_group name="virus stage 25">
+				<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="25"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_subtract" value=".1"/>
+			</effect_group>
+			
+			<!-- 50%+ : -15% move speed -->
+			<effect_group name="virus stage 50">
+				<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="50"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".15"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".15"/>
+			</effect_group>
+			
+			<!-- 75%+ : additional -15% stamina regen (total -25%), additional -5% speed (total -20%) -->
+			<effect_group name="virus stage 75">
+				<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="75"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_subtract" value=".15"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".05"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".05"/>
+			</effect_group>
+			
+			<!-- 90%+ : weapon handling penalty -->
+			<effect_group name="virus stage 90">
+				<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="90"/>
+				<passive_effect name="WeaponHandling" operation="perc_add" value="-.3"/>
+			</effect_group>
+			
+			<!-- ================================================ -->
+			<!-- VISUAL EFFECTS — Drunk at 75%, Trippy at 99%     -->
+			<!-- ================================================ -->
+			
+			<!-- Below 75%: clear both effects -->
+			<effect_group name="virus visuals clear">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Drunk">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="LT" value="75"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Trippy">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="LT" value="75"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- 75% to 98.99%: Drunk on, Trippy off — suppressed while budget > 0 -->
+			<effect_group name="virus visuals drunk">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0.1" effect_name="Drunk">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="75"/>
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="LT" value="99"/>
+					<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Trippy">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="75"/>
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="LT" value="99"/>
+					<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- 99%+: Trippy on, Drunk off — final warning — suppressed while budget > 0 -->
+			<effect_group name="virus visuals trippy">
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="1" effect_name="Trippy">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="99"/>
+					<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Drunk">
+					<requirement name="CVarCompare" cvar="hospitalVirusLevel" operation="GTE" value="99"/>
+					<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<!-- Suppressant active: clear both screen effects regardless of virus level -->
+			<effect_group name="virus visuals suppress clear">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="GT" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Drunk"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" intensity="0" effect_name="Trippy"/>
+			</effect_group>
+			
+			<!-- Clean up screen effects if buff is ever removed -->
+			<effect_group name="virus cleanup">
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" effect_name="Drunk"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" effect_name="Trippy"/>
+			</effect_group>
+		</buff>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- 3-TIER VIRUS SUPPRESSANTS — Budget counter pattern           -->
+	<!-- Instant fire, adds to hospitalSuppressantBudget, expires.    -->
+	<!-- Fully stackable: 5x weak = 1x strong = 600 budget            -->
+	<!-- Weak +120 (~2min/-2%) | Standard +300 (~5min/-5%) | Strong +600 (~10min/-10%) -->
+	<!-- ============================================================ -->
+	
+	<!-- WEAK: +60 budget → ~1% reduction over 60 seconds -->
+	<append xpath="/buffs">
+		<buff name="buffVirusSuppressantWeak" hidden="false" name_key="buffVirusSuppressantWeakName" description_key="buffVirusSuppressantWeakDesc" icon="ui_game_symbol_medical" icon_color="150,200,50">
+			<stack_type value="ignore"/>
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="add" value="60"/>
+			</effect_group>
+		</buff>
+	</append>
+	
+	<!-- STANDARD: +150 budget → ~2.5% reduction over 150 seconds -->
+	<append xpath="/buffs">
+		<buff name="buffVirusSuppressantStandard" hidden="false" name_key="buffVirusSuppressantStandardName" description_key="buffVirusSuppressantStandardDesc" icon="ui_game_symbol_medical" icon_color="50,200,50">
+			<stack_type value="ignore"/>
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="add" value="150"/>
+			</effect_group>
+		</buff>
+	</append>
+	
+	<!-- STRONG: +375 budget → ~6.25% reduction over 375 seconds -->
+	<append xpath="/buffs">
+		<buff name="buffVirusSuppressantStrong" hidden="false" name_key="buffVirusSuppressantStrongName" description_key="buffVirusSuppressantStrongDesc" icon="ui_game_symbol_medical" icon_color="50,220,50">
+			<stack_type value="ignore"/>
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalSuppressantBudget" operation="add" value="375"/>
+			</effect_group>
+		</buff>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- PERMADEATH — Post-death kill on respawn                      -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/buffs">
+		<buff name="buffHospitalPermaDeath" hidden="true" name_key="buffHospitalPermaDeathName" description_key="buffHospitalPermaDeathDesc" icon="ui_game_symbol_radiation" icon_color="255,0,0">
+			<stack_type value="ignore"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="9999"/>
+			</effect_group>
+		</buff>
+	</append>
+
+
+	<!-- ============================================================ -->
+	<!-- SUPPRESSANT ACTIVE DISPLAY — Yellow icon while budget > 0    -->
+	<!-- Added/removed by virus buff update loop                      -->
+	<!-- ============================================================ -->
+
+	<append xpath="/buffs">
+		<buff name="buffVirusSuppressantActive" name_key="buffVirusSuppressantActiveName" description_key="buffVirusSuppressantActiveDesc" icon="ui_game_symbol_medical" icon_color="220,200,0">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value_key value="{0:0}s"/>
+			<display_value value="hospitalSuppressantBudget"/>
+			<!-- Remove self when budget is exhausted -->
+			<effect_group name="suppress display remove">
+				<requirement name="CVarCompare" cvar="hospitalSuppressantBudget" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffVirusSuppressantActive"/>
+			</effect_group>
+		</buff>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- THE CURE — Instantly zeros hospitalVirusLevel                -->
+	<!-- ============================================================ -->
+
+	<append xpath="/buffs">
+		<buff name="buffHospitalTheCure" hidden="false" name_key="buffHospitalTheCureName" description_key="buffHospitalTheCureDesc" icon="ui_game_symbol_medical" icon_color="50,220,255" duration="1">
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffHospitalVirus"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hospitalVirusLevel" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".infectionDisplayPerc" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+	</append>
+
+</configs>

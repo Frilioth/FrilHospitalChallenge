@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Hospital Challenge - XUi Window Group Modifications
+    Author: Frilioth
+
+    MODIFICATIONS:
+    - Add windowTargetBar to compass window group (zombie HP bar)
+-->
+<configs>
+
+    <!-- Zombie HP bar — added to compass group -->
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+        <window name="windowTargetBar" anchor="CenterTop" />
+    </append>
+
+</configs>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ModInfo>
+	<Name value="0_HospitalItems"/>
+	<DisplayName value="Hospital Item Definitions"/>
+	<Description value="Defines Hospital custom items. Loads before Hospital so items exist when traders.xml parses. Required companion mod for HospitalChallenge."/>
+	<Author value="Frilioth"/>
+	<Version value="1.2.0"/>
+</ModInfo>

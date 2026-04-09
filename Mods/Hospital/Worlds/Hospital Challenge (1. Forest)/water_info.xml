@@ -1,0 +1,41 @@
+<WaterSources>
+    <Water pos="1855, 77, 1406"/>
+    <Water pos="1416, 77, 1900"/>
+    <Water pos="1132, 77, 1844"/>
+    <Water pos="1240, 77, 1536"/>
+    <Water pos="1856, 72, 1032"/>
+    <Water pos="1616, 72, 948"/>
+    <Water pos="432, 72, 1632"/>
+    <Water pos="-192, 72, 1924"/>
+    <Water pos="-888, 72, 1660"/>
+    <Water pos="956, 57, 1246"/>
+    <Water pos="1896, 57, 108"/>
+    <Water pos="1300, 57, -448"/>
+    <Water pos="36, 57, -84"/>
+    <Water pos="-825, 57, -194"/>
+    <Water pos="-1928, 57, -464"/>
+    <Water pos="1855, 57, -824"/>
+    <Water pos="332, 57, -806"/>
+    <Water pos="-44, 57, -820"/>
+    <Water pos="-686, 53, 499"/>
+    <Water pos="-592, 57, -1176"/>
+    <Water pos="-1572, 57, -1120"/>
+    <Water pos="-516, 57, -1652"/>
+    <Water pos="628, 57, -1400"/>
+    <Water pos="-516, 57, -1652"/>
+    <Water pos="1660, 57, -1384"/>
+    <Water pos="288, 57, -1816"/>
+    <Water pos="1660, 57, -1384"/>
+    <Water pos="856, 57, -290" minz="-358"/>
+    <Water pos="-1112, 57, -1363" maxz="-354"/>
+    <Water pos="1115, 43, -1588"/>
+    <Water pos="-1794, 72, 1868"/>
+    <Water pos="-1704, 49, -948"/>
+    <Water pos="1936, 123, 1605"/>
+    <Water pos="1808, 66, 835"/>
+    <Water pos="1808, 66, 789"/>
+    <Water pos="-1581, 50, -933"/>
+    <Water pos="-1692, 57, -1556"/>
+    <Water pos="-1797, 56, -1504"/>
+    <Water pos="-1981, 58, -1280"/>
+</WaterSources>

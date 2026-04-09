@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	0_HospitalItems — Item Definitions
+	Author: Frilioth
+	Version: 0.1.0
+
+	This mod loads before FrilHospitalChallenge to ensure item
+	definitions are available before any XML that references them.
+
+	ADDS:
+	- hospitalSurvivalGuide: starting note given to player on spawn.
+	  Triggers quest_HospitalSurvivalGuide which shows a large
+	  briefing popup via ShowMessageWindow.
+	  Mesh: replace Meshfile value when custom asset is ready.
+-->
+<configs>
+	<append xpath="/items">
+		<item name="hospitalSurvivalGuide">
+			<property name="Extends" value="blankNoteMaster"/>
+			<property name="HoldType" value="31"/>
+			<property name="Meshfile" value="#@modfolder:Resources/hospitalNote.unity3d?noteHospitalRules.Prefab"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="noteHospitalRules"/>
+			<property name="DescriptionKey" value="hospitalSurvivalGuideDesc"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="NoScrapping" value="true"/>
+			<property name="SoundPickup" value="map_grab"/>
+			<property name="SoundPlace" value="map_place"/>
+			<property class="Action0">
+				<property name="Class" value="Quest"/>
+				<property name="QuestGiven" value="quest_HospitalSurvivalGuide"/>
+			</property>
+		</item>
+	</append>
+</configs>

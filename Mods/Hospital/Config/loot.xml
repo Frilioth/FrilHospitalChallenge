@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Loot
+	Author: Frilioth
+	Version: 1.3.4
+	
+	REMOVES:
+	- All drugAntibiotics from loot groups
+	- All drugHerbalAntibiotics from loot groups
+	- All Honey from loot groups
+	- Treasure maps and treasure map references
+	- seedSkillMagazine (skill capped at 1)
+	- smallEngine from loot groups
+	- resourcePaper from all vanilla loot groups (kept in frilHospitalToiletLoot)
+	- All vehicle chassis and handlebar parts (players cannot build vehicles)
+	- destroy_on_close from all vanilla containers (re-applied to hospital bags only)
+	
+	ADDS:
+	- Weak suppressant to groupMedicalCommon (low chance, early find)
+	- Standard suppressant to groupMedicalUncommon
+	- Strong suppressant to groupMedicalRare (rare, valuable)
+	- Weak suppressant to survivalMedical (very low)
+	- carBattery 30% to groupUtilityCart (janitor trolley)
+	- workstation/vehicles/electrician/medical mags boosted in booksAllScaled pool
+	- resourceAcid (veryLow) to groupMedicalAll, Small01, Small02, Small03
+	- junk and laundryBasket set destroy_on_close=empty
+	- groupFoodCommon in groupCupboard01 bumped from veryLow to low (more tins in cupboards)
+	- groupFoodUncommon appended to groupCupboard01 at veryLow (beef, chili, tuna, salmon etc)
+	- frilHospitalFoodSeeds group (potato, corn, blueberry, pumpkin) appended to groupJunk01 at veryLow
+	
+	ZOMBIE DROPS:
+	- Handled via entityclasses.xml properties + DLL, not loot tables
+-->
+<configs>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE VANILLA ANTIBIOTICS AND HONEYFROM ALL LOOT GROUPS       -->
+	<!-- Players must use Virus Suppressant instead                     -->
+	<!-- ============================================================ -->
+	
+	<remove xpath="//lootgroup//item[@name='drugAntibiotics']"/>
+	<remove xpath="//lootgroup//item[@name='drugHerbalAntibiotics']"/>
+	<remove xpath="//lootgroup//item[@name='foodHoney']"/>
+
+	<!-- ============================================================ -->
+	<!-- ADD SUPPRESSANTS TO MEDICAL LOOT GROUPS                       -->
+	<!-- Tiered: weak in common, standard in uncommon, strong in rare   -->
+	<!-- ============================================================ -->
+	
+	<!-- Weak suppressant in common medical loot -->
+	<append xpath="//lootgroup[@name='groupMedicalCommon']">
+		<item name="hospitalSuppressantWeak" loot_prob_template="low"/>
+	</append>
+	
+	<!-- Standard suppressant in uncommon medical loot -->
+	<append xpath="//lootgroup[@name='groupMedicalUncommon']">
+		<item name="hospitalSuppressantStandard" loot_prob_template="veryLow"/>
+	</append>
+	
+	<!-- Strong suppressant in rare medical loot -->
+	<append xpath="//lootgroup[@name='groupMedicalRare']">
+		<item name="hospitalSuppressantStrong" loot_prob_template="veryLow"/>
+	</append>
+	
+	<!-- Also add weak to the general medical group (survivalMedical) -->
+	<append xpath="//lootgroup[@name='survivalMedical']">
+		<item name="hospitalSuppressantWeak" loot_prob_template="veryLow"/>
+	</append>
+
+	<!-- Gyro repair container — 8 slots, one per part, starts empty -->
+	<append xpath="/lootcontainers">
+		<lootcontainer name="hospitalGyroStorage" count="0" size="8,1" sound_open="UseActions/crate_metal_open" sound_close="UseActions/crate_metal_close" loot_quality_template="qualBaseTemplate"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- LOOT BAG CONTAINERS                                           -->
+	<!-- Mirrors Area 7 Medical and Books bags respectively            -->
+	<!-- ============================================================ -->
+
+	<!-- Essential mags group: Electrical, Workstation, or Vehicles — one guaranteed per Books bag -->
+	<insertafter xpath="//lootgroup[@name='groupSchematicsAll']">
+		<lootgroup name="frilHospitalEssentialMags" count="1">
+			<item name="electricianSkillMagazine" count="1"/>
+			<item name="workstationSkillMagazine" count="1"/>
+			<item name="vehiclesSkillMagazine" count="1"/>
+		</lootgroup>
+
+		<!-- Hospital toilet loot — replaces vanilla toilet group -->
+		<lootgroup name="frilHospitalToiletLoot">
+			<item name="resourcePaper" count="1,3" prob="0.8"/>
+			<item name="drinkJarRiverWater" count="1" prob="0.05"/>
+			<item name="drugPainkillers" count="1" prob="0.01"/>
+			<item name="meleeWpnBladeT1HuntingKnife" count="1" prob="0.05"/>
+			<item name="gunHandgunT1Pistol" count="1" prob="0.02"/>
+		</lootgroup>
+
+		<!-- Food seeds for rubbish piles — potato, corn, blueberry, pumpkin only -->
+		<lootgroup name="frilHospitalFoodSeeds" count="1">
+			<item name="plantedPotato1" count="1"/>
+			<item name="plantedCorn1" count="1"/>
+			<item name="plantedBlueberry1" count="1"/>
+			<item name="plantedPumpkin1" count="1"/>
+		</lootgroup>
+	</insertafter>
+
+	<insertafter xpath="//lootcontainer[@name='playerBackpack']">
+
+		<!-- Yellow bag: medical supplies (mirrors Area7Medical) -->
+		<lootcontainer id="HospitalYellow" name="HospitalYellow" count="2,4" size="6,2"
+			destroy_on_close="true"
+			sound_open="UseActions/open_backpack"
+			sound_close="UseActions/close_backpack"
+			loot_quality_template="qualBaseTemplate">
+			<item group="groupMedicalAll"/>
+			<item name="drugPainkillers" count="1,2" prob="0.4"/>
+			<item name="resourceAcid" count="1" prob="0.08"/>
+		</lootcontainer>
+
+		<!-- Books rucksack: skill magazines (mirrors Area7Books) -->
+		<lootcontainer id="HospitalBooks" name="HospitalBooks" count="1" size="6,2"
+			destroy_on_close="true"
+			sound_open="UseActions/open_backpack"
+			sound_close="UseActions/close_backpack"
+			loot_quality_template="qualBaseTemplate">
+			<item group="skillMagazines" count="1,3"/>
+			<item group="frilHospitalEssentialMags" count="1"/>
+		</lootcontainer>
+
+		<!-- Cops bag: acid + tail assembly — FatCop, Soldier, Mutated -->
+		<lootcontainer id="HospitalCops" name="HospitalCops" count="2,4" size="6,2"
+			destroy_on_close="true"
+			sound_open="UseActions/open_backpack"
+			sound_close="UseActions/close_backpack"
+			loot_quality_template="qualBaseTemplate">
+			<item name="resourceAcid" count="1" prob="0.40"/>
+			<item name="hospitalGyroTailAssembly" count="1" prob="0.15"/>
+			<item name="ammo9mmBulletBall" count="10,30" prob="0.25"/>
+			<item name="gunHandgunT1PistolParts" count="1,2" prob="0.15"/>
+			<item name="handgunsSkillMagazine" count="1" prob="0.08"/>
+		</lootcontainer>
+
+		<!-- Biker bag: spark plugs — Biker, Lumberjack -->
+		<lootcontainer id="HospitalBiker" name="HospitalBiker" count="2,4" size="6,2"
+			destroy_on_close="true"
+			sound_open="UseActions/open_backpack"
+			sound_close="UseActions/close_backpack"
+			loot_quality_template="qualBaseTemplate">
+			<item name="hospitalGyroSparkPlugs" count="1" prob="0.25"/>
+			<item group="groupGarage01"/>
+		</lootcontainer>
+
+		<!-- Heavy bag: engine parts — UtilityWorker, Janitor -->
+		<lootcontainer id="HospitalHeavy" name="HospitalHeavy" count="2,4" size="6,2"
+			destroy_on_close="true"
+			sound_open="UseActions/open_backpack"
+			sound_close="UseActions/close_backpack"
+			loot_quality_template="qualBaseTemplate">
+			<item name="smallEngine" count="1" prob="0.15"/>
+			<item group="groupConstructionCrate"/>
+			<item name="workstationSkillMagazine" count="1" prob="0.15"/>
+		</lootcontainer>
+
+	</insertafter>
+
+
+	<!-- Guaranteed crucible in the hardened military chest (T5) -->
+	<append xpath="//lootgroup[@name='groupHardenedChestT5']">
+		<item name="toolForgeCrucible" count="1"/>
+	</append>
+
+	<!-- Replace old casino tokens with casinoCoin -->
+	<set xpath="//item[@name='oldCash']/@name">casinoCoin</set>
+
+	<!-- carBattery 30% chance in janitor trolley (groupUtilityCart) -->
+	<append xpath="//lootgroup[@name='groupUtilityCart']">
+		<item name="carBattery" prob="0.3" force_prob="true"/>
+	</append>
+
+	<!-- hospitalGyroSparkPlugs in groupRareAutomotive — surfaces through groupAutomotive
+	     → groupGarage01 → groupGarageA → groupGarage, covering all car park vehicles
+	     and garage containers. No prob override — matches carBattery/vehicleWheels behaviour.
+	     Note: smallEngine is removed from this group by our global remove xpath. -->
+	<append xpath="//lootgroup[@name='groupRareAutomotive']">
+		<item name="hospitalGyroSparkPlugs"/>
+	</append>
+
+	<!-- Override vanilla toilet loot to use hospital group -->
+	<set xpath="//lootcontainer[@name='toilet']/item[@group]/@group">frilHospitalToiletLoot</set>
+
+	<!-- ============================================================ -->
+	<!-- FOOD IN CUPBOARDS                                             -->
+	<!-- Bump groupFoodCommon from veryLow to low — more tins        -->
+	<!-- Add groupFoodUncommon at veryLow — beef, chili, tuna etc    -->
+	<!-- ============================================================ -->
+
+	<set xpath="//lootgroup[@name='groupCupboard01']/item[@group='groupFoodCommon']/@loot_prob_template">low</set>
+	<append xpath="//lootgroup[@name='groupCupboard01']">
+		<item group="groupFoodUncommon" loot_prob_template="veryLow"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- FOOD SEEDS IN RUBBISH PILES                                   -->
+	<!-- Vanilla seeds entry in groupJunk01 has tags="seedSkill"      -->
+	<!-- which filters to seedSkillMagazine only — we remove that.    -->
+	<!-- Add our own group with food seeds at veryLow instead.        -->
+	<!-- ============================================================ -->
+
+	<append xpath="//lootgroup[@name='groupJunk01']">
+		<item group="frilHospitalFoodSeeds" loot_prob_template="veryLow"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE UNWANTED VANILLA LOOT                                  -->
+	<!-- ============================================================ -->
+
+	<!-- Treasure maps — not relevant to hospital run -->
+	<remove xpath="//lootgroup[@name='groupTreasureMaps']"/>
+	<remove xpath="//lootgroup//item[@group='groupTreasureMaps']"/>
+
+	<!-- Seeds skill magazine — skill capped at 1, no point in more -->
+	<remove xpath="//lootgroup//item[@name='seedSkillMagazine']"/>
+
+	<!-- Small engine — removed from blocks.xml drops, remove from loot too -->
+	<remove xpath="//lootgroup//item[@name='smallEngine']"/>
+
+	<!-- Paper — remove from all vanilla loot groups (kept in frilHospitalToiletLoot) -->
+	<remove xpath="//lootgroup[not(@name='frilHospitalToiletLoot')]//item[@name='resourcePaper']"/>
+
+	<!-- Vehicle parts — players cannot build vehicles -->
+	<remove xpath="//lootgroup//item[@name='vehicleBicycleHandlebars']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleMinibikeHandlebars']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleMotorcycleHandlebars']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleBicycleChassis']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleMinibikeChassis']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleMotorcycleChassis']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleTruck4x4Chassis']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleTruck4x4Accessories']"/>
+	<remove xpath="//lootgroup//item[@name='vehicleGyroCopterChassis']"/>
+
+	<!-- ============================================================ -->
+	<!-- CONTAINER DESTROY ON CLOSE                                    -->
+	<!-- Remove from all vanilla containers, then re-apply to ours    -->
+	<!-- ============================================================ -->
+
+	<removeattribute xpath="//lootcontainer/@destroy_on_close"/>
+	<setattribute xpath="//lootcontainer[@name='junk']" name="destroy_on_close">empty</setattribute>
+	<setattribute xpath="//lootcontainer[@name='laundryBasket']" name="destroy_on_close">empty</setattribute>
+
+	<!-- Restore destroy_on_close on our hospital bag containers -->
+	<setattribute xpath="//lootcontainer[@name='HospitalYellow']" name="destroy_on_close">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='HospitalBooks']" name="destroy_on_close">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='HospitalCops']" name="destroy_on_close">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='HospitalBiker']" name="destroy_on_close">true</setattribute>
+	<setattribute xpath="//lootcontainer[@name='HospitalHeavy']" name="destroy_on_close">true</setattribute>
+
+	<!-- ============================================================ -->
+	<!-- BOOK POOL ADDITIONS                                           -->
+	<!-- Boost key skill magazines in the vanilla booksAllScaled pool  -->
+	<!-- ============================================================ -->
+
+	<append xpath="//lootgroup[@name='booksAllScaled']">
+		<item name="workstationSkillMagazine" count="1" prob="0.7"/>
+		<item name="vehiclesSkillMagazine" count="1" prob="0.5"/>
+		<item name="electricianSkillMagazine" count="1" prob="0.7"/>
+		<item name="medicalSkillMagazine" count="1" prob="0.7"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- ACID IN MEDICAL LOOT                                          -->
+	<!-- Very low chance — acid is a key suppressant ingredient        -->
+	<!-- ============================================================ -->
+
+	<append xpath="//lootgroup[@name='groupMedicalAll']">
+		<item name="resourceAcid" count="1" loot_prob_template="Low"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupMedicalSmall01']">
+		<item name="resourceAcid" count="1" loot_prob_template="veryLow"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupMedicalSmall02']">
+		<item name="resourceAcid" count="1" loot_prob_template="veryLow"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupMedicalSmall03']">
+		<item name="resourceAcid" count="1" loot_prob_template="veryLow"/>
+	</append>
+
+</configs>

@@ -1,0 +1,15 @@
+<configs>
+
+    <!--
+        gyroRepairStatus window group.
+        actionSet="false" so it does not hijack input —
+        the looting window group already handles that.
+        Opened/closed from C# when gyroRepairBlock is interacted with.
+    -->
+    <append xpath="/xui/ruleset">
+        <window_group name="gyroRepairStatus" actionSet="false">
+            <window name="windowGyroRepairStatus"/>
+        </window_group>
+    </append>
+
+</configs>

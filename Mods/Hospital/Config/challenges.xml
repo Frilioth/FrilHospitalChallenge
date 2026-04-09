@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Challenges
+	Author: Frilioth
+	Version: 1.2.1
+	
+	STRUCTURE:
+	- 1 category: Hospital Challenge
+	- 4 groups chained via hidden_by: Assess → Parts → Repair → Escape
+	- Challenges use vanilla format: title_key, short_description_key, description_key
+	
+	NOTE: Phase 3 (Repair) is a PLACEHOLDER until block upgrade system is built.
+-->
+<configs>
+
+	<!-- ============================================================ -->
+	<!-- REMOVE ALL VANILLA CHALLENGES                                 -->
+	<!-- ============================================================ -->
+	
+	<remove xpath="/challenges/challenge"/>
+	<remove xpath="/challenges/challenge_group"/>
+	<remove xpath="/challenges/challenge_category"/>
+
+	<!-- ============================================================ -->
+	<!-- CATEGORY                                                       -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge_category name="HospitalChallenge" title_key="hospitalCategoryName" icon="ui_game_symbol_medical"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- GROUPS — chained via hidden_by                                 -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge_group category="HospitalChallenge" name="hospitalGroupAssess" title_key="hospitalGroupAssessName"
+			reward_text_key="hospitalGroupAssessReward" reward_event="hospital_reward_assess"/>
+		
+		<challenge_group category="HospitalChallenge" name="hospitalGroupParts" title_key="hospitalGroupPartsName"
+			reward_text_key="hospitalGroupPartsReward" hidden_by="hospitalGroupAssess"/>
+		
+		<challenge_group category="HospitalChallenge" name="hospitalGroupRepair" title_key="hospitalGroupRepairName"
+			reward_text_key="hospitalGroupRepairReward" hidden_by="hospitalGroupParts"/>
+		
+		<challenge_group category="HospitalChallenge" name="hospitalGroupEscape" title_key="hospitalGroupEscapeName"
+			reward_text_key="hospitalGroupEscapeReward" hidden_by="hospitalGroupRepair"/>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- PHASE 1: ASSESS THE SITUATION                                 -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge name="hospitalKillZombies" group="hospitalGroupAssess"
+			icon="ui_game_symbol_challenge_adv_survival_kill_zombies"
+			title_key="hospitalKillZombies"
+			short_description_key="hospitalKillZombiesShort"
+			description_key="hospitalKillZombiesDesc">
+			<objective type="KillByTag" entity_tags="zombie" target_name_key="xuiZombies" count="10"/>
+			<reward type="Experience" value="500"/>
+			<reward type="SkillPoints" value="4"/>
+		</challenge>
+	</append>
+	
+	<!-- ============================================================ -->
+	<!-- PHASE 2: GATHER PARTS                                         -->
+	<!-- 8 parallel objectives — player finds in any order             -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge name="hospitalGetRadiator" group="hospitalGroupParts"
+			icon="ui_game_symbol_radiator"
+			title_key="hospitalGetRadiator"
+			short_description_key="hospitalGetRadiatorShort"
+			description_key="hospitalGetRadiatorDesc">
+			<objective type="Gather" item="resourceRadiator" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetWater" group="hospitalGroupParts"
+			icon="ui_game_symbol_water"
+			title_key="hospitalGetWater"
+			short_description_key="hospitalGetWaterShort"
+			description_key="hospitalGetWaterDesc">
+			<objective type="Gather" item="drinkJarRiverWater" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetEngine" group="hospitalGroupParts"
+			icon="ui_game_symbol_engine"
+			title_key="hospitalGetEngine"
+			short_description_key="hospitalGetEngineShort"
+			description_key="hospitalGetEngineDesc">
+			<objective type="Gather" item="smallEngine" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetBattery" group="hospitalGroupParts"
+			icon="ui_game_symbol_battery"
+			title_key="hospitalGetBattery"
+			short_description_key="hospitalGetBatteryShort"
+			description_key="hospitalGetBatteryDesc">
+			<objective type="Gather" item="carBattery" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetSparkPlugs" group="hospitalGroupParts"
+			icon="ui_game_symbol_spark_plugs"
+			title_key="hospitalGetSparkPlugs"
+			short_description_key="hospitalGetSparkPlugsShort"
+			description_key="hospitalGetSparkPlugsDesc">
+			<objective type="Gather" item="hospitalGyroSparkPlugs" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetControlCables" group="hospitalGroupParts"
+			icon="ui_game_symbol_cables"
+			title_key="hospitalGetControlCables"
+			short_description_key="hospitalGetControlCablesShort"
+			description_key="hospitalGetControlCablesDesc">
+			<objective type="Gather" item="hospitalGyroControlCables" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetTailAssembly" group="hospitalGroupParts"
+			icon="ui_game_symbol_tail"
+			title_key="hospitalGetTailAssembly"
+			short_description_key="hospitalGetTailAssemblyShort"
+			description_key="hospitalGetTailAssemblyDesc">
+			<objective type="Gather" item="hospitalGyroTailAssembly" count="1"/>
+		</challenge>
+		
+		<challenge name="hospitalGetBlades" group="hospitalGroupParts"
+			icon="ui_game_symbol_rotor_blades"
+			title_key="hospitalGetBlades"
+			short_description_key="hospitalGetBladesShort"
+			description_key="hospitalGetBladesDesc">
+			<objective type="Gather" item="hospitalGyroBlades" count="1"/>
+		</challenge>
+		
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- PHASE 3: REPAIR THE GYRO                                      -->
+	<!-- PLACEHOLDER — will be replaced with block upgrade tracking     -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge name="hospitalRepairGyro" group="hospitalGroupRepair"
+			icon="ui_game_symbol_fix"
+			title_key="hospitalRepairGyro"
+			short_description_key="hospitalRepairGyroShort"
+			description_key="hospitalRepairGyroDesc">
+			<reward type="Experience" value="1000"/>
+		</challenge>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- PHASE 4: ESCAPE                                               -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/challenges">
+		<challenge name="hospitalEscape" group="hospitalGroupEscape"
+			icon="ui_game_symbol_cure"
+			title_key="hospitalEscape"
+			short_description_key="hospitalEscapeShort"
+			description_key="hospitalEscapeDesc">
+			<reward type="Experience" value="100"/>
+		</challenge>
+	</append>
+	
+
+</configs>

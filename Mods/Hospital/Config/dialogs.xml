@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Dialogs
+	Author: Frilioth
+	Version: 1.2.1
+	
+-->
+
+<configs>
+    <!-- Remove all job-related response options from trader start dialog -->
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobsnone']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave1']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave2']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave3']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave4']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave5']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshave6']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='jobshavenotallowed']"/>
+    <remove xpath="/dialogs/dialog[@id='trader']/statement[@id='start']/response_entry[@id='specialjobshave']"/>
+</configs>

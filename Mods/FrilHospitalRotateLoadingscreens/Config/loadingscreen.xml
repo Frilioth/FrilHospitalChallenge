@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loadingscreen>
+    <!-- 
+        JPG only - other formats cause crashing.
+        Use 3840x2560 images or they will stretch.
+        Add/remove tex entries as needed.
+    -->
+    <remove xpath="doc/backgrounds"/>
+    <append xpath="doc">
+        <backgrounds>
+            <tex file="@modfolder:/Images/LoadingScreens/1.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/2.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/3.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/4.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/5.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/6.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/7.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/8.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/9.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/10.jpg"/>
+            <tex file="@modfolder:/Images/LoadingScreens/11.jpg"/>
+        </backgrounds>
+    </append>
+</loadingscreen>

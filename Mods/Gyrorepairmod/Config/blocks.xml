@@ -1,0 +1,51 @@
+<configs>
+
+    <!--
+        gyroRepairBlock
+        A broken gyrocopter shell that acts as a container.
+        Place all 8 required parts inside and close the window
+        to trigger the repair and spawn a working gyrocopter.
+
+        Required parts:
+            resourceRadiator
+            drinkJarRiverWater
+            hospitalGyroEngine
+            hospitalGyroBattery
+            hospitalGyroSparkPlugs
+            hospitalGyroControlCables
+            hospitalGyroTailAssembly
+            hospitalGyroBlades
+
+        NOTE: If the model sits raised off the floor, adjust
+        ModelOffset Y downward in increments of 0.5 until it
+        sits correctly. Try 0,-0.5,0 then 0,-1,0 etc.
+    -->
+
+    <append xpath="/blocks">
+
+        <block name="gyroRepairBlock">
+            <property name="TitleKey" value="gyroRepairBlockTitle"/>
+            <property name="DescriptionKey" value="gyroRepairBlockDesc"/>
+            <property name="CreativeMode" value="Player"/>
+            <property name="Class" value="CompositeTileEntity"/>
+            <property class="CompositeFeatures">
+                <property class="TEFeatureStorage">
+                    <property name="LootList" value="gyroRepairStorage"/>
+                </property>
+            </property>
+            <property name="TintColor" value="132,105,84"/>
+            <property name="DisplayType" value="blockMulti"/>
+            <property name="Material" value="Mmetal"/>
+            <property name="Shape" value="ModelEntity"/>
+            <property name="Model" value="@:Entities/Vehicles/TraderVehicles/traderGyrocopterStaticPrefab.prefab"/>
+            <property name="ModelOffset" value="0,0,0"/>
+            <property name="MultiBlockDim" value="1,1,4"/>
+            <property name="MaxDamage" value="999999"/>
+            <property name="WaterFlow" value="permitted"/>
+            <drop event="Harvest" count="0"/>
+            <drop event="Destroy" count="0"/>
+        </block>
+
+    </append>
+
+</configs>

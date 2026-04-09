@@ -1,0 +1,320 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english
+
+# ============================================================
+# Navezgane Hospital Challenge — Localization
+# Author: Frilioth
+# Version: 0.2.0
+# English only — other languages added later
+# ============================================================
+
+# ============================================================
+# BUFFS
+# ============================================================
+
+buffHospitalVirusName,buffs,Buff,,,"Voss-7 Virus"
+buffHospitalVirusDesc,buffs,Buff,,,"You are infected with Voss-7 — a mutated strain of the Septdiurnal Virus resistant to honey and antibiotics. Craft Virus Suppressants to slow its spread. Only Trader Jen has the cure."
+buffVirusSuppressantWeakName,buffs,Buff,,,"Virus Suppressed (Weak)"
+buffVirusSuppressantWeakDesc,buffs,Buff,,,"A weak dose. It's barely holding the virus back."
+buffVirusSuppressantActiveName,buffs,Buff,,,"Suppressant Active"
+buffVirusSuppressantActiveDesc,buffs,Buff,,,"The suppressant is working. The virus is retreating and you are protected from zombie infections."
+buffVirusSuppressantStandardName,buffs,Buff,,,"Virus Suppressed"
+buffVirusSuppressantStandardDesc,buffs,Buff,,,"The suppressant is slowing the virus. It won't last."
+buffVirusSuppressantStrongName,buffs,Buff,,,"Virus Suppressed (Strong)"
+buffVirusSuppressantStrongDesc,buffs,Buff,,,"A powerful dose. The virus retreats — for now."
+buffHospitalTheCureName,buffs,Buff,,,"The Cure"
+buffHospitalTheCureDesc,buffs,Buff,,,"The virus is gone. You're clean."
+buffHospitalPermaDeathName,buffs,Buff,,,"Terminal Infection"
+buffHospitalPermaDeathDesc,buffs,Buff,,,"The virus has won. There is no coming back."
+
+# ============================================================
+# ITEMS — SUPPRESSANTS
+# ============================================================
+
+hospitalVoss7Reagent,items,Item,,,"Voss-7 Reagent"
+hospitalVoss7ReagentDesc,items,Item,,,"A synthesised antiviral compound derived from acid. Used in all three tiers of Virus Suppressant. 1 unit of acid yields 5 reagents."
+hospitalSuppressantWeak,items,Item,,,"Weak Virus Suppressant"
+hospitalSuppressantWeakDesc,items,Item,,,"A diluted antiviral cocktail. Slowly reduces infection by ~1% over 1 minute. Stacks with other suppressants. Better than nothing."
+hospitalSuppressantStandard,items,Item,,,"Virus Suppressant"
+hospitalSuppressantStandardDesc,items,Item,,,"A makeshift antiviral cocktail. Slowly reduces infection by ~2.5% over 2.5 minutes. Stacks with other suppressants. You'll need more."
+hospitalSuppressantStrong,items,Item,,,"Strong Virus Suppressant"
+hospitalSuppressantStrongDesc,items,Item,,,"A potent antiviral formula with acid catalyst. Slowly reduces infection by ~6.25% over 6 minutes. Stacks with other suppressants. The strongest you can make."
+
+# ============================================================
+# ITEMS — GYRO PARTS
+# ============================================================
+
+hospitalGyroSparkPlugs,items,Item,,,"Spark Plugs"
+hospitalGyroSparkPlugsDesc,items,Item,,,"A set of spark plugs salvaged from a biker's motorcycle. Still functional."
+hospitalGyroBlades,items,Item,,,"Rotor Blades"
+hospitalGyroBladesDesc,items,Item,,,"Lightweight blades salvaged from hospital ventilation units. Not ideal, but they'll spin."
+hospitalGyroControlCables,items,Item,,,"Control Cables"
+hospitalGyroControlCablesDesc,items,Item,,,"Wiring and cable assemblies rigged from electrical parts and duct tape. Connects the cockpit to the engine."
+hospitalGyroTailAssembly,items,Item,,,"Tail Assembly"
+hospitalGyroTailAssemblyDesc,items,Item,,,"A structural frame salvaged from heavy equipment. With modification, it'll stabilize the gyro in flight."
+
+# ============================================================
+# ITEMS — OTHER
+# ============================================================
+
+hospitalSurvivalGuide,items,Item,,,"Hospital Survival Guide"
+hospitalSurvivalGuideDesc,items,Item,,,"You wake up infected in Navezgane Hospital. The virus is killing you slowly. The only cure is at Trader Jen's clinic — but the streets are overrun.
+
+A wrecked gyrocopter sits on the roof. Find parts to fix it. Fly to Jen. Get the cure.
+
+Suppressants slow the virus but never cure it. Find them in medical supplies or craft them at the chemistry station.
+
+Parts come from the dead — search every zombie you kill. The clock is ticking."
+
+hospitalTheCure,items,Item,,,"The Cure"
+hospitalTheCureDesc,items,Item,,,"A prototype antiviral developed before the outbreak. One dose. One chance. This is it."
+
+# ============================================================
+# CHALLENGES — CATEGORY
+# ============================================================
+
+hospitalCategoryName,challenges,Challenge,,,"Hospital Challenge"
+
+# ============================================================
+# CHALLENGES — GROUPS
+# ============================================================
+
+hospitalGroupAssessName,challenges,Challenge,,,"Assess the Situation"
+hospitalGroupAssessReward,challenges,Challenge,,,"Get your bearings. Kill what's in your way."
+hospitalGroupPartsName,challenges,Challenge,,,"Gather Parts"
+hospitalGroupPartsReward,challenges,Challenge,,,"Find what you need to fix the gyro."
+hospitalGroupRepairName,challenges,Challenge,,,"Repair the Gyro"
+hospitalGroupRepairReward,challenges,Challenge,,,"Get that bird airborne."
+hospitalGroupEscapeName,challenges,Challenge,,,"Escape"
+hospitalGroupEscapeReward,challenges,Challenge,,,"Fly to Jen. Get the cure. Live."
+
+# ============================================================
+# CHALLENGES — INDIVIDUAL
+# ============================================================
+
+hospitalKillZombies,challenges,Challenge,,,"Clear the ER"
+hospitalKillZombiesShort,challenges,Challenge,,,"Kill 10 zombies"
+hospitalKillZombiesDesc,challenges,Challenge,,,"The hospital is crawling with the infected. Clear enough to move freely and find what you need."
+
+hospitalGetRadiator,challenges,Challenge,,,"Find a Radiator"
+hospitalGetRadiatorShort,challenges,Challenge,,,"Obtain a radiator"
+hospitalGetRadiatorDesc,challenges,Challenge,,,"The gyro needs a cooling system. Wrench vehicles or search storage rooms for a radiator."
+
+hospitalGetWater,challenges,Challenge,,,"Collect Water"
+hospitalGetWaterShort,challenges,Challenge,,,"Obtain water for the cooling system"
+hospitalGetWaterDesc,challenges,Challenge,,,"The radiator needs fluid. Murky water will do. Find a water source."
+
+hospitalGetEngine,challenges,Challenge,,,"Find a Small Engine"
+hospitalGetEngineShort,challenges,Challenge,,,"Find a small engine"
+hospitalGetEngineDesc,challenges,Challenge,,,"You need a working engine to power the gyrocopter. Kill utility workers and janitors and check their bags, or craft one at the workbench if you have the parts."
+
+hospitalGetBattery,challenges,Challenge,,,"Find a Car Battery"
+hospitalGetBatteryShort,challenges,Challenge,,,"Scavenge a car battery"
+hospitalGetBatteryDesc,challenges,Challenge,,,"The gyrocopter needs a battery. Check maintenance areas, janitor trolleys, and any vehicles you can get into. You can also craft one at the chemistry station if you have enough lead and acid."
+
+hospitalGetSparkPlugs,challenges,Challenge,,,"Find Spark Plugs"
+hospitalGetSparkPlugsShort,challenges,Challenge,,,"Obtain spark plugs from bikers"
+hospitalGetSparkPlugsDesc,challenges,Challenge,,,"The bikers rode in during the outbreak. Their motorcycles are gone but the riders aren't. Kill them and check for spark plugs."
+
+hospitalGetControlCables,challenges,Challenge,,,"Craft Control Cables"
+hospitalGetControlCablesShort,challenges,Challenge,,,"Craft cables at the workbench"
+hospitalGetControlCablesDesc,challenges,Challenge,,,"You need wiring to connect the cockpit to the engine. Gather electrical parts and duct tape, then assemble at the workbench."
+
+hospitalGetTailAssembly,challenges,Challenge,,,"Find a Tail Assembly"
+hospitalGetTailAssemblyShort,challenges,Challenge,,,"Obtain tail assembly from cops"
+hospitalGetTailAssemblyDesc,challenges,Challenge,,,"The cop zombies are tough, but they're carrying equipment that can be repurposed as a tail stabilizer. Kill them and take it."
+
+hospitalGetBlades,challenges,Challenge,,,"Salvage Rotor Blades"
+hospitalGetBladesShort,challenges,Challenge,,,"Wrench air conditioning units"
+hospitalGetBladesDesc,challenges,Challenge,,,"The hospital's industrial ventilation fans have blades that could work as rotors. Wrench every AC unit you find. The more you salvage, the better your chances."
+
+hospitalRepairGyro,challenges,Challenge,,,"Repair the Gyrocopter"
+hospitalRepairGyroShort,challenges,Challenge,,,"Install all parts on the rooftop gyro"
+hospitalRepairGyroDesc,challenges,Challenge,,,"The chassis is on the roof. You have the parts. Put it together and pray it flies."
+
+hospitalEscape,challenges,Challenge,,,"Fly to Trader Jen"
+hospitalEscapeShort,challenges,Challenge,,,"Reach the cure"
+hospitalEscapeDesc,challenges,Challenge,,,"Jen has the only known cure. Fly the gyro to her clinic. Land. Get the injection. Live to tell about it."
+
+# ============================================================
+# BLOCKS — POSTERS
+# ============================================================
+
+posterProstateTitle,blocks,blocks,,,"Prostate Awareness"
+posterProstateDesc,blocks,blocks,,,"Hospital poster. Check your prostate."
+posterARUKTitle,blocks,blocks,,,"ARUK"
+posterARUKDesc,blocks,blocks,,,"Hospital poster. ARUK."
+posterARUK1Title,blocks,blocks,,,"ARUK"
+posterARUK1Desc,blocks,blocks,,,"Hospital poster. ARUK."
+
+# ============================================================
+# BLOCKS — GYRO UPGRADE STAGES
+# ============================================================
+
+hospitalGyroStage1Title,blocks,blocks,,,"Wrecked Gyrocopter"
+hospitalGyroStage1Desc,blocks,blocks,,,"A wrecked gyrocopter on the hospital roof. It needs a radiator before anything else. [Install: Radiator]"
+
+hospitalGyroStage2Title,blocks,blocks,,,"Gyrocopter (Radiator Installed)"
+hospitalGyroStage2Desc,blocks,blocks,,,"The cooling system is in place. The engine needs coolant before it can run. [Install: Water]"
+
+hospitalGyroStage3Title,blocks,blocks,,,"Gyrocopter (Coolant Added)"
+hospitalGyroStage3Desc,blocks,blocks,,,"Coolant is flowing. Now you need an engine to drive it. [Install: Engine]"
+
+hospitalGyroStage4Title,blocks,blocks,,,"Gyrocopter (Engine Mounted)"
+hospitalGyroStage4Desc,blocks,blocks,,,"The engine is in. It won't start without power. [Install: Battery]"
+
+hospitalGyroStage5Title,blocks,blocks,,,"Gyrocopter (Battery Connected)"
+hospitalGyroStage5Desc,blocks,blocks,,,"Power is connected. The engine needs spark plugs to fire. [Install: Spark Plugs]"
+
+hospitalGyroStage6Title,blocks,blocks,,,"Gyrocopter (Spark Plugs Fitted)"
+hospitalGyroStage6Desc,blocks,blocks,,,"The engine can fire. You need cables to connect the controls. [Install: Control Cables]"
+
+hospitalGyroStage7Title,blocks,blocks,,,"Gyrocopter (Cables Rigged)"
+hospitalGyroStage7Desc,blocks,blocks,,,"Controls are connected. It needs a tail to fly straight. [Install: Tail Assembly]"
+
+hospitalGyroStage8Title,blocks,blocks,,,"Gyrocopter (Almost Complete)"
+hospitalGyroStage8Desc,blocks,blocks,,,"One part left. Fit the rotor blades and this thing will fly. [Install: Rotor Blades]"
+
+# ============================================================
+# GAME OPTIONS
+# ============================================================
+
+goAirDropFrequency,UI,Menu,x,,Air Drops ([ff0000]DISABLED[-])
+goAirDropFrequencyDesc,UI,Menu,x,,"Set to DISABLED. Airdrops cannot be reached in the Hospital Challenge."
+goBiomeProgression,UI,Menu,,,Biome Progression ([ff0000]OFF[-])
+goBiomeProgressionDesc,UI,Menu,,,"Set to OFF. Not required for the Hospital Challenge."
+goLootRespawnDays,UI,Menu,x,,Loot Respawn ([00ff00]5 Days[-])
+goLootRespawnDaysDesc,UI,Menu,x,,"The number of days for loot to respawn.\n\nSelect anything except [00ff00]Disabled[-]."
+
+# ============================================================
+# PERMADEATH POPUP
+# ============================================================
+
+hospitalMissionFailedTitle,UI,UI,,,"— MISSION FAILED —"
+hospitalMissionFailedBody,UI,UI,,,"Navezgane has claimed another soul.
+
+You didn't make it out of the hospital alive.
+Whether it was the infected, the virus, or something worse — your run ends here.
+
+Your debrief has been saved to:
+7 Days To Die/Mods/Hospital/stats/Hospital_Debrief.html
+
+Exit to the main menu now. The game will forcibly end your run in 60 seconds."
+
+# ============================================================
+# MISSION COMPLETE POPUP
+# ============================================================
+
+hospitalMissionCompleteTitle,UI,UI,,,"— YOU SURVIVED —"
+hospitalMissionCompleteBody,UI,UI,,,"Against all odds, you made it out.
+
+The virus is gone. The gyro held together. Jen came through.
+Not everyone who walked into that hospital walked out.
+
+Your full mission debrief has been saved to:
+7 Days To Die/Mods/FrilHospitalChallenge/stats/Hospital_Debrief.html
+
+Looking for your next challenge?
+Try the Area 7 Challenge Mod — available on Nexus Mods."
+
+# ============================================================
+# GYRO CONTAINER
+# ============================================================
+
+hospitalGyroContainerTitle,blocks,blocks,,,"Wrecked Gyrocopter"
+hospitalGyroContainerDesc,blocks,blocks,,,"A wrecked gyrocopter on the hospital roof. Open it and place all 8 parts inside to repair it: Radiator, Water, Engine, Battery, Spark Plugs, Control Cables, Tail Assembly, Rotor Blades."
+hospitalGyroRepaired,UI,UI,,,"The gyrocopter is repaired! Fuel it up and fly to Trader Jen."
+
+# ============================================================
+# CHANGE JENS DIALOGUE
+# ============================================================
+
+dialog_trader_response_shop,Quest,Dialogs,,,Can you give me the Cure?
+
+# ============================================================
+# LOOT BAG NAMES
+# ============================================================
+
+lootHospitalYellow,Loot,,,,Hospital Supplies Bag
+lootHospitalBooks,Loot,,,,Skill Magazines Bag
+lootHospitalCops,Loot,,,,Cop's Bag
+lootHospitalBiker,Loot,,,,Biker's Bag
+lootHospitalHeavy,Loot,,,,Worker's Bag
+
+# ============================================================
+# TRADER JEN CONGRATULATIONS PANEL
+# ============================================================
+
+hospitalCongratsTitle,Menu,,,,You Made It
+hospitalCongratsBody,Menu,,,,"You survived the Voss-7 outbreak and made it out of Navezgane Hospital. Most people who checked in didn't walk back out.
+
+The Cure will neutralise what's left of the virus in your system. It won't undo what you've been through, but it'll keep you alive.
+
+Jen's had it waiting. She knew someone would make it eventually.
+
+Take it. You've earned it."
+# ============================================================
+# LOADING SCREEN TIPS
+# ============================================================
+
+hospitalLoadingTip01_title,ui,tips,,,"The Voss-7 Virus"
+hospitalLoadingTip01,ui,tips,,,"You are infected with Voss-7 — a mutated strain of the Septdiurnal Virus resistant to honey and antibiotics. Only Trader Jen has the cure."
+
+hospitalLoadingTip02_title,ui,tips,,,"Suppressants Don't Cure"
+hospitalLoadingTip02,ui,tips,,,"Virus Suppressants slow the spread of Voss-7 but will never cure it. Only The Cure from Trader Jen will save you."
+
+hospitalLoadingTip03_title,ui,tips,,,"Crafting the Reagent"
+hospitalLoadingTip03,ui,tips,,,"To craft Voss-7 Reagent you need acid, a blood bag, and rotting flesh. A hospital is a good place to look for all three."
+
+hospitalLoadingTip04_title,ui,tips,,,"Fixed Workstations"
+hospitalLoadingTip04,ui,tips,,,"The Chemistry Station and Workbench are fixed to the hospital building. They cannot be picked up or moved — plan your routes between them."
+
+hospitalLoadingTip05_title,ui,tips,,,"Repairing the Gyro"
+hospitalLoadingTip05,ui,tips,,,"The gyrocopter on the roof must be repaired before you can escape. All 8 parts must be installed in order. There are no shortcuts."
+
+hospitalLoadingTip06_title,ui,tips,,,"Find the Nurses"
+hospitalLoadingTip06,ui,tips,,,"Nurse zombies drop painkillers. Painkillers are the key ingredient in every tier of Virus Suppressant. Find the nurses."
+
+hospitalLoadingTip07_title,ui,tips,,,"Cop Zombies"
+hospitalLoadingTip07,ui,tips,,,"Cop zombies drop Tail Assembly parts and acid. Both are essential for your escape. They hit hard — be ready."
+
+hospitalLoadingTip08_title,ui,tips,,,"Utility Workers and Bikers"
+hospitalLoadingTip08,ui,tips,,,"Utility Workers may be carrying a Salvaged Engine. Bikers may have Spark Plugs. Neither will give them up without a fight."
+
+hospitalLoadingTip09_title,ui,tips,,,"Rotor Blades"
+hospitalLoadingTip09,ui,tips,,,"Rotor Blades are hidden inside the hospital's AC units. The more units you wrench, the better your chances of finding them."
+
+hospitalLoadingTip10_title,ui,tips,,,"The Battery"
+hospitalLoadingTip10,ui,tips,,,"The gyrocopter needs a car battery. Check janitor trolleys and maintenance areas throughout the hospital, or craft one at the chemistry station if you have lead and acid."
+
+hospitalLoadingTip11_title,ui,tips,,,"Don't Forget Fuel"
+hospitalLoadingTip11,ui,tips,,,"Once the gyrocopter is repaired it will need fuel. Fuel it before you fly."
+
+hospitalLoadingTip12_title,ui,tips,,,"Suppressant Tiers"
+hospitalLoadingTip12,ui,tips,,,"A stronger Suppressant is always better than three weak ones. Budget your painkillers carefully."
+
+hospitalLoadingTip13_title,ui,tips,,,"Virus Progression"
+hospitalLoadingTip13,ui,tips,,,"As Voss-7 spreads it will slow you down, cloud your vision, and shake your aim. Do not let it reach 100 percent."
+
+hospitalLoadingTip14_title,ui,tips,,,"Permadeath"
+hospitalLoadingTip14,ui,tips,,,"There is no second chance. If you die, the run is over."
+
+hospitalLoadingTip15_title,ui,tips,,,"Blood Moons"
+hospitalLoadingTip15,ui,tips,,,"Blood moons still happen every 7 days. The virus does not care about your schedule."
+
+# ============================================================
+# UI & MENU — SPAWN / RESPAWN SCREEN
+# ============================================================
+
+respawnTitleMessage,UI,Respawn Window,x,,"YOU ARE INFECTED."
+lblSpawn,UI,Spawn Menu,x,,"Wake up in the hospital"
+lblSpawnRandom,UI,Spawn Menu,x,,"This is how you died..."
+lblSpawnNearBedroll,UI,Spawn Menu,x,,"Wake up near your bed"
+lblSpawnOnBedroll,UI,Spawn Menu,x,,"Wake up in your bed"
+lblSpawnNearBackpack,UI,Spawn Menu,x,,"Wake up near your pack"
+
+# ============================================================
+# POI NAME
+# ============================================================
+
+hospitalChallenge,blocks,POI,,,Navezgane Hospital
+hospitalSurvivalGuideMessage,UI,,,,"[ff6666]NAVEZGANE HOSPITAL — SITUATION REPORT[-]\n[ff8c00]----------------------------------------[-]\n\n[ffcc00]THE VIRUS[-]\nYou are infected. The virus [ff6666]rises constantly[-] and cannot be reversed here.\nAt [ff6666]100% you die.[-] Only Trader Jen has the cure.\n\n[ffcc00]SUPPRESSANTS[-]\nCraft Virus Suppressants at the [ff6666]chemistry station[-] to slow the virus.\nThey buy time — they do not cure.\nIngredients: painkillers + Voss-7 Reagent.\nReagent: acid + blood bags + rotting flesh.\n\n[ffcc00]THE GYROCOPTER[-]\nA wrecked gyro sits on the [ff6666]hospital roof[-]. You need [ff6666]8 parts[-] to fly it.\nParts come from zombies — kill everything.\nSome parts can be crafted at the [ff6666]workbench[-].\nRotor blades come from wrenching [ff6666]AC units[-].\n\n[ffcc00]CRAFTING[-]\nA workbench and chemistry station are fixed in the hospital — find them, you cannot build your own.\n\n[ffcc00]WATER[-]\nThere is standing water in the Basement.\n[ff6666]Craft a dew collector if you don't want to keep going there.[-]\n\n[ffcc00]THE GROUNDS[-]\nThe car park is relatively safe.\n[ff6666]Beyond the hospital grounds you will not come back.[-]\nThe infected outside are faster, more aggressive, and they will not stop.\n\n[ffcc00]ESCAPE[-]\nRepair the gyro. Fly to Trader Jen. Buy the cure. [ff6666]Survive.[-]\n\n[ff8c00]----------------------------------------[-]"

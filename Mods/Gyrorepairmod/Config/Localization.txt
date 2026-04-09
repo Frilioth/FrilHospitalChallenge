@@ -1,0 +1,5 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context/Alternate,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+gyroRepairBlockTitle,blocks,Block,,,Gyro Repair,,,,,,,,,,,,,,
+gyroRepairBlockDesc,blocks,Block,,,A damaged gyrocopter. Find all the parts and install them to get it flying again.,,,,,,,,,,,,,,
+gyroRepairInspectTitle,blocks,Block,,,Gyro Repair,,,,,,,,,,,,,,
+gyroRepairInspectBody,blocks,Block,,,Search the hospital for all 8 parts and install them in the slots to the left. When every part is installed close this window to complete the repair and escape.,,,,,,,,,,,,,,

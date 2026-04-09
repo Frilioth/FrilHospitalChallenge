@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Items
+	Author: Frilioth
+	Version: 1.2.1
+	
+	3-TIER SUPPRESSANTS (ingredients use Voss-7 Reagent — crafted from acid):
+	- Weak:     drugPainkillers x1 + hospitalVoss7Reagent x1
+	- Standard: drugPainkillers x2 + hospitalVoss7Reagent x2
+	- Strong:   drugPainkillers x3 + hospitalVoss7Reagent x3
+	- Reagent:  resourceAcid x1 → hospitalVoss7Reagent x5
+	
+	GYRO PARTS (custom items — install order):
+	1. resourceRadiator (VANILLA)
+	2. drinkJarRiverWater (VANILLA — murky water for cooling)
+	3. hospitalGyroEngine (custom — utility worker drop)
+	4. hospitalGyroBattery (custom — basement fixed location)
+	5. hospitalGyroSparkPlugs (custom — biker drop)
+	6. hospitalGyroControlCables (custom — crafted)
+	7. hospitalGyroTailAssembly (custom — cop drop)
+	8. hospitalGyroBlades (custom — AC unit harvest)
+	
+	OTHER:
+	- hospitalSurvivalGuide (starting note)
+	- hospitalTheCure (completion item from Trader Jen)
+-->
+<configs>
+
+	<!-- ============================================================ -->
+	<!-- VOSS-7 REAGENT — Crafted from acid, used in all suppressants -->
+	<!-- 1 acid → 5 reagent at chemistry station                      -->
+	<!-- ============================================================ -->
+
+	<append xpath="/items">
+		<item name="hospitalVoss7Reagent">
+			<property name="Extends" value="resourceAcid"/>
+			<property name="CustomIcon" value="voss7Reagent"/>
+			<property name="Stacknumber" value="20"/>
+			<property name="EconomicValue" value="30"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<property name="DescriptionKey" value="hospitalVoss7ReagentDesc"/>
+		</item>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- 3-TIER VIRUS SUPPRESSANTS                                    -->
+	<!-- ============================================================ -->
+	
+	<!-- WEAK SUPPRESSANT -->
+	<append xpath="/items">
+		<item name="hospitalSuppressantWeak">
+			<property name="Extends" value="drugPainkillers"/>
+			<property name="Meshfile" value="@:Other/Items/Health/syringeMedical_01Prefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+	        <property name="HoldType" value="86"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="CustomIcon" value="suppressantWeak"/>
+			<property name="Weight" value="5"/>
+			<property name="EconomicValue" value="50"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<property name="DescriptionKey" value="hospitalSuppressantWeakDesc"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="3"/>
+				<property name="Sound_start" value="player_syringe"/>
+			</property>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffVirusSuppressantWeak"/>
+			</effect_group>
+		</item>
+	</append>
+	
+	<!-- STANDARD SUPPRESSANT -->
+	<append xpath="/items">
+		<item name="hospitalSuppressantStandard">
+			<property name="Meshfile" value="@:Other/Items/Health/syringeMedical_01Prefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+	        <property name="HoldType" value="86"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="CustomIcon" value="suppressant"/>
+			<property name="Weight" value="5"/>
+			<property name="EconomicValue" value="100"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<property name="DescriptionKey" value="hospitalSuppressantStandardDesc"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="3"/>
+				<property name="Sound_start" value="player_syringe"/>
+			</property>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffVirusSuppressantStandard"/>
+			</effect_group>
+		</item>
+	</append>
+	
+	<!-- STRONG SUPPRESSANT -->
+	<append xpath="/items">
+		<item name="hospitalSuppressantStrong">
+			<property name="Meshfile" value="@:Other/Items/Health/syringeMedical_01Prefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+	        <property name="HoldType" value="86"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="CustomIcon" value="suppressantStrong"/>
+			<property name="Weight" value="5"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<property name="DescriptionKey" value="hospitalSuppressantStrongDesc"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="3"/>
+				<property name="Sound_start" value="player_syringe"/>
+			</property>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffVirusSuppressantStrong"/>
+			</effect_group>
+		</item>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- GYRO PARTS — Custom items only (vanilla items used directly  -->
+	<!-- Install order: radiator(V), water(V), engine, battery,       -->
+	<!--   spark plugs, control cables, tail assembly, blades         -->
+	<!-- ============================================================ -->
+	
+	<!-- Stage 3: Engine — vanilla smallEngine, add progression unlock for workbench recipe -->
+	<append xpath="//item[@name='smallEngine']">
+		<property name="UnlockedBy" value="craftingVehicles"/>
+		<property name="DisplayType" value="unlockedByCrafting"/>
+	</append>
+	
+	<!-- Stage 4: Battery — vanilla carBattery, no custom item needed -->
+
+	<!-- Stage 5: Spark Plugs — Biker drop -->
+	<append xpath="/items">
+		<item name="hospitalGyroSparkPlugs">
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="CustomIcon" value="sparkPlug"/>
+			<property name="Weight" value="2"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="Group" value="Special Items"/>
+			<property name="DescriptionKey" value="hospitalGyroSparkPlugsDesc"/>
+		</item>
+	</append>
+	
+	<!-- Stage 6: Control Cables — Crafted (electrical parts + duct tape) -->
+	<append xpath="/items">
+		<item name="hospitalGyroControlCables">
+        <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+        <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+        <property name="Material" value="Mmetal"/>
+        <property name="Stacknumber" value="1"/>
+        <property name="CustomIcon" value="cables"/>
+        <property name="UnlockedBy" value="craftingVehicles"/>
+		<property name="DisplayType" value="unlockedByCrafting"/>
+        <property name="Group" value="Special Items"/>
+        <property name="DescriptionKey" value="hospitalGyroControlCablesDesc"/>
+    </item>
+	</append>
+	
+	<!-- Stage 7: Tail Assembly — Cop drop -->
+	<append xpath="/items">
+		<item name="hospitalGyroTailAssembly">
+        <property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+        <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+        <property name="Material" value="Mmetal"/>
+        <property name="Stacknumber" value="1"/>
+        <property name="CustomIcon" value="tail"/>
+        <property name="UnlockedBy" value="craftingVehicles"/>
+		<property name="DisplayType" value="unlockedByCrafting"/>
+        <property name="Group" value="Special Items"/>
+        <property name="DescriptionKey" value="hospitalGyroTailAssemblyDesc"/>
+    </item>
+	</append>
+	
+	<!-- Stage 8: Rotor Blades — AC unit harvest (DLL scaling probability) -->
+	<append xpath="/items">
+		<item name="hospitalGyroBlades">
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="CustomIcon" value="blade"/>
+			<property name="Weight" value="10"/>
+			<property name="EconomicValue" value="400"/>
+			<property name="Group" value="Special Items"/>
+			<property name="DescriptionKey" value="hospitalGyroBladesDesc"/>
+		</item>
+	</append>
+
+	<!-- ============================================================ -->
+	<!-- HOSPITAL SURVIVAL GUIDE — defined in 0_HospitalItems mod    -->
+	<!-- ============================================================ -->
+
+	<!-- ============================================================ -->
+	<!-- THE CURE — Completion item from Trader Jen                   -->
+	<!-- ============================================================ -->
+	
+	<append xpath="/items">
+		<item name="hospitalTheCure">
+			<property name="Meshfile" value="@:Other/Items/Health/syringeMedical_01Prefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+			<property name="HoldType" value="86"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="CustomIcon" value="drugSteroids"/>
+			<property name="CustomIconTint" value="50,50,220"/>
+			<property name="Weight" value="5"/>
+			<property name="EconomicValue" value="1"/><!-- Must be >0 to appear in trader window. Jen override_buy_markup=0 makes it free. -->
+			<property name="Group" value="Special Items"/>
+			<property name="DescriptionKey" value="hospitalTheCureDesc"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="3"/>
+				<property name="Sound_start" value="player_syringe"/>
+			</property>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffHospitalTheCure"/>
+			</effect_group>
+		</item>
+	</append>
+
+</configs>
