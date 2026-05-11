@@ -2,7 +2,7 @@
 <!--
 	Navezgane Hospital Challenge — Progression
 	Author: Frilioth
-	Version: 0.7.0
+	Version: 0.7.1
 
 	GYRO PART UNLOCKS:
 	- hospitalGyroControlCables unlocks at craftingVehicles level 5
@@ -100,6 +100,8 @@
 	<set xpath="//crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[3]/@level">50,50</set>
 	<set xpath="//crafting_skill[@name='craftingElectrician']/display_entry[@name_key='electricianT3']/@unlock_level">50</set>
 	<set xpath="//crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[4]/@level">5,50</set>
+	<!-- Fix: generatorbank RecipeTagUnlocked was still at 25,100 — display_entry showed 5 but actual unlock was gated at 25 -->
+	<set xpath="//crafting_skill[@name='craftingElectrician']/effect_group/passive_effect[@tags='generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player']/@level">5,50</set>
 	<set xpath="//crafting_skill[@name='craftingElectrician']/display_entry[@name_key='electricianT1']/unlock_entry/@item">generatorbank,electricwirerelay,switch,tripwirepost,ceilingLight01_player,industrialLight01_player,industrialLight02_player,ceilingLight07_player,carBattery</set>
 	<set xpath="//crafting_skill[@name='craftingElectrician']/display_entry[@name_key='electricianT1']/@unlock_level">5</set>
 	<remove xpath="//crafting_skill[@name='craftingElectrician']/display_entry[@name_key='electricianT4']"/>
