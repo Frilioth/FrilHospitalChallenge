@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navezgane Hospital &mdash; Mission Debrief</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0c0f; color:#c8ccd0; font-family:'Rajdhani',sans-serif; min-height:100vh; }
+body::before { content:''; position:fixed; top:0;left:0;right:0;bottom:0;
+  background: radial-gradient(ellipse at 25% 40%, rgba(60,180,60,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 70%, rgba(180,60,60,0.03) 0%, transparent 50%),
+    repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.007) 2px,rgba(255,255,255,0.007) 3px);
+  pointer-events:none; z-index:0; }
+.container { max-width:1100px; margin:0 auto; padding:30px 20px; position:relative; z-index:1; }
+.header { text-align:center; margin-bottom:35px; }
+.header::after { content:''; display:block; width:60%; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(60,180,60,0.5),transparent); margin:15px auto 0; }
+.header h1 { font-family:'Orbitron',monospace; font-size:2.2rem; font-weight:900; letter-spacing:6px; color:#e8eaec; }
+.header .subtitle { font-family:'Share Tech Mono',monospace; font-size:0.72rem; color:#666; letter-spacing:3px; margin-top:6px; }
+.header .player-line { font-family:'Orbitron',monospace; font-size:1rem; font-weight:700; color:#3cb043; margin-top:10px; }
+.header .status-line { font-family:'Orbitron',monospace; font-size:1.1rem; font-weight:700; letter-spacing:4px; margin-top:12px; }
+.stat-strip { display:flex; justify-content:center; gap:28px; margin-bottom:30px; flex-wrap:wrap; }
+.stat-box { text-align:center; padding:14px 20px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); min-width:105px; }
+.stat-box .num { font-family:'Orbitron',monospace; font-size:1.7rem; font-weight:700; color:#fff; line-height:1; }
+.stat-box .num.red { color:#dc3c3c; } .stat-box .num.green { color:#3cb043; } .stat-box .num.amber { color:#d4a026; } .stat-box .num.blue { color:#3c8ddc; }
+.stat-box .label { font-family:'Share Tech Mono',monospace; font-size:0.58rem; color:#666; letter-spacing:2px; text-transform:uppercase; margin-top:6px; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:22px; }
+.full-width { grid-column:1 / -1; }
+.panel { background:rgba(255,255,255,0.015); border:1px solid rgba(255,255,255,0.05); padding:22px; position:relative; }
+.panel::before { content:''; position:absolute; top:0;left:0; width:3px; height:100%; }
+.panel.red::before { background:linear-gradient(180deg,#dc3c3c,transparent); }
+.panel.green::before { background:linear-gradient(180deg,#3cb043,transparent); }
+.panel.blue::before { background:linear-gradient(180deg,#3c8ddc,transparent); }
+.panel.teal::before { background:linear-gradient(180deg,#1abc9c,transparent); }
+.panel.purple::before { background:linear-gradient(180deg,#8e44ad,transparent); }
+.panel h2 { font-family:'Orbitron',monospace; font-size:0.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#888; margin-bottom:16px; }
+.bar-row { display:flex; align-items:center; margin-bottom:6px; gap:10px; }
+.bar-label { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:#999; width:140px; text-align:right; flex-shrink:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bar-track { flex:1; height:18px; background:rgba(255,255,255,0.03); position:relative; overflow:hidden; }
+.bar-fill { height:100%; position:absolute; left:0; top:0; }
+.bar-fill.red { background:linear-gradient(90deg,#dc3c3c,#a82a2a); }
+.bar-fill.blue { background:linear-gradient(90deg,#3c8ddc,#2a6fb8); }
+.bar-count { font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:#ccc; width:30px; text-align:right; flex-shrink:0; }
+.panel.amber::before { background:linear-gradient(180deg,#d4a026,transparent); }
+.info-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'Share Tech Mono',monospace; font-size:0.76rem; }
+.info-row:last-child { border-bottom:none; } .info-label { color:#777; } .info-value { color:#ddd; text-align:right; }
+.info-value.amber { color:#d4a026; } .info-value.green { color:#3cb043; } .info-value.red { color:#dc3c3c; } .info-value.blue { color:#3c8ddc; }
+.tl-row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'Share Tech Mono',monospace; font-size:0.76rem; }
+.tl-row:last-child { border-bottom:none; } .tl-label { color:#999; } .tl-value { color:#3cb043; text-align:right; } .tl-value.incomplete { color:#553333; }
+.zombie-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px 30px; }
+.footer { font-family:'Share Tech Mono',monospace; font-size:0.58rem; color:#444; text-align:center; margin-top:30px; letter-spacing:1px; }
+.footer a { color:#555; text-decoration:none; } .footer a:hover { color:#3cb043; }
+@media (max-width:700px) { .grid { grid-template-columns:1fr; } .zombie-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Navezgane Hospital</h1>
+    <div class="subtitle">MISSION DEBRIEF &mdash; 06 MAY 2026</div>
+    <div class="player-line">Frilioth</div>
+    <div class="status-line" style="color:#dc3c3c">MISSION FAILED</div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-box"><div class="num red">7</div><div class="label">Kills</div></div>
+    <div class="stat-box"><div class="num amber">1</div><div class="label">Suppressants Used</div></div>
+    <div class="stat-box"><div class="num red">6%</div><div class="label">Peak Infection</div></div>
+    <div class="stat-box"><div class="num green">0/8</div><div class="label">Parts Found</div></div>
+    <div class="stat-box"><div class="num blue">1h</div><div class="label">Duration</div></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="panel teal">
+      <h2>Parameters</h2>
+      <div class="info-row"><span class="info-label">Difficulty</span><span class="info-value amber">Warrior</span></div>
+      <div class="info-row"><span class="info-label">Zombie Speed (Day)</span><span class="info-value">Walk</span></div>
+      <div class="info-row"><span class="info-label">Zombie Speed (Night)</span><span class="info-value">Walk</span></div>
+      <div class="info-row"><span class="info-label">Zombie Speed (BM)</span><span class="info-value">Walk</span></div>
+      <div class="info-row"><span class="info-label">Loot Respawn</span><span class="info-value">5 days</span></div>
+    </div>
+
+    <div class="panel purple">
+      <h2>Survivor</h2>
+      <div class="info-row"><span class="info-label">Level</span><span class="info-value blue">1 <span style="color:#666">(started 1)</span></span></div>
+      <div class="info-row"><span class="info-label">Peak Infection</span><span class="info-value red">6.2%</span></div>
+      <div class="info-row"><span class="info-label">Total Infection Reduced</span><span class="info-value amber">10%</span></div>
+      <div class="info-row"><span class="info-label">Favourite Weapon</span><span class="info-value green">Environmental <span style="color:#666">(4)</span></span></div>
+      <div class="info-row"><span class="info-label">Suppressants (W/S/St)</span><span class="info-value green">0 / 0 / 1</span></div>
+    </div>
+
+    <div class="panel red full-width">
+      <h2>Kills</h2>
+      <div class="zombie-grid"><div><div class="bar-row"><div class="bar-label">Zombie Dog</div><div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div><div class="bar-count">4</div></div>
+<div class="bar-row"><div class="bar-label">Zombie Vulture</div><div class="bar-track"><div class="bar-fill red" style="width:50%"></div></div><div class="bar-count">2</div></div>
+</div><div><div class="bar-row"><div class="bar-label">Nurse</div><div class="bar-track"><div class="bar-fill red" style="width:25%"></div></div><div class="bar-count">1</div></div>
+</div></div>
+    </div>
+
+    <div class="panel blue">
+      <h2>Suppressant Usage</h2>
+      <div class="info-row"><span class="info-label">Weak &nbsp;&nbsp;&nbsp;(-2%)</span><span class="info-value">0</span></div>
+      <div class="info-row"><span class="info-label">Standard (-5%)</span><span class="info-value">0</span></div>
+      <div class="info-row"><span class="info-label">Strong &nbsp;(-10%)</span><span class="info-value green">1</span></div>
+      <div class="info-row"><span class="info-label">Total infection reduced</span><span class="info-value amber">10%</span></div>
+    </div>
+
+    <div class="panel blue">
+      <h2>Weapons Used</h2>
+<div class="info-row" style="font-size:0.84rem;"><span class="info-label">Environmental</span><span class="info-value blue">4</span></div>
+<div class="info-row" style="font-size:0.84rem;"><span class="info-label">Hunting Knife</span><span class="info-value blue">3</span></div>
+    </div>
+
+    <div class="panel amber">
+      <h2>Survival Stats</h2>
+      <div class="info-row"><span class="info-label">Lowest Food</span><span class="info-value">97%</span></div>
+      <div class="info-row"><span class="info-label">Lowest Water</span><span class="info-value">97%</span></div>
+      <div class="info-row"><span class="info-label">Game Stage (end)</span><span class="info-value">1</span></div>
+      <div class="info-row"><span class="info-label">Items Crafted</span><span class="info-value">0</span></div>
+      <div class="info-row"><span class="info-label">Levels Gained</span><span class="info-value green">0</span></div>
+    </div>
+
+    <div class="panel green">
+      <h2>Parts Acquisition</h2>
+      <div class="tl-row"><span class="tl-label">Run Start</span><span class="tl-value">Day 1, 07:15</span></div>
+<div class="tl-row"><span class="tl-label">Radiator</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Water (coolant)</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Engine</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Battery</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Spark Plugs</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Control Cables</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Tail Assembly</span><span class="tl-value incomplete">Not found</span></div>
+<div class="tl-row"><span class="tl-label">Rotor Blades</span><span class="tl-value incomplete">Not found</span></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Navezgane Hospital Challenge v0.5.65 &mdash; by <a href="https://twitch.tv/frilioth" target="_blank">Frilioth</a>
+    &nbsp;&bull;&nbsp; Generated 2026-05-06 19:18:29
+  </div>
+
+</div>
+</body>
+</html>

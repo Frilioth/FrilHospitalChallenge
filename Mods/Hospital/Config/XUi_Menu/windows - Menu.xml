@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — UI/Menu
+	Author: Frilioth
+	Version: 0.3.4
+
+	PLANNED:
+	- Custom menu background
+	- Remove 7DTD logo from title screen
+	- Hide irrelevant new game options
+	- Custom spawn menu labels
+-->
+<configs>
+
+	<!-- Hospital custom menu background -->
+	<set xpath="/windows/window[@name='menuBackground']/texture[@name='bgTexture']/@texture">@modfolder:UIAtlases/ItemIconAtlas/background.jpg</set>
+	
+	<!-- Remove 7DTD logo from main menu -->
+	<remove xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']"/>
+	
+	<!-- NEW GAME MENU - Hide irrelevant options -->
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='XPMultiplier']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DayNightLength']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamagePlayer']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamageAI']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamageAIBM']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='LootAbundance']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='MaxChunkAge']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DeathPenalty']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DropOnDeath']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DropOnQuit']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BuildCreate']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='QuestProgressionDailyLimit']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='EnemySpawnMode']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='CameraRestrictionMode']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='AirDropMarker']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='AirDropFrequency']" />
+	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BiomeProgression']" />
+
+	<!-- Increasing Infection toggle — custom controller row, no vanilla pref hijacking -->
+	<insertafter xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='JarRefund']">
+		<rect height="45" controller="HospitalIncreasingInfection">
+			<label name="lblTitle" text="Increasing Infection" style="hover" font_size="28" color="[white]" width="260" justify="right" pivot="topleft" pos="0,-8" />
+			<button name="btnLeft" controller="SimpleButton" pos="288,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" pivot="center" />
+			<sprite pos="303,-1" width="233" height="34" color="[black]" type="sliced" sprite="menu_empty" />
+			<label name="lblValue" text="On" style="hover" font_size="28" color="[white]" width="233" justify="center" pivot="topleft" pos="303,-4" />
+			<button name="btnRight" controller="SimpleButton" pos="553,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" flip="Horizontally" pivot="center" />
+		</rect>
+		<rect height="45" controller="HospitalWeaponChoice">
+			<label name="lblTitle" text="Starting Weapon" style="hover" font_size="28" color="[white]" width="260" justify="right" pivot="topleft" pos="0,-8" />
+			<button name="btnLeft" controller="SimpleButton" pos="288,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" pivot="center" />
+			<sprite pos="303,-1" width="233" height="34" color="[black]" type="sliced" sprite="menu_empty" />
+			<label name="lblValue" text="Hunting Knife" style="hover" font_size="28" color="[white]" width="233" justify="center" pivot="topleft" pos="303,-4" />
+			<button name="btnRight" controller="SimpleButton" pos="553,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" flip="Horizontally" pivot="center" />
+		</rect>
+	</insertafter>
+
+	<!-- Hospital logo — displayed below Game World options in new game left panel.
+	     Size 400x342 maintains the original 541x463 aspect ratio.
+	     Centred horizontally in the 590px left panel (x = (590-400)/2 = 95).
+	     y=-310 places it below the visible Game World rows. -->
+	<append xpath="/windows/window[@name='newContinueGame']/rect[@name='leftPanel']/rect[@name='newContent']">
+		<texture name="hospitalLogoImg" depth="5" pos="95,-310" size="400,342" material="Materials/Transparent Colored" texture="@modfolder:UIAtlases/ItemIconAtlas/hospitalLogo.png" />
+	</append>
+
+</configs>
