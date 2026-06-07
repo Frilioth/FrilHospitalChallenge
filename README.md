@@ -1,5 +1,5 @@
 # Navezgane Hospital Challenge
-### A 7 Days to Die Challenge Mod — v1.1.0
+### A 7 Days to Die Challenge Mod — v1.1.1
 **Author:** Frilioth | **Game Version:** V2.6 | **World:** Navezgane
 
 ---
