@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Hospital Challenge - XUi Window Group Modifications
+    Author: Frilioth
+    Version: 1.1.0
+
+    v1.1.0 (3.2 PORT):
+    - The windowTargetBar append below is DISABLED, not deleted. Two reasons,
+      both verified against vanilla 3.2 XUi_InGame/xui.xml:
+        1. There is no <ruleset> element in 3.x. Window groups sit directly
+           under <xui>, so the old xpath matches nothing at all.
+        2. Vanilla 3.2 ALREADY lists windowTargetBar inside the compass
+           window group, so re-appending it would duplicate the window.
+      The zombie HP bar should therefore still appear, driven by the
+      visibility="always" set in this mod's XUi_InGame/windows.xml.
+    - PLAYTEST CHECK: if the zombie HP bar vanishes entirely, this append WAS
+      doing the work. In that case restore it with the corrected 3.x xpath:
+        /xui/window_group[@name='compass']
+      (Area 7 hit this exact question during its own 3.0 port.)
+-->
+<configs>
+
+    <!-- Zombie HP bar — added to compass group. DISABLED, see header. -->
+    <!--
+    <append xpath="/xui/window_group[@name='compass']">
+        <window name="windowTargetBar" anchor="CenterTop" />
+    </append>
+    -->
+
+</configs>

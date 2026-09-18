@@ -2,7 +2,7 @@
 <!--
 	Navezgane Hospital Challenge — Recipes
 	Author: Frilioth
-	Version: 1.2.4
+	Version: 1.4.0
 	
 	REMOVES:
 	- All drugAntibiotics recipes (campfire + chemistry station)
@@ -67,11 +67,30 @@
 	<remove xpath="//recipe[@name='vehicleGyrocopterPlaceable']"/>
 
 	<!-- ============================================================ -->
-	<!-- VOSS-7 REAGENT — 1 acid → 5 reagent                          -->
+	<!-- VOSS-7 REAGENT — 1 acid → 3 reagent                          -->
+	<!--                                                              -->
+	<!-- YIELD CUT 5 -> 3 on 17 Sep. Two completed runs on loot.xml   -->
+	<!-- v1.4.1 (the REVERTED acid rates) both finished with the      -->
+	<!-- virus at 11-12% peak, never reaching even the first stage    -->
+	<!-- at 25%. Terminal and Critical respectively, so it was not a  -->
+	<!-- difficulty artefact.                                         -->
+	<!--                                                              -->
+	<!-- The loot rates were not the lever. One bottle at a yield of  -->
+	<!-- 5 makes nearly TWO strong suppressants (3 reagent each), so  -->
+	<!-- a 3d run only needed about 6 bottles to stay flat. No        -->
+	<!-- realistic drop-rate cut reaches that without making acid     -->
+	<!-- feel absent again, which is where it was before 14 Sep.      -->
+	<!--                                                              -->
+	<!-- At 3, the same 6 bottles make 6 strong suppressants instead  -->
+	<!-- of 9. Acid stays as findable as it is now; each bottle just  -->
+	<!-- goes a third less far.                                       -->
+	<!--                                                              -->
+	<!-- This is the single number that controls suppressants per     -->
+	<!-- bottle. Change it here rather than in loot.xml.              -->
 	<!-- ============================================================ -->
 
 	<append xpath="/recipes">
-		<recipe name="hospitalVoss7Reagent" count="5" craft_area="chemistryStation" craft_time="10">
+		<recipe name="hospitalVoss7Reagent" count="3" craft_area="chemistryStation" craft_time="10">
 			<ingredient name="resourceAcid" count="1"/>
 			<ingredient name="medicalBloodBag" count="1"/>
 			<ingredient name="foodRottingFlesh" count="10"/>
@@ -116,8 +135,22 @@
 	<!-- ============================================================ -->
 
 <append xpath="/recipes">
+    <!-- v1.4.0: FORGED STEEL, not forged iron. Same count.
+         Reason: the crucible in the loot room had almost no use once the rotor
+         blades were made, and the engine was the run's real bottleneck - two
+         routes only, a 15% HospitalHeavy bag or the magazine grind, and the
+         latter is waiting rather than risk.
+         Steel needs a forge plus toolForgeCrucible, so this makes the loot room
+         crucible load-bearing and gives the engine a route the player can WORK
+         towards instead of waiting on drops.
+         NOTE the precedent: hospitalGyroBlades was once gated behind 40 forged
+         steel with NO alternative, and that was judged too harsh - see blocks.xml,
+         which added AC unit drops to relieve it. This is deliberately NOT the same
+         trap: the HospitalHeavy bag route still exists, so steel is a CHOICE
+         (invest in the crucible chain) rather than a wall.
+         Iron is not scarce here; the building is full of it. -->
     <recipe name="smallEngine" count="1" craft_area="workbench" craft_time="300" tags="perkGreaseMonkey,learnable,workbenchCrafting,smallEngine">
-        <ingredient name="resourceForgedIron" count="20"/>
+        <ingredient name="resourceForgedSteel" count="20"/>
         <ingredient name="resourceMechanicalParts" count="20"/>
         <ingredient name="resourceElectricParts" count="10"/>
         <ingredient name="resourceDuctTape" count="10"/>

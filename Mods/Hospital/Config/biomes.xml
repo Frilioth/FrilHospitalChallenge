@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge — Biomes
+	Author: Frilioth
+	Version: 1.0.0
+
+	RAIN DISABLED IN ALL FIVE BIOMES.
+
+	Playtesters reported the game turning janky whenever it started raining.
+	Weather is picked by PROBABILITY WEIGHT per biome, so zeroing the rain
+	entries and handing their weight to "default" removes it outright. No DLL,
+	no console command, and no way for a player to end up with it back on.
+
+	Vanilla weights before this file:
+
+	  pine_forest    default 83, fog 7, rainlight  6, rainheavy 4     10% wet
+	  burnt_forest   default 83,        rainlight 10, rainheavy 7     17% wet
+	  desert         default 90,        rainlight  5, rainheavy 5     10% wet
+	  snow           default 44, fog 8, snowlight 28, snowheavy 20    48% wet
+	  wasteland      default 40, cold 20, hot 23, rainlight 10, rainheavy 7   17% wet
+
+	DELIBERATELY LEFT ALONE, both on Fril's call:
+
+	  - SNOW. snowlight and snowheavy are precipitation too and may well be just
+	    as janky, but falling snow is most of what makes the snow biome look like
+	    the snow biome. If the Snow map is still rough, snow is the culprit and
+	    that becomes a separate decision about atmosphere versus performance.
+	  - FOG. Not precipitation, so unlikely to be the cause. It is the only other
+	    weather that changes visibility and it costs nothing to keep.
+
+	  - Storms were ALREADY at prob 0 in every biome in vanilla. Nothing to do.
+
+	The weight given back to "default" equals exactly the weight removed, so each
+	biome still totals 100 and the other weather keeps its original share.
+-->
+<configs>
+
+	<!-- NOTE the root element is <worldgeneration>, NOT <biomes>. The obvious
+	     /biomes/biome/... path matches nothing and fails SILENTLY. -->
+
+	<!-- pine_forest: rainlight 6 + rainheavy 4 = 10 -> default 83 + 10 = 93 -->
+	<set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='rainlight']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='rainheavy']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='default']/@prob">93</set>
+
+	<!-- burnt_forest: rainlight 10 + rainheavy 7 = 17 -> default 83 + 17 = 100 -->
+	<set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='rainlight']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='rainheavy']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='default']/@prob">100</set>
+
+	<!-- desert: rainlight 5 + rainheavy 5 = 10 -> default 90 + 10 = 100 -->
+	<set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='rainlight']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='rainheavy']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='default']/@prob">100</set>
+
+	<!-- wasteland: rainlight 10 + rainheavy 7 = 17 -> default 40 + 17 = 57
+	     cold 20 and hot 23 are temperature states, not precipitation. Kept. -->
+	<set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='rainlight']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='rainheavy']/@prob">0</set>
+	<set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='default']/@prob">57</set>
+
+	<!-- snow has NO rain entries — its wet weather is snowlight and snowheavy,
+	     which are left alone on purpose. Nothing to change here. -->
+
+</configs>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Navezgane Hospital Challenge - Sandbox Option Presets
+	Author: Frilioth
+	Version: 1.0.0
+
+	Puts the Hospital Challenge difficulty tiers in their OWN group in the Sandbox
+	Options preset dropdown, alongside Difficulty / Official / User, rather than
+	landing in the generic "Modded" group with every other mod's presets.
+
+	WHY THIS NEEDS THE DLL (confirmed by reading the 3.2 assembly, not assumed):
+	  Config/sandbox_overrides.xml IS mod-patchable and DOES accept <preset>
+	  elements, but SandboxOverridesFromXml always calls LoadPresetFromXml with
+	  the group override "Modded". LoadPresetFromXml only reads a preset's own
+	  "category" attribute when that override is null or empty, so a category set
+	  there is silently ignored. Hospital therefore loads this file itself and
+	  passes its own group name.
+
+	GROUP NAME AND LOCALISATION
+	  XUiC_SandboxPresetSelector.updatePresetGroups builds each group's display
+	  name with Localization.Get(<group name>) - the group name IS the key, and
+	  there is no "sandboxPresetGroup" prefix in 3.2. So the group name below has
+	  a matching row in this mod's Localization.csv. Without that row the dropdown
+	  would show the raw key "HospitalChallenge" instead of "Hospital Challenge".
+
+	HOW TO FILL IN A PRESET
+	  1. In game: New Game -> Sandbox Options, set everything the way you want it.
+	  2. Use the copy button next to the sandbox code box to copy the code.
+	  3. Paste it into code="" below, replacing FILLMEIN.
+	  4. Save and restart the game. No recompile needed.
+
+	  A preset whose code is still FILLMEIN is SKIPPED at load, so a half-finished
+	  entry never shows up broken in the menu. Fill them in one at a time.
+
+	CURRENT CODES ARE PLACEHOLDER BALANCE, NOT HOSPITAL BALANCE.
+	  The six codes below were carried over from another mod's difficulty ladder to
+	  give a working starting point rather than six empty tiers. They are settings
+	  values only - no code, XML or assets were shared - but they were tuned for a
+	  different challenge and should be regenerated for this one.
+
+	  When regenerating, check these in particular, because Hospital's own systems
+	  read them:
+	    LootRespawnDays  - if a preset sets this to 0, the loot restock timer AND
+	                       the "Restocks on Day X" text both switch off entirely.
+	                       Both patches check it is > 0 before doing anything.
+	                       The design calls for a 5 day respawn.
+	    XPMultiplier     - drives how fast Forge Ahead unlocks, which gates the
+	                       workbench, chemistry station and dew collector.
+	    DeathPenalty     - Hospital enforces permadeath itself; do not rely on the
+	                       vanilla option, which is not fully implemented.
+
+	ATTRIBUTES
+	  name              required. Internal id, no spaces.
+	  code              required. The sandbox code copied from the options screen.
+	  description       required (or description_key for a Localization.csv key).
+	  localized_name    optional. What players see. Falls back to name.
+	  icon              optional. Two forms work:
+	                      Data/Sandbox/icons/user_custom          (a vanilla path)
+	                      @modfolder(FrilHospitalChallenge):Resources/yourfile.png
+	                    Drawn at 180x180 keeping aspect ratio, so square is safest.
+	                    Unity sniffs the format rather than trusting the extension,
+	                    so a JPEG named .png loads fine and is far smaller.
+	  difficulty_rating optional. Shows a skull and "xN" next to the preset.
+	                    Keep ascending or the ladder reads oddly.
+	  default           optional. "true" marks the default selection for a new game.
+
+	THE LADDER
+	  These are difficulty tiers, not per-world settings. The biome is chosen
+	  separately from the world list, so one ladder covers all five maps.
+-->
+
+<!--
+	     PRESET ICONS
+	     icon="@modfolder(FrilHospitalChallenge):Resources/<file>" - a plain image
+	     file, no asset bundle and no code hook needed. The menu draws the icon with
+	     an XUi <texture>, and XUiV_Texture.loadTexture runs the string through
+	     ModManager.TryPatchModPathString and loads it as file://, which is why the
+	     modfolder form resolves.
+	     THE EXTENSION IS IGNORED AND THE FORMAT IS SNIFFED: Unity reads the magic
+	     bytes, so a JPEG named .png works and is far smaller. Do not waste time
+	     converting. Drawn at 180x180 keeping aspect ratio, so keep them SQUARE.
+-->
+
+<!--
+	     LOCALISED PRESET NAMES AND DESCRIPTIONS
+	     localized_name is NOT literal text - SandboxOptionPreset.DisplayName does
+	     Localization.Get(LocalizedName), so whatever is put here is looked up as a
+	     KEY. A plain name like "Walk-In" resolves to nothing and the key is echoed
+	     back, which LOOKS like working English and is why this went unnoticed.
+	     description is literal, but description_key goes through Localization.Get
+	     the same way (see DisplayDescription in the assembly).
+	     Both now point at keys in Config/Localization.csv, translated into all nine
+	     languages. Do not put display text back in either attribute.
+-->
+
+<hospital_presets group="HospitalChallenge">
+
+	<preset name="HospitalWalkIn"
+	        localized_name="hospitalPresetWalkInName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_walkin.png"
+	        description_key="hospitalPresetWalkInDesc"
+	        difficulty_rating="1"
+	        code="AAHMAPAGFCGGCAUAAMLBRDBFGBGGANBBJABKABLABNABPABOABVACIBCJBCDACEACAACFACHCCXBDMJDAJDBJDCJDDJDEJDFJDGJDHJDIJDJJDKJEHJEABEXGEOAFKAEPAEQAEUAEVAERAFLDFOD" />
+
+	<preset name="HospitalUnderObservation"
+	        localized_name="hospitalPresetUnderObservationName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_underobservation.png"
+	        description_key="hospitalPresetUnderObservationDesc"
+	        difficulty_rating="2"
+	        code="AAPAAUAAMJBRDANBBJBBKBBLBBNABOABVACDACEACAACFACHCCXBEABEXGEOAFKAEPAEQAEUAEVAERAFLFFOF" />
+
+	<preset name="HospitalCritical"
+	        localized_name="hospitalPresetCriticalName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_critical.png"
+	        description_key="hospitalPresetCriticalDesc"
+	        difficulty_rating="3"
+	        default="true"
+	        code="AAPAANBBJCBKCBLCCDACAACXBEXGEOAFKAEPAEQAEUAEVAERA" />
+
+	<preset name="HospitalCodeBlue"
+	        localized_name="hospitalPresetCodeBlueName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_codeblue.png"
+	        description_key="hospitalPresetCodeBlueDesc"
+	        difficulty_rating="4"
+	        code="AAPAANBCDACAACXBEXGEOAFKAEPAEQAEUAEVAERA" />
+
+	<preset name="HospitalTerminal"
+	        localized_name="hospitalPresetTerminalName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_terminal.png"
+	        description_key="hospitalPresetTerminalDesc"
+	        difficulty_rating="5"
+	        code="AAAGABGACGADGAPAAMEBUFBSEBFIBGIANBBICBNEBPCCDABZFCAACXBEXGEOAFKAEPAEQAEUAEVAERA" />
+
+	<preset name="HospitalFlatline"
+	        localized_name="hospitalPresetFlatlineName"
+	  icon="@modfolder(FrilHospitalChallenge):Resources/hospital_preset_flatline.png"
+	        description_key="hospitalPresetFlatlineDesc"
+	        difficulty_rating="6"
+	        code="AAAEABEACEADEAPAAUDAMCBUFBSEBFKBQFBGKBHGANBBIEBJEBKEBLEBNFBPGCDABZHCAACFECXBDAGDBGDCGDDGDEGDFGDGGDHGDIGDJGAVEEXGEOAFKAEPAEQAEUAEVAERA" />
+
+</hospital_presets>

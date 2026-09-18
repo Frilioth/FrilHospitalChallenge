@@ -1,0 +1,19 @@
+<configs>
+
+    <!--
+        gyroRepairStatus window group.
+        actionSet="false" so it does not hijack input —
+        the looting window group already handles that.
+        Opened/closed from C# when gyroRepairBlock is interacted with.
+    -->
+    <!-- 3.2 PORT: there is no <ruleset> element in 3.x. Window groups are
+         direct children of <xui>. Verified against vanilla 3.2
+         Config/XUi_InGame/xui.xml. The old xpath matched nothing, so this
+         window group was never registered at all. -->
+    <append xpath="/xui">
+        <window_group name="gyroRepairStatus" actionSet="false">
+            <window name="windowGyroRepairStatus"/>
+        </window_group>
+    </append>
+
+</configs>

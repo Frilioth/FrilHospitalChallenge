@@ -3,25 +3,35 @@
     <ServerGroup Name="Hospital Challenge" Logo="" Description="Escape Navezgane Hospital by fixing a broken gyrocopter before a mutant virus kills you — one life, no second chances.">
         <Server Name="Hospital Challenge" Logo="">
             <Description>
-                Navezgane Hospital Challenge is a permadeath challenge mod for 7 Days to Die V2.6. You wake up in Navezgane Hospital infected with the Voss-7 Virus — a mutated strain resistant to all standard antibiotics. The virus is killing you. The only cure is at Trader Jen's clinic 1.4km away. The only way to reach her is by gyrocopter. The only gyrocopter is broken on the hospital roof.
-				
-				Scavenge and craft 8 gyrocopter parts hidden throughout the hospital, manage your infection with home-brewed suppressants, survive blood moons, and escape before the virus kills you. Leave the hospital and a nightmare-speed horde will chase you every step of the way.
-				
-				One life. One hospital. One chance.
-				
-				Features: Permadeath · Custom virus mechanic with progressive debuffs · 8-part gyro repair · 3-tier suppressant crafting · Custom loot bags · Weapon choice at game start · Multiplayer supported · Target run time 7–10 days on Nomad
+                Navezgane Hospital Challenge is a permadeath challenge mod for 7 Days to Die 3.2. You wake up in Navezgane Hospital infected with Voss-7 — a mutated strain of the Septdiurnal Virus, resistant to honey and antibiotics. It is killing you. The only cure is at Trader Jen's clinic, and the only way to reach her is the wrecked gyrocopter on the hospital roof.
 
-                RECOMMENDED SETTINGS:
+                Scavenge and craft 8 gyrocopter parts hidden throughout the building, hold the infection back with home-brewed suppressants, survive blood moons, and get out before the virus finishes the job. Leave the hospital grounds and what is waiting outside does not lose interest.
 
-                Loot Respawn: 5 days
+                One life. One hospital. One chance.
+
+                FEATURES
+
+                Permadeath · Voss-7 virus with stage effects that lift again if you push it back down · 8-part gyro repair in a fixed order · 3-tier suppressant crafting · Custom loot bags · Six difficulty presets from Walk-In to Flatline · In-game ESC survival guide · End-of-run debrief page with a verifiable completion code · Eleven languages
+
+                SINGLE PLAYER ONLY
+
+                This version is not supported in multiplayer and should not be run on a dedicated server. The challenge itself is per-player and works, but the rest of the mod assumes one player. A co-op version is planned.
+
+                DIFFICULTY
+
+                Six presets, selected on the Basic tab of the New Game screen. Critical is the default and the way the mod is meant to be played. Walk-In exists so you can learn the building without it killing you.
+
+                RECOMMENDED SETTINGS
+
+                The presets set everything for you. Loot respawn is 5 days and the hospital will feel picked clean before then, which is intended.
 
                 EAC must be disabled.
 
                 Created by Frilioth
-                Twitch: twitch.tv/frilioth
+                Twitch: twitch.tv/Frilioth
             </Description>
 
-            <Version>1.2.1</Version>
+            <Version>0.22.0</Version>
             <EAC>Disabled</EAC>
             <Discord></Discord>
             <Donate></Donate>

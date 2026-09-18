@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<Name value="FrilHospitalMenuVideoCycler"/>
+	<DisplayName value="Hospital Menu Video Cycler"/>
+	<Version value="1.2.0"/>
+	<Author value="Frilioth"/>
+	<Description value="Rotates the main menu background video through several hospital security camera feeds, in random order."/>
+	<Website value="frilcraft.uk"/>
+</xml>

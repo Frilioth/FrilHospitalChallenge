@@ -2,7 +2,19 @@
 <!--
 	Navezgane Hospital Challenge — Progression
 	Author: Frilioth
-	Version: 0.7.1
+	Version: 0.8.0
+
+	v0.8.0 (3.2 PORT):
+	- All 16 craftingWorkstations passive_effect selectors converted from
+	  POSITION (passive_effect[1]..[16]) to TAG. 3.2 has 20 effects in this
+	  skill, not 16, because TFP added four chicken coop items, so every
+	  positional selector was landing on the wrong workstation. This was
+	  silent: the xpaths still resolved. Same class of bug as the
+	  generatorbank fix in Session 32.
+	- T1 and T2 display entries rebuilt for the 3.2 six/five slot layout.
+	  Workbench dropped from T1, Dew Collector moved T2 -> T1 at level 5.
+	  Chicken coop items KEPT at vanilla levels, capped at 50.
+	- New localisation key hospitalWorkstationsT1DewCollector.
 
 	GYRO PART UNLOCKS:
 	- hospitalGyroControlCables unlocks at craftingVehicles level 5
@@ -43,41 +55,83 @@
 	<!-- ============================================================ -->
 	<set xpath="//crafting_skill[@name='craftingWorkstations']/@max_level">50</set>
 	<set xpath="//perk[@name='perkAdvancedEngineering']/effect_group/passive_effect[@tags='workstationCSM']/requirement/@value">50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[1]/@level">4,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[2]/@level">8,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[3]/@level">10,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[4]/@level">12,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[5]/@level">5,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[6]/@level">20,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[7]/@level">26,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[8]/@level">30,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[9]/@level">32,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[10]/@level">34,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[11]/@level">40,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[12]/@level">44,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[13]/@level">48,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[14]/@level">50,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[15]/@level">50,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT5-2,workstationsT5-5']/@unlock_level">30,50</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[16]/@level">50,50</set>
-	<!-- Dew Collector in T1 at 2nd position, workbench icon removed (not craftable) -->
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-3,workstationsT1-4,workstationsT1-5']/@icon">forge,cntDewCollector,toolBellows,resourceLockPick</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-3,workstationsT1-4,workstationsT1-5']/@name_key">workstationsT1-1,workstationsT1-6,workstationsT1-3,workstationsT1-4</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-6,workstationsT1-3,workstationsT1-4']/@unlock_level">4,5,8,12</set>
-	<remove xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-6,workstationsT1-3,workstationsT1-4']/unlock_entry[@item='workbench']"/>
-	<append xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-6,workstationsT1-3,workstationsT1-4']">
-		<unlock_entry item="cntDewCollector" unlock_tier="2"/>
-	</append>
-	<!-- T2: remove chemistry station icon (not craftable), keep Anvil and Dew Gatherer -->
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='forge']/@level">4,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='cntDewCollector']/@level">5,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='cntChickenCoop']/@level">6,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolBellows']/@level">8,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='workbench']/@level">10,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='resourceLockPick']/@level">12,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolChickenCoopLamp']/@level">14,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolChickenCoopRun']/@level">18,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolAnvil']/@level">20,50</set>
 	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='chemistryStation']/@level">20,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolChickenCoopNestingBox']/@level">24,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolDewGatherer']/@level">26,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='cntApiary']/@level">30,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolDewTarp']/@level">32,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='cementMixer']/@level">34,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolApiaryExtractor']/@level">40,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolApiaryBroodBox']/@level">44,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolDewFilter']/@level">48,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolApiarySmoker']/@level">50,50</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/effect_group/passive_effect[@tags='toolForgeCrucible']/@level">50,50</set>
+
+	<!-- T5 display: was 30,50 while the effects unlock at 50,50. The Apiary Smoker
+	     showed as level 30 but did not actually unlock until 50. Corrected to match
+	     the effects. Pre-existing in v0.7.1, not introduced by the port. -->
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT5-2,workstationsT5-5']/@unlock_level">50,50</set>
+
+	<!-- T1 REBUILD (3.2 PORT).
+	     Vanilla 3.2 T1 is 6 slots: forge 4, Chicken Coop 6, Bellows 8, Workbench 10,
+	     Lock Picks 12, Brooding Lamp 14. Two changes, both carried over from v0.7.1:
+	       - Workbench dropped. Its recipe is removed in recipes.xml; the player uses
+	         the indestructible POI workbench.
+	       - Dew Collector pulled down from T2 into T1 at level 5.
+	     Chicken Coop and Brooding Lamp are KEPT at their vanilla levels. Food is
+	     scarce in this challenge and a wandering chicken should be usable.
+	     Inserting the Dew Collector at position 2 keeps unlock_level ascending
+	     (4,5,6,8,12,14) rather than the 4,6,8,5,12,14 a like-for-like slot swap
+	     would have produced.
+	     The Dew Collector needs its own name_key here: vanilla workstationsT2-1
+	     reads "Tier 2: Dew Collector", which would look wrong inside Tier 1. The
+	     mod key hospitalWorkstationsT1DewCollector is added in Localization.csv.
+	     unlock_entry children are removed and rewritten wholesale so unlock_tier
+	     renumbers cleanly. @name_key is set LAST because the earlier ops select
+	     on the vanilla key. -->
+	<remove xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-2,workstationsT1-3,workstationsT1-4,workstationsT1-5,workstationsT1-6']/unlock_entry"/>
+	<append xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-2,workstationsT1-3,workstationsT1-4,workstationsT1-5,workstationsT1-6']">
+		<unlock_entry item="forge" unlock_tier="1"/>
+		<unlock_entry item="cntDewCollector" unlock_tier="2"/>
+		<unlock_entry item="cntChickenCoop" unlock_tier="3"/>
+		<unlock_entry item="toolBellows" unlock_tier="4"/>
+		<unlock_entry item="resourceLockPick" unlock_tier="5"/>
+		<unlock_entry item="toolChickenCoopLamp" unlock_tier="6"/>
+	</append>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-2,workstationsT1-3,workstationsT1-4,workstationsT1-5,workstationsT1-6']/@icon">forge,cntDewCollector,cntChickenCoop,toolBellows,resourceLockPick,toolChickenCoopLamp</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-2,workstationsT1-3,workstationsT1-4,workstationsT1-5,workstationsT1-6']/@unlock_level">4,5,6,8,12,14</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT1-1,workstationsT1-2,workstationsT1-3,workstationsT1-4,workstationsT1-5,workstationsT1-6']/@name_key">workstationsT1-1,hospitalWorkstationsT1DewCollector,workstationsT1-2,workstationsT1-3,workstationsT1-5,workstationsT1-6</set>
+
+	<!-- T2 REBUILD (3.2 PORT).
+	     Vanilla 3.2 T2 is 5 slots: Dew Collector 16, Chicken Run 18, Anvil 20,
+	     Nesting Box 24, Gatherer 26. Only change is the Dew Collector leaving,
+	     having moved to T1 above. Chicken Run and Nesting Box kept at vanilla
+	     levels for the same reason as T1. -->
+	<remove xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6']/unlock_entry"/>
+	<append xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6']">
+		<unlock_entry item="toolChickenCoopRun" unlock_tier="1"/>
+		<unlock_entry item="toolAnvil" unlock_tier="2"/>
+		<unlock_entry item="toolChickenCoopNestingBox" unlock_tier="3"/>
+		<unlock_entry item="toolDewGatherer" unlock_tier="4"/>
+	</append>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6']/@icon">toolChickenCoopRun,toolAnvil,toolChickenCoopNestingBox,toolDewGatherer</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6']/@unlock_level">18,20,24,26</set>
+	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6']/@name_key">workstationsT2-2,workstationsT2-3,workstationsT2-5,workstationsT2-6</set>
+
+	<!-- T4: remove chemistry station (recipe removed in recipes.xml, POI copy used) -->
 	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT4-1,workstationsT4-3,workstationsT4-5,workstationsT4-6']/@icon">toolApiaryExtractor,toolApiaryBroodBox,resourceWaterFilter</set>
 	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT4-1,workstationsT4-3,workstationsT4-5,workstationsT4-6']/@name_key">workstationsT4-1,workstationsT4-3,workstationsT4-5</set>
 	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT4-1,workstationsT4-3,workstationsT4-5']/@unlock_level">40,44,48</set>
 	<remove xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT4-1,workstationsT4-3,workstationsT4-5']/unlock_entry[@item='chemistryStation']"/>
-	<remove xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-3,workstationsT2-6']/unlock_entry[@item='cntDewCollector']"/>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-3,workstationsT2-6']/@icon">toolAnvil,toolDewGatherer</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-1,workstationsT2-3,workstationsT2-6']/@name_key">workstationsT2-3,workstationsT2-6</set>
-	<set xpath="//crafting_skill[@name='craftingWorkstations']/display_entry[@name_key='workstationsT2-3,workstationsT2-6']/@unlock_level">20,26</set>
 
 	<!-- ============================================================ -->
 	<!-- CAP Trap Crafting (craftingTraps) at 50                      -->

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+  <Name value="FrilHospitalESCGuide" />
+  <DisplayName value="Hospital Challenge ESC Survival Guide" />
+  <Version value="1.7.0" />
+  <Author value="Frilioth" />
+  <Description value="Press ESC in a Hospital Challenge game to see the rules and how to escape. ESC window technique credit: AuroraGiggleFairy (AGF)." />
+  <Website value="frilcraft.uk" />
+</xml>

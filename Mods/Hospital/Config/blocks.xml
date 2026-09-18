@@ -2,8 +2,21 @@
 <!--
 	Navezgane Hospital Challenge — Blocks
 	Author: Frilioth
-	Version: 1.2.4
-	
+	Version: 1.4.0
+
+	v1.4.0 (GAMEPLAY FIX, not part of the 3.2 port):
+	- AC units now drop hospitalGyroBlades at prob 0.10, gated to wrenching.
+	- Radiator probability on airConditioner reduced 0.7 -> 0.25.
+	  This is the missing blocks.xml half of the v0.5.56 DLL change. See the
+	  AC UNITS section near the bottom of this file for the full reasoning.
+
+	v1.3.0 (3.2 PORT):
+	- PlantGrowing.LightLevelGrow / .LightLevelStay converted from the dotted
+	  DynamicProperty form (rejected in 3.x) to nested properties inside the
+	  existing <property class="PlantGrowing"> block on cropsGrowingMaster.
+	  Verified against vanilla 3.2: 0 dotted property names in blocks.xml, and
+	  both LightLevelGrow and LightLevelStay are still valid PlantGrowing keys
+	  (used by the mushroom blocks).
 -->
 
 <configs>
@@ -99,14 +112,46 @@
 <set xpath="/blocks/block[@name='standIV']/drop[@name='medicalBloodBag']/@count">1</set>
 
 <!-- Remove sunlight requirement from crops — allows plants to grow indoors -->
-<append xpath="//block[@name='cropsGrowingMaster']">
-	<property name="PlantGrowing.LightLevelGrow" value="0"/>
-	<property name="PlantGrowing.LightLevelStay" value="0"/>
+<!-- 3.2 PORT: dotted DynamicProperty names are rejected in 3.x. These now go   -->
+<!-- INSIDE the existing <property class="PlantGrowing"> block that vanilla     -->
+<!-- already declares on cropsGrowingMaster, rather than adding a second one.   -->
+<append xpath="//block[@name='cropsGrowingMaster']/property[@class='PlantGrowing']">
+	<property name="LightLevelGrow" value="0"/>
+	<property name="LightLevelStay" value="0"/>
 </append>
 
 <!-- Body bags — increased rotten flesh on harvest -->
 <!-- All variants extend bodyBagBlack so setting count on parent covers all -->
 
 <set xpath="/blocks/block[@name='bodyBagBlack']/drop[@event='Harvest'][@name='foodRottingFlesh']/@count">4,8</set>
+
+<!-- AC UNITS - ROTOR BLADES + RADIATOR                                          -->
+<!--                                                                             -->
+<!-- v1.4.0. This is the missing half of the v0.5.56 change. That build deleted   -->
+<!-- HospitalACHarvestPatch from the DLL on the basis that blocks.xml would take  -->
+<!-- over the drop, but the blocks.xml edit was never written. Between v0.5.56    -->
+<!-- and now, hospitalGyroBlades had NO source except the 40 forged steel         -->
+<!-- workbench recipe, which its own comment in recipes.xml calls a fallback.     -->
+<!-- Blades are stage 8 of 8, so the escape was gated behind crucible-tier steel. -->
+<!--                                                                             -->
+<!-- Gated on tag="salvageHarvest" + tool_category="Disassemble", matching the    -->
+<!-- vanilla radiator drop, so blades only pay out when a unit is WRENCHED, not   -->
+<!-- when it is smashed. That was the original intent of the removed patch.       -->
+<!-- POI holds 24 harvestable units (9 airConditioner, 10 VentFan, 5 VentFanDouble)  -->
+<!-- so 0.10 each gives an effectively certain cumulative outcome across the POI. -->
+
+<append xpath="/blocks/block[@name='airConditioner']">
+	<drop event="Destroy" name="hospitalGyroBlades" count="1" prob="0.10" tag="salvageHarvest" tool_category="Disassemble"/>
+</append>
+<append xpath="/blocks/block[@name='airConditionVentFan']">
+	<drop event="Destroy" name="hospitalGyroBlades" count="1" prob="0.10" tag="salvageHarvest" tool_category="Disassemble"/>
+</append>
+<append xpath="/blocks/block[@name='airConditionVentFanDouble']">
+	<drop event="Destroy" name="hospitalGyroBlades" count="1" prob="0.10" tag="salvageHarvest" tool_category="Disassemble"/>
+</append>
+
+<!-- Radiator already exists on airConditioner in vanilla and is already gated.   -->
+<!-- Only the probability changes: 24 units at 0.7 makes radiators trivial.       -->
+<set xpath="/blocks/block[@name='airConditioner']/drop[@name='resourceRadiator']/@prob">0.25</set>
 
 </configs>

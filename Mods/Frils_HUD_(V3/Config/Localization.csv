@@ -1,0 +1,8 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,french,german,spanish,italian,polish,brazilian,russian,turkish,japanese
+dayname_1,,,,,Monday,lundi,Montag,lunes,lunedì,poniedziałek,segunda-feira,понедельник,Pazartesi,月曜日
+dayname_2,,,,,Tuesday,mardi,Dienstag,martes,martedì,wtorek,terça-feira,вторник,Salı,火曜日
+dayname_3,,,,,Wednesday,mercredi,Mittwoch,miércoles,mercoledì,środa,quarta-feira,среда,Çarşamba,水曜日
+dayname_4,,,,,Thursday,jeudi,Donnerstag,jueves,giovedì,czwartek,quinta-feira,четверг,Perşembe,木曜日
+dayname_5,,,,,Friday,vendredi,Freitag,viernes,venerdì,piątek,sexta-feira,пятница,Cuma,金曜日
+dayname_6,,,,,Saturday,samedi,Samstag,sábado,sabato,sobota,sábado,суббота,Cumartesi,土曜日
+dayname_7,,,,,Sunday,dimanche,Sonntag,domingo,domenica,niedziela,domingo,воскресенье,Pazar,日曜日

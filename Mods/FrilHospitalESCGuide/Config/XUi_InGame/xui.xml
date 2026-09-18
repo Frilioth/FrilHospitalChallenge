@@ -1,0 +1,24 @@
+<FrilHospitalESCGuide>
+
+   <!--
+      Hook the guide window onto the ESC menu.
+
+      Technique credit: AuroraGiggleFairy (AGF), whose AGF-ESCWindow mod demonstrated
+      appending a custom window into the vanilla "serverinfowindow" group. That group is
+      already wired to the in-game ESC menu's Server Info slot, so a window placed inside
+      it inherits a working ESC hook with no DLL and no new controller registration.
+
+      This is a fresh Hospital Challenge build using that technique. AGF's layout, styling
+      and content are their own work and are not reproduced here.
+
+      Confirmed present in 3.2: the serverinfowindow window_group exists in vanilla
+      Config/XUi_InGame/xui.xml. Re-declaring the group by name here MERGES into it
+      rather than replacing it, so the vanilla server info window is untouched.
+   -->
+   <append xpath="/xui">
+      <window_group name="serverinfowindow">
+         <window name="windowHospitalESC"/>
+      </window_group>
+   </append>
+
+</FrilHospitalESCGuide>

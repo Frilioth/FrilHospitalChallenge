@@ -2,7 +2,7 @@
 <!--
 	Navezgane Hospital Challenge — Loot
 	Author: Frilioth
-	Version: 1.3.4
+	Version: 1.4.1
 	
 	REMOVES:
 	- All drugAntibiotics from loot groups
@@ -126,13 +126,21 @@
 			<item group="frilHospitalEssentialMags" count="1"/>
 		</lootcontainer>
 
-		<!-- Cops bag: acid + tail assembly — FatCop, Soldier, Mutated -->
+		<!-- Cops bag: acid + tail assembly — FatCop, Soldier, Mutated
+
+		     Acid 0.40 -> 1.0 -> 0.50. It was raised to a guarantee on 14 Sep
+		     because cop sleepers EXPLODE on death and usually destroy the bag,
+		     so the container is rare in practice. Combined with the medical
+		     groups being raised at the same time it went too far, and the
+		     virus stopped being a threat. The medical groups are back to their
+		     original levels and this sits at half, which is still above the
+		     0.40 it started at. -->
 		<lootcontainer id="HospitalCops" name="HospitalCops" count="2,4" size="6,2"
 			destroy_on_close="true"
 			sound_open="UseActions/open_backpack"
 			sound_close="UseActions/close_backpack"
 			loot_quality_template="qualBaseTemplate">
-			<item name="resourceAcid" count="1" prob="0.40"/>
+			<item name="resourceAcid" count="1" prob="0.50"/>
 			<item name="hospitalGyroTailAssembly" count="1" prob="0.15"/>
 			<item name="ammo9mmBulletBall" count="10,30" prob="0.25"/>
 			<item name="gunHandgunT1PistolParts" count="1,2" prob="0.15"/>
@@ -267,11 +275,24 @@
 
 	<!-- ============================================================ -->
 	<!-- ACID IN MEDICAL LOOT                                          -->
-	<!-- Very low chance — acid is a key suppressant ingredient        -->
+	<!--                                                               -->
+	<!-- These are the ORIGINAL intended levels: low on groupMedicalAll -->
+	<!-- and veryLow on the three small groups.                         -->
+	<!--                                                               -->
+	<!-- They were briefly raised to med/low on 14 Sep after a tester   -->
+	<!-- found only one bottle per run, and that went much too far -    -->
+	<!-- the virus stopped being a threat. Reverted 14 Sep.             -->
+	<!--                                                               -->
+	<!-- The real fault was never the levels. groupMedicalAll said      -->
+	<!-- loot_prob_template="Low" with a CAPITAL L, and no such         -->
+	<!-- template exists, so the biggest of the four contributed        -->
+	<!-- NOTHING and failed silently. Vanilla's templates are veryLow,  -->
+	<!-- lower, low, medLow, med, medHigh, high, guaranteed - all lower -->
+	<!-- case. Fixing that alone is the actual change.                  -->
 	<!-- ============================================================ -->
 
 	<append xpath="//lootgroup[@name='groupMedicalAll']">
-		<item name="resourceAcid" count="1" loot_prob_template="Low"/>
+		<item name="resourceAcid" count="1" loot_prob_template="low"/>
 	</append>
 	<append xpath="//lootgroup[@name='groupMedicalSmall01']">
 		<item name="resourceAcid" count="1" loot_prob_template="veryLow"/>

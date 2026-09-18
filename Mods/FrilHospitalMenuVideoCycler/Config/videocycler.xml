@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Navezgane Hospital Challenge - Menu Video Cycler config.
+
+    interval  = seconds each feed plays before switching.
+    <clip>    = one camera feed. uri is a mod path WITHOUT the extension
+                (the engine appends .mp4 on Windows).
+
+    Add, remove or reorder <clip> lines freely and restart. No rebuild needed.
+    A listed-but-missing file is skipped and logged; the cycle carries on.
+
+    ORDER IS RANDOMISED, so the order of the lines below does not matter.
+    The mod shuffles the list and plays all the way through before
+    reshuffling, so every feed is seen once per pass and none repeats
+    back to back.
+
+    The clips live in this mod's own Video/ folder, so the whole cycler is
+    self-contained: one folder to install, one folder to update.
+
+    MAKING A CLIP: MP4, H.264, 1920x1080, 30fps, MUTED, and it should loop
+    cleanly since a feed may be cut off mid-play when the interval expires.
+    Keep each one short; 1080p clips are real files the menu loads.
+-->
+<videocycler interval="6">
+
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam1"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam2"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam3"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam4"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam5"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam6"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam7"/>
+    <clip uri="@modfolder(FrilHospitalMenuVideoCycler):Video/hospital_menu_cam8"/>
+
+</videocycler>

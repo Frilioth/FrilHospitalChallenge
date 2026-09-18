@@ -1,7 +1,0 @@
-Note: Edit this document and reload the world in Unity to see POI height, gravel, asphalt chnages into the main world.
-This will casues updated splant and dtm maps. 
-
-New store_gun_02 added
-new renamed remnants
-new street holes
-Sawmill update

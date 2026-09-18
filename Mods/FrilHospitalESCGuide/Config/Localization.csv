@@ -1,0 +1,444 @@
+﻿Key,File,Type,UsedInMainMenu,NoTranslate,english,french,german,spanish,italian,polish,brazilian,russian,turkish,japanese,schinese
+hcesc_tab_diagnosis,,UI,,,Diagnosis,Diagnostic,Diagnose,Diagnóstico,Diagnosi,Diagnoza,Diagnóstico,Диагноз,Teşhis,診断,诊断
+hcesc_tab_treatment,,UI,,,Treatment,Traitement,Behandlung,Tratamiento,Trattamento,Leczenie,Tratamento,Лечение,Tedavi,治療,治疗
+hcesc_tab_prognosis,,UI,,,Prognosis,Pronostic,Prognose,Pronóstico,Prognosi,Rokowanie,Prognóstico,Прогноз,Seyir,予後,预后
+hcesc_header_title,,UI,,,NAVEZGANE HOSPITAL SURVIVAL GUIDE,NAVEZGANE HOSPITAL — GUIDE DE SURVIE,NAVEZGANE HOSPITAL — ÜBERLEBENSRATGEBER,NAVEZGANE HOSPITAL — GUÍA DE SUPERVIVENCIA,NAVEZGANE HOSPITAL — GUIDA ALLA SOPRAVVIVENZA,NAVEZGANE HOSPITAL — PORADNIK PRZETRWANIA,NAVEZGANE HOSPITAL — GUIA DE SOBREVIVÊNCIA,NAVEZGANE HOSPITAL — РУКОВОДСТВО ПО ВЫЖИВАНИЮ,NAVEZGANE HOSPITAL — HAYATTA KALMA REHBERİ,NAVEZGANE HOSPITAL サバイバルガイド,NAVEZGANE HOSPITAL 生存指南
+hcesc_header_motto,,UI,,,One life. One way out.,Une seule vie. Une seule issue.,Ein Leben. Ein Ausweg.,Una vida. Una salida.,Una vita. Una sola via d'uscita.,Jedno życie. Jedno wyjście.,Uma vida. Uma saída.,Одна жизнь. Один выход.,Tek can. Tek çıkış.,命は一つ。出口も一つ。,一条命。一个出口。
+hcesc_diagnosis_title,,UI,,,[dc3c3c]Diagnosis[-],[dc3c3c]Diagnostic[-],[dc3c3c]Diagnose[-],[dc3c3c]Diagnóstico[-],[dc3c3c]Diagnosi[-],[dc3c3c]Diagnoza[-],[dc3c3c]Diagnóstico[-],[dc3c3c]Диагноз[-],[dc3c3c]Teşhis[-],[dc3c3c]診断[-],[dc3c3c]诊断[-]
+hcesc_diagnosis_body,,UI,,,"You woke up in Navezgane Hospital infected with [dc3c3c]Voss-7[-]. It resists honey and antibiotics, and nothing in this building will cure you.
+
+You start at [6eafeb]5%[-] and it climbs steadily, roughly [6eafeb]1% every five minutes[-]. At [dc3c3c]100% you die[-], permanently. Left alone, that gives you until about [6eafeb]day 8[-].
+
+It worsens in [dc3c3c]stages[-] as well. At 25, 50, 75 and 90 percent it starts taking things away from you, each stage worse than the last.
+
+[6eafeb]Suppressants push the infection back down[-] while active, about 1% a minute, but never below 0.1% and never to zero. When one runs out, the climb resumes. Craft them at the [6eafeb]chemistry station[-] from painkillers and Voss-7 Reagent.
+
+Only [6eafeb]Trader Jen[-] has the cure.","Tu t'es réveillé à Navezgane Hospital, infecté par le [dc3c3c]Voss-7[-]. Il résiste au miel et aux antibiotiques ; rien ici ne te guérira.
+
+Tu pars de [6eafeb]5 %[-] et l'infection augmente régulièrement, d'environ [6eafeb]1 % toutes les cinq minutes[-]. À [dc3c3c]100 % tu meurs[-], définitivement. Sans rien faire, tu tiens jusqu'au [6eafeb]jour 8[-].
+
+L'infection s'aggrave par [dc3c3c]paliers[-] : à 25, 50, 75 et 90 %, elle te retire des capacités, chaque palier pire que le précédent.
+
+[6eafeb]Les suppresseurs la font reculer[-] tant qu'ils agissent, d'environ 1 % par minute, mais jamais sous 0,1 % ni jusqu'à zéro. L'effet passé, la montée reprend. Fabrique-les à l'[6eafeb]atelier de chimie[-] avec des antidouleurs et du Réactif Voss-7.
+
+Seule [6eafeb]Trader Jen[-] possède le remède.","Du bist im Navezgane Hospital aufgewacht, infiziert mit [dc3c3c]Voss-7[-]. Er widersteht Honig und Antibiotika, und nichts in diesem Gebäude wird dich heilen.
+
+Du startest bei [6eafeb]5 %[-] und es steigt stetig, etwa [6eafeb]1 % alle fünf Minuten[-]. Bei [dc3c3c]100 % stirbst du[-], endgültig. Wenn du nichts tust, hast du ungefähr bis [6eafeb]Tag 8[-].
+
+Es verschlimmert sich zudem in [dc3c3c]Stufen[-]. Bei 25, 50, 75 und 90 Prozent nimmt es dir nach und nach etwas weg, jede Stufe schlimmer als die vorige.
+
+[6eafeb]Hemmer drängen die Infektion zurück[-], solange sie wirken, etwa 1 % pro Minute, aber nie unter 0,1 % und nie auf null. Läuft einer aus, steigt sie wieder. Stelle sie an der [6eafeb]Chemiestation[-] aus Schmerzmitteln und Voss-7-Reagenz her.
+
+Nur [6eafeb]Trader Jen[-] hat das Heilmittel.","Despertaste en el Navezgane Hospital infectado con [dc3c3c]Voss-7[-]. Resiste a la miel y a los antibióticos, y nada en este edificio te curará.
+
+Empiezas con un [6eafeb]5 %[-] y sube de forma constante, en torno a [6eafeb]1 % cada cinco minutos[-]. Al [dc3c3c]100 % mueres[-], y es definitivo. Si no haces nada, tienes aproximadamente hasta el [6eafeb]día 8[-].
+
+Además empeora por [dc3c3c]etapas[-]. Al 25, 50, 75 y 90 por ciento empieza a quitarte capacidades, y cada etapa es peor que la anterior.
+
+[6eafeb]Los supresores hacen retroceder la infección[-] mientras actúan, alrededor de un 1 % por minuto, pero nunca por debajo del 0,1 % ni hasta cero. Cuando se acaba uno, la subida se reanuda. Fabrícalos en la [6eafeb]estación de química[-] con analgésicos y Reactivo Voss-7.
+
+Solo [6eafeb]Trader Jen[-] tiene la cura.","Ti sei svegliato al Navezgane Hospital infetto da [dc3c3c]Voss-7[-]. Resiste al miele e agli antibiotici, e niente in questo edificio ti curerà.
+
+L'infezione parte dal [6eafeb]5 %[-] e sale costantemente, circa [6eafeb]1 % ogni cinque minuti[-]. Al [dc3c3c]100 % muori[-], definitivamente. Se non fai nulla, hai tempo più o meno fino al [6eafeb]giorno 8[-].
+
+Peggiora anche per [dc3c3c]stadi[-]. Al 25, 50, 75 e 90 per cento comincia a toglierti qualcosa, e ogni stadio è peggiore del precedente.
+
+[6eafeb]I soppressori fanno arretrare l'infezione[-] finché sono attivi, circa l'1 % al minuto, ma mai sotto lo 0,1 % e mai fino a zero. Quando l'effetto finisce, l'infezione ricomincia a salire. Fabbricali alla [6eafeb]stazione chimica[-] con antidolorifici e Reagente Voss-7.
+
+Solo [6eafeb]Trader Jen[-] ha la cura.","Obudziłeś się w Navezgane Hospital zarażony wirusem [dc3c3c]Voss-7[-]. Jest odporny na miód i antybiotyki, a nic w tym budynku cię nie wyleczy.
+
+Zaczynasz od [6eafeb]5 %[-] i poziom infekcji rośnie równomiernie, około [6eafeb]1 % co pięć minut[-]. Przy [dc3c3c]100 % umierasz[-], nieodwracalnie. Jeśli nic nie zrobisz, masz czas mniej więcej do [6eafeb]dnia 8[-].
+
+Infekcja pogarsza się też [dc3c3c]etapami[-]. Przy 25, 50, 75 i 90 procentach zaczyna cię coraz bardziej ograniczać, a każdy etap jest gorszy od poprzedniego.
+
+[6eafeb]Supresory obniżają poziom infekcji[-], póki działają, o około 1 % na minutę, ale nigdy poniżej 0,1 % i nigdy do zera. Gdy jeden się skończy, poziom znów zaczyna rosnąć. Wytwarzaj je przy [6eafeb]stacji chemicznej[-] ze środków przeciwbólowych i Odczynnika Voss-7.
+
+Lekarstwo ma tylko [6eafeb]Trader Jen[-].","Você acordou no Navezgane Hospital infectado com [dc3c3c]Voss-7[-]. Ele resiste a mel e antibióticos, e nada neste prédio vai te curar.
+
+Você começa em [6eafeb]5 %[-] e sobe cerca de [6eafeb]1 % a cada cinco minutos[-]. Em [dc3c3c]100 % você morre[-], em definitivo. Sem fazer nada, você tem até por volta do [6eafeb]dia 8[-].
+
+Também piora em [dc3c3c]estágios[-]. Aos 25, 50, 75 e 90 por cento tira capacidades, cada um pior que o anterior.
+
+[6eafeb]Os supressores fazem a infecção regredir[-] enquanto estão ativos, cerca de 1 % por minuto, mas nunca abaixo de 0,1 % e nunca chega a zero. Quando o efeito de um acaba, a infecção volta a subir. Fabrique-os na [6eafeb]estação de química[-] com analgésicos e Reagente Voss-7.
+
+Só [6eafeb]Trader Jen[-] tem a cura.","Ты очнулся в Navezgane Hospital заражённым [dc3c3c]Voss-7[-]. Он устойчив к мёду и антибиотикам, и ничто в этом здании тебя не вылечит.
+
+Ты начинаешь с [6eafeb]5 %[-], и уровень заражения стабильно растёт — примерно на [6eafeb]1 % каждые пять минут[-]. При [dc3c3c]100 % ты умираешь[-], окончательно. Если ничего не делать, у тебя есть время примерно до [6eafeb]8-го дня[-].
+
+Заражение также ухудшается по [dc3c3c]стадиям[-]. На 25, 50, 75 и 90 процентах оно начинает отнимать у тебя всё больше возможностей, и каждая стадия хуже предыдущей.
+
+[6eafeb]Подавители снижают уровень заражения[-], пока действуют, примерно на 1 % в минуту, но никогда ниже 0,1 % и никогда до нуля. Когда действие подавителя заканчивается, рост возобновляется. Изготавливай их на [6eafeb]химической станции[-] из обезболивающих и реагента Voss-7.
+
+Лекарство есть только у [6eafeb]Trader Jen[-].","Navezgane Hospital'da [dc3c3c]Voss-7[-] ile enfekte hâlde uyandın. Bala ve antibiyotiklere direnir ve bu binada seni iyileştirecek hiçbir şey yok.
+
+[6eafeb]%5[-] ile başlarsın ve enfeksiyon seviyesi düzenli olarak yükselir, yaklaşık [6eafeb]beş dakikada %1[-]. [dc3c3c]%100'de ölürsün[-] ve bu kalıcıdır. Hiçbir şey yapmazsan bu sana aşağı yukarı [6eafeb]8. güne[-] kadar zaman tanır.
+
+Ayrıca [dc3c3c]aşamalar[-] hâlinde kötüleşir. Yüzde 25, 50, 75 ve 90'da senden bir şeyler almaya başlar; her aşama bir öncekinden daha kötüdür.
+
+[6eafeb]Baskılayıcılar etkiliyken enfeksiyonu geriletir[-], dakikada yaklaşık %1; ancak %0,1'in altına, hele sıfıra asla düşürmez. Biri bittiğinde yükseliş yeniden başlar. Onları [6eafeb]kimya istasyonunda[-] ağrı kesici ve Voss-7 Reaktifi ile üret.
+
+Tedavi yalnızca [6eafeb]Trader Jen'de[-].","あなたは [dc3c3c]Voss-7[-] に感染した状態で Navezgane Hospital で目を覚ました。蜂蜜にも抗生物質にも耐性があり、この建物には治せるものはない。
+
+開始時は [6eafeb]5%[-] で、[6eafeb]5分ごとに約1%[-]の割合で着実に上がる。[dc3c3c]100%で死亡[-]し、それは永続する。放置すればおよそ [6eafeb]8日目[-]までしか持たない。
+
+悪化は[dc3c3c]段階[-]でも進む。25、50、75、90パーセントで能力が奪われ、段階ごとに重くなる。
+
+[6eafeb]抑制剤は効いている間だけ感染度を押し戻す[-]。毎分およそ1%だが、0.1%を下回ることはなく、ゼロにもならない。切れれば再び上昇が始まる。[6eafeb]化学実験ステーション[-]で鎮痛剤と Voss-7 試薬から作れる。
+
+治療薬を持っているのは [6eafeb]トレーダー・ジェン[-] だけだ。","你在纳维戈恩医院醒来，感染了 [dc3c3c]Voss-7[-]。它对蜂蜜和抗生素都有耐药性，这栋楼里没有任何东西能治好你。
+
+起始为 [6eafeb]5%[-]，之后稳定上升，大约[6eafeb]每五分钟 1%[-]。到 [dc3c3c]100% 你就会死[-]，而且无法挽回。什么都不做的话，大概能撑到[6eafeb]第 8 天[-]。
+
+它还会分[dc3c3c]阶段[-]恶化。在 25、50、75 和 90 个百分点上会开始削弱你，一级比一级严重。
+
+[6eafeb]抑制剂在生效期间会把感染度压回去[-]，每分钟约 1%，但绝不会低于 0.1%，也永远压不到零。药效一过，上升就会继续。在[6eafeb]化学工作站[-]用止痛药和 Voss-7 试剂制作。
+
+解药只有 [6eafeb]商人杰恩[-]有。"
+hcesc_treatment_title,,UI,,,[dc3c3c]Treatment[-],[dc3c3c]Traitement[-],[dc3c3c]Behandlung[-],[dc3c3c]Tratamiento[-],[dc3c3c]Trattamento[-],[dc3c3c]Leczenie[-],[dc3c3c]Tratamento[-],[dc3c3c]Лечение[-],[dc3c3c]Tedavi[-],[dc3c3c]治療[-],[dc3c3c]治疗[-]
+hcesc_treatment_body,,UI,,,"A wrecked gyrocopter sits on the [6eafeb]hospital roof[-]. It needs [dc3c3c]eight parts[-], and you will not find them by being careful.
+
+[dc3c3c]THE ENGINE IS NOT IN THE CARS.[-] Wrecked vehicles give engines in the normal game. They do not here, no matter how long you wrench. An engine comes from a heavy loot bag, or you craft one at the workbench, which needs [6eafeb]forged steel[-] and so needs the crucible.
+
+[6eafeb]Radiator[-] and [6eafeb]Rotor Blades[-]  -  wrench the air conditioning units.
+[6eafeb]Coolant Water[-]  -  standing water in the basement.
+[6eafeb]Battery[-]  -  this one IS in the vehicles, and in janitor trolleys.
+[6eafeb]Spark Plugs[-], [6eafeb]Control Cables[-], [6eafeb]Tail Assembly[-]  -  carried by the infected. Kill everything.
+
+[dc3c3c]You cannot build a workbench or chemistry station.[-] Several of each are fixed around the hospital. A forge you CAN build, and will need for the steel.","Un autogire en épave est sur le [6eafeb]toit de l'hôpital[-]. Il lui faut [dc3c3c]huit pièces[-], et la prudence ne te les donnera pas.
+
+[dc3c3c]LE MOTEUR N'EST PAS DANS LES VOITURES.[-] Ailleurs les épaves en donnent. Pas ici, quoi que tu démontes. Il vient d'un sac de butin lourd, ou de l'établi, ce qui exige de l'[6eafeb]acier forgé[-] et donc le creuset.
+
+[6eafeb]Radiateur[-] et [6eafeb]pales de rotor[-]  -  démonte les climatiseurs.
+[6eafeb]Eau de refroidissement[-]  -  l'eau stagnante du sous-sol.
+[6eafeb]Batterie[-]  -  celle-ci EST dans les véhicules et les chariots de concierge.
+[6eafeb]Bougies d'allumage[-], [6eafeb]câbles de commande[-], [6eafeb]empennage[-]  -  sur les infectés. Tue tout.
+
+[dc3c3c]Ni établi ni atelier de chimie ne se construisent.[-] Il y en a plusieurs de chaque dans l'hôpital. La forge, si : construis-en une, il t'en faudra pour l'acier.","Auf dem [6eafeb]Krankenhausdach[-] steht ein zerstörter Tragschrauber. Er braucht [dc3c3c]acht Teile[-], und vorsichtig findest du sie nicht.
+
+[dc3c3c]DER MOTOR STECKT NICHT IN DEN AUTOS.[-] Im normalen Spiel liefern Autowracks Motoren. Hier nicht, egal wie lange du schraubst. Einen Motor bekommst du aus einem schweren Loot-Beutel oder stellst ihn an der Werkbank her; dafür brauchst du [6eafeb]geschmiedeten Stahl[-] und somit den Schmelztiegel.
+
+[6eafeb]Kühler[-] und [6eafeb]Rotorblätter[-]  -  zerleg die Klimaanlagen.
+[6eafeb]Kühlwasser[-]  -  das stehende Wasser im Keller.
+[6eafeb]Batterie[-]  -  die STECKT in Fahrzeugen und Hausmeisterwagen.
+[6eafeb]Zündkerzen[-], [6eafeb]Steuerkabel[-], [6eafeb]Heckbaugruppe[-]  -  bei den Infizierten. Töte alles.
+
+[dc3c3c]Werkbank und Chemiestation kannst du nicht bauen.[-] Von beiden stehen mehrere fest im Krankenhaus. Eine Esse KANNST du bauen, und du brauchst sie für den Stahl.","Hay un girocóptero destrozado en el [6eafeb]tejado del hospital[-]. Necesita [dc3c3c]ocho piezas[-], y no las conseguirás yendo con cuidado.
+
+[dc3c3c]EL MOTOR NO ESTÁ EN LOS COCHES.[-] En el juego normal los vehículos destrozados dan motores. Aquí no, por mucho que desmontes. Un motor sale de una bolsa de botín pesada, o lo fabricas en la mesa de trabajo, lo que exige [6eafeb]acero forjado[-] y por tanto el crisol.
+
+[6eafeb]Radiador[-] y [6eafeb]palas del rotor[-]  -  desmonta los aires acondicionados.
+[6eafeb]Agua de refrigeración[-]  -  el agua estancada del sótano.
+[6eafeb]Batería[-]  -  esta SÍ está en los vehículos, y en los carritos de conserje.
+[6eafeb]Bujías[-], [6eafeb]cables de control[-], [6eafeb]conjunto de cola[-]  -  los llevan los infectados. Mátalos a todos.
+
+[dc3c3c]No puedes construir mesa de trabajo ni estación de química.[-] Hay varias de cada una fijas por el hospital. La fragua SÍ puedes construirla, y la necesitarás para el acero.","Sul [6eafeb]tetto dell'ospedale[-] c'è un girocottero distrutto. Servono [dc3c3c]otto pezzi[-], e non li troverai andando sul sicuro.
+
+[dc3c3c]IL MOTORE NON È NELLE AUTO.[-] Nel gioco normale i veicoli distrutti danno motori. Qui no, per quanto tu li smonti. Puoi trovare un motore in una borsa di bottino pesante, oppure costruirne uno al banco da lavoro; per farlo servono [6eafeb]acciaio forgiato[-] e quindi il crogiolo.
+
+[6eafeb]Radiatore[-] e [6eafeb]pale del rotore[-]  -  smonta i condizionatori.
+[6eafeb]Acqua di raffreddamento[-]  -  l'acqua stagnante in cantina.
+[6eafeb]Batteria[-]  -  questa SÌ è nei veicoli e nei carrelli dei custodi.
+[6eafeb]Candele[-], [6eafeb]cavi di comando[-], [6eafeb]gruppo di coda[-]  -  li portano gli infetti. Uccidi tutto.
+
+[dc3c3c]Non puoi costruire né un banco da lavoro né una stazione chimica.[-] Ce ne sono diversi di entrambi, fissi in vari punti dell'ospedale. La forgia invece PUOI costruirla, e ti servirà per l'acciaio.","Na [6eafeb]dachu szpitala[-] stoi zniszczony wiatrakowiec. Potrzebuje [dc3c3c]ośmiu części[-], a nie znajdziesz ich, grając ostrożnie.
+
+[dc3c3c]SILNIKA NIE MA W SAMOCHODACH.[-] W normalnej grze z wraków pojazdów można zdobyć silniki. Tutaj nie, choćbyś rozbierał je bez końca. Silnik znajdziesz w ciężkiej torbie z łupem albo wytworzysz przy stole warsztatowym; do tego potrzebujesz [6eafeb]kutej stali[-], a więc również tygla.
+
+[6eafeb]Chłodnica[-] i [6eafeb]łopaty wirnika[-]  -  rozbieraj klimatyzatory.
+[6eafeb]Woda chłodząca[-]  -  stojąca woda w piwnicy.
+[6eafeb]Akumulator[-]  -  ten AKURAT jest w pojazdach i wózkach woźnych.
+[6eafeb]Świece zapłonowe[-], [6eafeb]linki sterownicze[-], [6eafeb]zespół ogonowy[-]  -  mają je zakażeni. Zabijaj wszystko.
+
+[dc3c3c]Nie możesz zbudować stołu warsztatowego ani stacji chemicznej.[-] Po kilka z nich jest na stałe rozmieszczonych w szpitalu. Kuźnię MOŻESZ zbudować i będzie ci potrzebna do wytwarzania stali.","Há um girocóptero destruído no [6eafeb]telhado do hospital[-]. Ele precisa de [dc3c3c]oito peças[-], e cautela não vai trazê-las.
+
+[dc3c3c]O MOTOR NÃO ESTÁ NOS CARROS.[-] No jogo normal, veículos destruídos dão motores. Aqui não, por mais que você os desmonte. Um motor vem de uma bolsa de saque pesada, ou você fabrica um na bancada; para isso, precisa de [6eafeb]aço forjado[-] e, portanto, do cadinho.
+
+[6eafeb]Radiador[-] e [6eafeb]pás do rotor[-]  -  desmonte os ar-condicionados.
+[6eafeb]Água de arrefecimento[-]  -  a água parada no porão.
+[6eafeb]Bateria[-]  -  esta ESTÁ nos veículos e nos carrinhos de zelador.
+[6eafeb]Velas[-], [6eafeb]cabos de comando[-], [6eafeb]conjunto de cauda[-]  -  nos infectados. Mate tudo.
+
+[dc3c3c]Você não pode construir bancada nem estação de química.[-] Há várias de cada fixas pelo hospital. A forja você PODE construir, e vai precisar dela para o aço.","На [6eafeb]крыше больницы[-] стоит разбитый автожир. Ему нужно [dc3c3c]восемь деталей[-], и, играя осторожно, ты их не найдёшь.
+
+[dc3c3c]ДВИГАТЕЛЯ В МАШИНАХ НЕТ.[-] В обычной игре из разбитых машин можно добыть двигатели. Здесь — нет, сколько их ни разбирай ключом. Двигатель можно найти в тяжёлой сумке с лутом или изготовить на верстаке; для этого нужна [6eafeb]кованая сталь[-], а значит, и тигель.
+
+[6eafeb]Радиатор[-] и [6eafeb]лопасти ротора[-]  -  разбирай кондиционеры.
+[6eafeb]Вода для охлаждения[-]  -  стоячая вода в подвале.
+[6eafeb]Аккумулятор[-]  -  вот он КАК РАЗ бывает в машинах и тележках уборщиков.
+[6eafeb]Свечи зажигания[-], [6eafeb]тросы управления[-], [6eafeb]хвостовая балка[-]  -  их носят заражённые. Убивай всё.
+
+[dc3c3c]Верстак и химическую станцию построить нельзя.[-] В больнице установлено по нескольку штук каждого. А вот горн построить МОЖНО, и он понадобится для стали.","[6eafeb]Hastanenin çatısında[-] enkaz hâlinde bir jirokopter var. [dc3c3c]Sekiz parçaya[-] ihtiyacı var ve onları bulmak için temkinli davranmak yetmeyecek.
+
+[dc3c3c]MOTOR ARABALARDA YOK.[-] Normal oyunda hurda araçlardan motor çıkabilir. Burada ne kadar sökersen sök çıkmaz. Motor ağır bir ganimet çantasından çıkar ya da çalışma tezgâhında üretilebilir; bunun için [6eafeb]dövme çelik[-], dolayısıyla da pota gerekir.
+
+[6eafeb]Radyatör[-] ve [6eafeb]rotor kanatları[-]  -  klima ünitelerini sök.
+[6eafeb]Soğutma suyu[-]  -  bodrumdaki durgun su.
+[6eafeb]Akü[-]  -  bu parça araçlarda ve hademe arabalarında bulunur.
+[6eafeb]Bujiler[-], [6eafeb]kumanda kabloları[-], [6eafeb]kuyruk takımı[-]  -  enfektelerin üzerinde. Her şeyi öldür.
+
+[dc3c3c]Çalışma tezgâhı ve kimya istasyonu yapamazsın.[-] Her birinden birkaç tane hastanenin farklı yerlerine sabitlenmiştir. Ocağı ise YAPABİLİRSİN ve çelik için ona ihtiyacın olacak.","[6eafeb]病院の屋上[-]に大破したジャイロコプターがある。[dc3c3c]8つの部品[-]が要るが、慎重に動いていては見つからない。
+
+[dc3c3c]エンジンは車の中にはない。[-]通常のゲームでは大破した車両からエンジンが取れるが、ここでは取れない。どれだけ解体しても同じだ。エンジンは重装備の戦利品バッグから出るか、作業台で作る。作業台には[6eafeb]鍛鋼（たんこう）[-]が要るので、坩堝（るつぼ）も必要になる。
+
+[6eafeb]ラジエーター[-]と[6eafeb]ローターブレード[-]  -  エアコン室外機を解体する。
+[6eafeb]冷却水[-]  -  地下にたまった水。
+[6eafeb]バッテリー[-]  -  これは車両と清掃カートに入っている。
+[6eafeb]スパークプラグ[-]、[6eafeb]操縦ケーブル[-]、[6eafeb]テールアセンブリ[-]  -  感染者が持っている。すべて倒せ。
+
+[dc3c3c]作業台と化学実験ステーションは自分では作れない。[-]どちらも館内に複数固定されている。だが炉は作れるし、鍛鋼のために必要になる。","[6eafeb]医院楼顶[-]有一架损毁的旋翼机。它需要[dc3c3c]八个零件[-]，而小心翼翼是找不到的。
+
+[dc3c3c]发动机不在车里。[-]在普通游戏中报废车辆能拆出发动机。这里不行，拆多久都一样。发动机来自重型战利品包，或者在工作台制作，那需要[6eafeb]锻钢[-]，也就需要坩埚。
+
+[6eafeb]散热器[-]和[6eafeb]旋翼叶片[-]  -  拆解空调外机。
+[6eafeb]冷却用水[-]  -  地下室的积水。
+[6eafeb]蓄电池[-]  -  这个确实在车里，清洁推车里也有。
+[6eafeb]火花塞[-]、[6eafeb]操纵缆线[-]、[6eafeb]尾翼组件[-]  -  在感染者身上。全杀光。
+
+[dc3c3c]工作台和化学工作站无法自己建造。[-]两者在医院里各有好几处固定点位。锻造炉倒是可以建，而且炼钢会用到。"
+hcesc_prognosis_title,,UI,,,[dc3c3c]Prognosis[-],[dc3c3c]Pronostic[-],[dc3c3c]Prognose[-],[dc3c3c]Pronóstico[-],[dc3c3c]Prognosi[-],[dc3c3c]Rokowanie[-],[dc3c3c]Prognóstico[-],[dc3c3c]Прогноз[-],[dc3c3c]Seyir[-],[dc3c3c]予後[-],[dc3c3c]预后[-]
+hcesc_prognosis_body,,UI,,,"[dc3c3c]Do not leave the hospital grounds.[-] The car park is survivable. Past that the infected are faster, angrier and they do not lose interest. People who walk out do not walk back.
+
+[6eafeb]Water.[-] There is standing water in the basement, but the basement is not a place to keep returning to. A dew collector solves it permanently, and unlocks early in Forge Ahead.
+
+[6eafeb]Light and noise.[-] The wards are full and most of it is still asleep. What you wake is up to you.
+
+[6eafeb]Time is the enemy, not the zombies.[-] Every hour spent hunting parts is an hour of virus you cannot get back. Suppressants slow the clock; they never stop it.
+
+Repair the gyro. Fly to Jen. Buy the cure. [dc3c3c]Survive.[-]","[dc3c3c]Ne quitte pas l'enceinte de l'hôpital.[-] Le parking reste tenable. Au-delà, les infectés sont plus rapides, plus hargneux et ne lâchent jamais. Qui sort ne revient pas.
+
+[6eafeb]L'eau.[-] Il y en a au sous-sol, mais n'y retourne pas sans cesse. Un collecteur de rosée règle ça définitivement, et se débloque tôt dans Forge Ahead.
+
+[6eafeb]Lumière et bruit.[-] Les services sont pleins et la plupart dorment encore. Ce que tu réveilles ne dépend que de toi.
+
+[6eafeb]L'ennemi, c'est le temps.[-] Chaque heure passée à chercher des pièces est une heure que le virus ne te rendra pas. Les suppresseurs ralentissent l'horloge ; ils ne l'arrêtent jamais.
+
+Répare l'autogire. Vole jusqu'à Jen. Achète le remède. [dc3c3c]Survis.[-]","[dc3c3c]Verlass das Krankenhausgelände nicht.[-] Auf dem Parkplatz kannst du noch überleben. Dahinter sind die Infizierten schneller, wütender und verlieren nie das Interesse. Wer hinausgeht, kommt nicht zurück.
+
+[6eafeb]Wasser.[-] Im Keller steht Wasser, aber der Keller ist kein Ort, an den man ständig zurückkehren sollte. Ein Tausammler löst das Problem dauerhaft und wird früh in Forge Ahead freigeschaltet.
+
+[6eafeb]Licht und Lärm.[-] Die Stationen sind voll und das meiste schläft noch. Was du weckst, liegt bei dir.
+
+[6eafeb]Der Feind ist die Zeit, nicht die Zombies.[-] Jede Stunde, die du mit der Suche nach Teilen verbringst, ist eine Stunde, die du dem Virus nicht zurückholen kannst. Hemmer verlangsamen die Uhr; sie halten sie nie an.
+
+Repariere den Tragschrauber. Flieg zu Jen. Kauf das Heilmittel. [dc3c3c]Überlebe.[-]","[dc3c3c]No salgas del recinto del hospital.[-] En el aparcamiento se puede sobrevivir. Más allá, los infectados son más rápidos, más agresivos y nunca pierden el interés. Quien sale no vuelve.
+
+[6eafeb]El agua.[-] Hay agua estancada en el sótano, pero el sótano no es un sitio al que volver una y otra vez. Un recolector de rocío lo resuelve para siempre, y se desbloquea pronto en Forge Ahead.
+
+[6eafeb]Luz y ruido.[-] Las plantas están llenas y la mayoría sigue dormida. Lo que despiertes depende de ti.
+
+[6eafeb]El enemigo es el tiempo, no los zombis.[-] Cada hora buscando piezas es una hora de virus que no recuperarás. Los supresores ralentizan el reloj; nunca lo paran.
+
+Repara el girocóptero. Vuela hasta Jen. Compra la cura. [dc3c3c]Sobrevive.[-]","[dc3c3c]Non lasciare il perimetro dell'ospedale.[-] Nel parcheggio si può ancora sopravvivere. Oltre, gli infetti sono più rapidi, più aggressivi e non mollano mai. Chi esce non torna.
+
+[6eafeb]L'acqua.[-] In cantina c'è acqua stagnante, ma la cantina non è un posto in cui tornare di continuo. Un raccoglitore di rugiada risolve il problema una volta per tutte e si sblocca presto in Forge Ahead.
+
+[6eafeb]Luce e rumore.[-] I reparti sono pieni e la maggior parte degli infetti dorme ancora. Cosa svegli dipende da te.
+
+[6eafeb]Il nemico è il tempo, non gli zombie.[-] Ogni ora passata a cercare pezzi è un'ora che il virus ti porta via e che non recupererai. I soppressori rallentano il tempo; non lo fermano mai.
+
+Ripara il girocottero. Vola da Jen. Compra la cura. [dc3c3c]Sopravvivi.[-]","[dc3c3c]Nie opuszczaj terenu szpitala.[-] Na parkingu da się przeżyć. Dalej zakażeni są szybsi, bardziej wściekli i nigdy nie odpuszczają. Kto wychodzi, nie wraca.
+
+[6eafeb]Woda.[-] W piwnicy stoi woda, ale piwnica to nie miejsce, do którego wraca się bez końca. Zbieracz rosy rozwiązuje problem na stałe i odblokowuje się wcześnie w Forge Ahead.
+
+[6eafeb]Światło i hałas.[-] Oddziały są pełne, a większość zakażonych wciąż śpi. To, co obudzisz, zależy od ciebie.
+
+[6eafeb]Wrogiem jest czas, nie zombie.[-] Każda godzina spędzona na szukaniu części to godzina, podczas której wirus postępuje — tego czasu nie odzyskasz. Supresory spowalniają zegar; nigdy go nie zatrzymują.
+
+Napraw wiatrakowiec. Leć do Jen. Kup lekarstwo. [dc3c3c]Przeżyj.[-]","[dc3c3c]Não saia do terreno do hospital.[-] Dá para sobreviver no estacionamento. Além dele, os infectados são mais rápidos, mais raivosos e nunca perdem o interesse. Quem sai não volta.
+
+[6eafeb]Água.[-] Há água parada no porão, mas o porão não é lugar para voltar toda hora. Um coletor de orvalho resolve isso de vez e é liberado cedo no Forge Ahead.
+
+[6eafeb]Luz e barulho.[-] As alas estão cheias e a maioria dos infectados ainda dorme. Quem você acorda depende de você.
+
+[6eafeb]O inimigo é o tempo, não os zumbis.[-] Cada hora caçando peças é uma hora a mais de avanço do vírus que você não recupera. Os supressores desaceleram a contagem; nunca a param.
+
+Conserte o girocóptero. Voe até Jen. Compre a cura. [dc3c3c]Sobreviva.[-]","[dc3c3c]Не покидай территорию больницы.[-] На парковке выжить можно. Дальше заражённые быстрее, злее и никогда не теряют интерес. Кто выходит — не возвращается.
+
+[6eafeb]Вода.[-] В подвале есть стоячая вода, но подвал — не то место, куда стоит постоянно возвращаться. Сборник росы решает проблему навсегда и открывается рано в Forge Ahead.
+
+[6eafeb]Свет и шум.[-] Палаты полны, и большинство заражённых всё ещё спит. Кого разбудить — решать тебе.
+
+[6eafeb]Враг — время, а не зомби.[-] Каждый час, потраченный на поиски деталей, — это час, за который вирус продолжает развиваться, и этого времени уже не вернуть. Подавители замедляют часы; они никогда их не останавливают.
+
+Почини автожир. Лети к Jen. Купи лекарство. [dc3c3c]Выживи.[-]","[dc3c3c]Hastane arazisinden ayrılma.[-] Otoparkta hayatta kalabilirsin. Ötesinde enfekteler daha hızlı, daha öfkeli ve peşini bırakmıyor. Dışarı çıkan geri dönmüyor.
+
+[6eafeb]Su.[-] Bodrumda durgun su var ama oraya tekrar tekrar dönmek istemezsin. Çiy toplayıcı bu sorunu kalıcı olarak çözer ve Forge Ahead'de erken açılır.
+
+[6eafeb]Işık ve ses.[-] Koğuşlar dolu ve çoğu hâlâ uyuyor. Neyi uyandıracağın sana kalmış.
+
+[6eafeb]Düşman zaman, zombiler değil.[-] Parça aramakla geçirdiğin her saat, virüs karşısında geri alamayacağın bir saattir. Baskılayıcılar saati yavaşlatır; asla durdurmaz.
+
+Jirokopteri onar. Jen'e uç. Tedaviyi satın al. [dc3c3c]Hayatta kal.[-]","[dc3c3c]病院の敷地から出るな。[-]駐車場までなら生き延びられる。その先の感染者はより速く、より凶暴で、興味を失わない。出ていった者は戻らない。
+
+[6eafeb]水。[-]地下に水はたまっているが、地下は何度も戻る場所ではない。露収集器があれば恒久的に解決し、Forge Ahead の早い段階で解禁される。
+
+[6eafeb]光と音。[-]病棟は満杯で、その多くはまだ眠っている。何を起こすかはあなた次第だ。
+
+[6eafeb]敵は時間であって、ゾンビではない。[-]部品探しに費やす1時間は、取り返せないウイルスの1時間だ。抑制剤は時計を遅らせるだけで、止めはしない。
+
+ジャイロコプターを直せ。ジェンのもとへ飛べ。治療薬を買え。[dc3c3c]生き延びろ。[-]","[dc3c3c]不要离开医院范围。[-]停车场还能活。再往外，感染者更快、更凶，而且永远不会失去兴趣。出去的人不会回来。
+
+[6eafeb]水。[-]地下室有积水，但地下室不是能反复去的地方。集露器可以一劳永逸地解决，而且在 Forge Ahead 里很早就能解锁。
+
+[6eafeb]光与声。[-]病区里挤满了人，大部分还在沉睡。要吵醒谁，由你决定。
+
+[6eafeb]敌人是时间，不是丧尸。[-]找零件花掉的每一个小时，都是你再也拿不回来的病毒时间。抑制剂能让钟走慢，却停不下来。
+
+修好旋翼机。飞去找杰恩。买下解药。[dc3c3c]活下去。[-]"
+hcesc_tab_symptoms,,,,,Symptoms,Symptômes,Symptome,Síntomas,Sintomi,Objawy,Sintomas,Симптомы,Belirtiler,症状,症状
+hcesc_symptoms_title,,,,,[dc3c3c]Symptoms[-],[dc3c3c]Symptômes[-],[dc3c3c]Symptome[-],[dc3c3c]Síntomas[-],[dc3c3c]Sintomi[-],[dc3c3c]Objawy[-],[dc3c3c]Sintomas[-],[dc3c3c]Симптомы[-],[dc3c3c]Belirtiler[-],[dc3c3c]症状[-],[dc3c3c]症状[-]
+hcesc_symptoms_body,,,,,"Each threshold costs you something while you stay above it. Push the level back
+down and you get it back.
+
+[6eafeb]25%[-]   stamina regen [dc3c3c]-10%[-]
+[6eafeb]50%[-]   movement speed [dc3c3c]-15%[-]
+[6eafeb]75%[-]   stamina a further [dc3c3c]-15%[-], movement a further [dc3c3c]-5%[-]
+[6eafeb]90%[-]   weapon handling [dc3c3c]-30%[-]
+[dc3c3c]100%[-]  death
+
+They stack. At 90% you carry all four at once.
+
+[6eafeb]Your vision goes too.[-] From 75% the screen sways. At [dc3c3c]99% it turns
+properly bad[-] and you have roughly a minute left.
+
+[6eafeb]50% is the one that kills people[-] — getting back under it is worth a suppressant.","Chaque palier te coûte quelque chose tant que tu restes au-dessus. Redescends
+sous la barre et tu le récupères.
+
+[6eafeb]25 %[-]   régén. d'endurance [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   vitesse de déplacement [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   endurance [dc3c3c]-15 %[-] supplémentaires, déplacement [dc3c3c]-5 %[-] supplémentaires
+[6eafeb]90 %[-]   maniement des armes [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  mort
+
+Les effets se cumulent. À 90 %, tu subis les quatre à la fois.
+
+[6eafeb]Ta vision se dégrade aussi.[-] Dès 75 %, l'écran tangue. À [dc3c3c]99 %, ça devient
+vraiment difficile à voir[-] et il te reste environ une minute.
+
+[6eafeb]C'est 50 % qui tue le plus souvent[-] — repasser dessous vaut bien un suppresseur.","Jede Schwelle kostet dich etwas, solange du darüber bleibst. Drück den Wert
+wieder darunter und du bekommst es zurück.
+
+[6eafeb]25 %[-]   Ausdauer-Regeneration [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   Bewegungstempo [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   Ausdauer weitere [dc3c3c]-15 %[-], Tempo weitere [dc3c3c]-5 %[-]
+[6eafeb]90 %[-]   Waffenhandhabung [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  Tod
+
+Das stapelt sich. Bei 90 % hast du alle vier gleichzeitig.
+
+[6eafeb]Auch deine Sicht leidet.[-] Ab 75 % schwankt das Bild. Bei [dc3c3c]99 % wird es
+richtig übel[-] und dir bleibt etwa eine Minute.
+
+[6eafeb]50 % bringt die meisten um[-] — wieder darunter zu kommen ist einen Hemmer wert.","Cada umbral te cuesta algo mientras sigas por encima. Baja el nivel otra vez y
+lo recuperas.
+
+[6eafeb]25 %[-]   regeneración de aguante [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   velocidad de movimiento [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   aguante [dc3c3c]-15 %[-] adicional, movimiento [dc3c3c]-5 %[-] adicional
+[6eafeb]90 %[-]   manejo de armas [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  muerte
+
+Se acumulan. Al 90 % sufres las cuatro a la vez.
+
+[6eafeb]La vista también se va.[-] Desde el 75 % la pantalla se balancea. Al [dc3c3c]99 %
+se vuelve realmente grave[-] y te queda alrededor de un minuto.
+
+[6eafeb]El 50 % es el que mata[-] — volver por debajo bien vale un supresor.","Ogni soglia ti costa qualcosa finché resti sopra. Fai riscendere il livello e
+lo riottieni.
+
+[6eafeb]25 %[-]   rigenerazione della stamina [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   velocità di movimento [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   stamina: un ulteriore [dc3c3c]-15 %[-], movimento: un ulteriore [dc3c3c]-5 %[-]
+[6eafeb]90 %[-]   maneggevolezza delle armi [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  morte
+
+Gli effetti si sommano. Al 90 % li subisci tutti e quattro insieme.
+
+[6eafeb]Anche la vista peggiora.[-] Dal 75 % lo schermo ondeggia. Al [dc3c3c]99 % la situazione diventa
+davvero critica[-] e ti resta circa un minuto.
+
+[6eafeb]È il 50 % che uccide[-] — tornare sotto vale bene un soppressore.","Każdy próg coś cię kosztuje, dopóki jesteś powyżej. Zbij poziom z powrotem, a
+odzyskasz to.
+
+[6eafeb]25 %[-]   regeneracja wytrzymałości [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   prędkość poruszania [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   wytrzymałość: kolejne [dc3c3c]-15 %[-], ruch: kolejne [dc3c3c]-5 %[-]
+[6eafeb]90 %[-]   obsługa broni [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  śmierć
+
+Efekty się kumulują. Przy 90 % działają na ciebie wszystkie cztery naraz.
+
+[6eafeb]Wzrok też się pogarsza.[-] Od 75 % ekran się kołysze. Przy [dc3c3c]99 % robi się
+naprawdę źle[-] i zostaje ci około minuty.
+
+[6eafeb]To 50 % zabija ludzi[-] — zejście z powrotem poniżej warte jest supresora.","Cada limite te custa algo enquanto você ficar acima dele. Faça o nível baixar de
+novo e você recupera.
+
+[6eafeb]25 %[-]   regeneração de estamina [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   velocidade de movimento [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   regeneração de estamina [dc3c3c]-15 % adicionais[-], velocidade de movimento [dc3c3c]-5 % adicionais[-]
+[6eafeb]90 %[-]   manuseio de armas [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  morte
+
+Os efeitos se acumulam. Aos 90 %, você sofre os quatro ao mesmo tempo.
+
+[6eafeb]A visão também piora.[-] A partir de 75 %, a tela balança. Aos [dc3c3c]99 % a visão fica
+bem ruim[-] e resta cerca de um minuto.
+
+[6eafeb]É o de 50 % que mata[-] — voltar para baixo dele vale um supressor.","Каждый порог что-то у тебя отнимает, пока ты выше него. Сбей уровень обратно —
+и получишь это назад.
+
+[6eafeb]25 %[-]   восстановление выносливости [dc3c3c]-10 %[-]
+[6eafeb]50 %[-]   скорость передвижения [dc3c3c]-15 %[-]
+[6eafeb]75 %[-]   выносливость ещё [dc3c3c]-15 %[-], скорость ещё [dc3c3c]-5 %[-]
+[6eafeb]90 %[-]   обращение с оружием [dc3c3c]-30 %[-]
+[dc3c3c]100 %[-]  смерть
+
+Эффекты складываются. На 90 % на тебя действуют все четыре сразу.
+
+[6eafeb]Зрение тоже ухудшается.[-] С 75 % изображение начинает качаться. На [dc3c3c]99 % становится
+по-настоящему плохо[-], и у тебя остаётся примерно минута.
+
+[6eafeb]Убивает людей именно 50 %[-] — вернуться ниже стоит одного подавителя.","Her eşik, üstünde kaldığın sürece sana bir şeye mal olur. Seviyeyi tekrar altına
+indir, geri alırsın.
+
+[6eafeb]%25[-]   dayanıklılık yenilenmesi [dc3c3c]-%10[-]
+[6eafeb]%50[-]   hareket hızı [dc3c3c]-%15[-]
+[6eafeb]%75[-]   dayanıklılık yenilenmesi ayrıca [dc3c3c]-%15[-], hareket hızı ayrıca [dc3c3c]-%5[-]
+[6eafeb]%90[-]   silah kullanımı [dc3c3c]-%30[-]
+[dc3c3c]%100[-]  ölüm
+
+Etkiler birikir. %90'da dördü de aynı anda üzerindedir.
+
+[6eafeb]Görüşün de bozulur.[-] %75'ten sonra ekran sallanır. [dc3c3c]%99'da iyice
+kötüleşir[-] ve yaklaşık bir dakikan kalır.
+
+[6eafeb]İnsanları öldüren %50'dir[-] — altına geri inmek bir baskılayıcıya değer.","それぞれの境界は、超えている間だけ何かを奪う。
+数値を下げ直せば戻ってくる。
+
+[6eafeb]25%[-]   スタミナ回復 [dc3c3c]-10%[-]
+[6eafeb]50%[-]   移動速度 [dc3c3c]-15%[-]
+[6eafeb]75%[-]   スタミナさらに [dc3c3c]-15%[-]、移動さらに [dc3c3c]-5%[-]
+[6eafeb]90%[-]   武器の扱い [dc3c3c]-30%[-]
+[dc3c3c]100%[-]  死
+
+効果は累積する。90%では4つすべてを同時に抱える。
+
+[6eafeb]視界も持っていかれる。[-]75%から画面が揺れ、[dc3c3c]99%で本格的に
+ひどくなる[-]。残りはおよそ1分だ。
+
+[6eafeb]人を殺すのは50%だ[-] — そこを下回り直すだけの価値が抑制剤にはある。","只要你停在某个阈值之上，它就会一直拿走一些东西。
+把数值压回去，就能拿回来。
+
+[6eafeb]25%[-]   耐力恢复 [dc3c3c]-10%[-]
+[6eafeb]50%[-]   移动速度 [dc3c3c]-15%[-]
+[6eafeb]75%[-]   耐力再 [dc3c3c]-15%[-]，移动再 [dc3c3c]-5%[-]
+[6eafeb]90%[-]   武器操控 [dc3c3c]-30%[-]
+[dc3c3c]100%[-]  死亡
+
+这些会叠加。到 90% 时四项你全都背着。
+
+[6eafeb]视野也会出问题。[-]从 75% 起画面开始摇晃。到 [dc3c3c]99% 会变得
+相当严重[-]，那时你大约只剩一分钟。
+
+[6eafeb]真正要人命的是 50%[-] — 为了压回它之下，花掉一支抑制剂是值得的。"

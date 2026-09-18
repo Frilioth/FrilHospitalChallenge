@@ -2,8 +2,8 @@
 <xml>
 	<Name value="FrilHospitalChallenge" />
 	<DisplayName value="Navezgane Hospital Challenge" />
-	<Version value="1.2.1" />
-	<Description value="Infected. Trapped. Fix the gyro. Fly to the cure. A survival challenge set in Navezgane Hospital." />
+	<Version value="0.22.0" />
+	<Description value="Infected. Trapped. Fix the gyro. Fly to the cure. A survival challenge set in Navezgane Hospital. Single player only." />
 	<Author value="Frilioth" />
 	<Website value="https://twitch.tv/frilioth" />
 </xml>

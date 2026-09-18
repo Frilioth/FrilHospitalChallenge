@@ -2,9 +2,10 @@
 <!--
     Navezgane Hospital Challenge - Spawning
     Author: Frilioth
-    Version: 1.2.0
+    Version: 1.3.0
 
-    Reduces night biome spawn density to approximately half of v1.0.0 levels.
+    Reduces night biome spawn density to approximately half of v1.0.0 levels,
+    EXCEPT pine_forest, which was raised again in v1.3.0 - see the note there.
     Night zombie groups are preserved (ZombiesNight etc.) so flavour is unchanged.
 
     Only biome wandering spawns are touched. EntitySpawner classes are untouched.
@@ -17,12 +18,35 @@
          PINE FOREST - night spawns halved from v1.0.0
     ===================================================================== -->
 
-    <!-- nz02: commercial/industrial night (v1.0.0: 0.3 maxcount=2) -->
-    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@respawndelay">0.6</set>
-    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@maxcount">1</set>
+    <!-- v1.3.0: PINE FOREST NIGHT SPAWNS RAISED. Forest only.
 
-    <!-- nz03: downtown night (v1.0.0: 0.3) -->
-    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz03']/@respawndelay">0.6</set>
+         Why: play testing on 9 Sep showed the building runs dry once cleared, and
+         with bags coming only from kills the player had to leave the grounds and
+         trigger the outside spawner to keep the loot economy going. A comparison
+         across all five biomes showed Forest was by far the most throttled:
+           pine_forest  nz02  vanilla 0.15/3  ->  0.6/1   4x slower, a third the count
+           pine_forest  nz03  vanilla 0.10/3  ->  0.6/1   6x slower
+         against roughly 3x for Burnt Forest and Snow. Forest was the outlier, and
+         Forest is the biome most people will play first.
+
+         These values bring Forest into line with the OTHER BIOMES, not with
+         vanilla. Still well under half vanilla rates, so the intent is unchanged.
+
+         DELIBERATELY FOREST ONLY. The other four are untested; changing all five
+         on one run's evidence would make the next run impossible to read.
+
+         NOTE this also raises zombie dogs, which are in the wandering horde groups
+         and in the mod's own outside spawner pool. Bears and dire wolves are NOT
+         affected: entitygroups.xml removes them from every horde and mixed group.
+         Regular animalWolf DOES remain in ZombiesForestDowntown / ...Night, which
+         is what nz03 draws from, so expect the occasional wolf at night. -->
+
+    <!-- nz02: commercial/industrial night (vanilla 0.15/3, v1.0.0 0.3/2, v1.2.0 0.6/1) -->
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@respawndelay">0.4</set>
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz02']/@maxcount">2</set>
+
+    <!-- nz03: downtown night (vanilla 0.10/3, v1.0.0 0.3, v1.2.0 0.6) -->
+    <set xpath="//biome[@name='pine_forest']/spawn[@id='nz03']/@respawndelay">0.4</set>
 
     <!-- =====================================================================
          BURNT FOREST - night spawns halved from v1.0.0

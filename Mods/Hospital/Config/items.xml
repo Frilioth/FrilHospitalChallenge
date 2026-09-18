@@ -2,7 +2,7 @@
 <!--
 	Navezgane Hospital Challenge — Items
 	Author: Frilioth
-	Version: 1.2.1
+	Version: 1.3.0
 	
 	3-TIER SUPPRESSANTS (ingredients use Voss-7 Reagent — crafted from acid):
 	- Weak:     drugPainkillers x1 + hospitalVoss7Reagent x1
@@ -223,6 +223,91 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffHospitalTheCure"/>
 			</effect_group>
 		</item>
+	</append>
+
+
+	<!-- ================================================================== -->
+	<!-- ZOMBIE REACH                                                       -->
+	<!--                                                                    -->
+	<!-- Hospital corridors and stairwells are tight, and being hit from    -->
+	<!-- outside your own swing is what makes a doorway feel unfair. This   -->
+	<!-- compresses reach toward a floor rather than flattening it:         -->
+	<!--                                                                    -->
+	<!--     new = 1.20 + (vanilla - 1.20) x 0.5                            -->
+	<!--                                                                    -->
+	<!-- Tall zombies lose the most, short ones barely change, and the      -->
+	<!-- order can never invert because it is one monotonic function. The   -->
+	<!-- spread narrows from a 1.69 ratio to 1.36, so Cops stop feeling     -->
+	<!-- disproportionate, and nothing lands below 1.25 so no zombie ends   -->
+	<!-- up flailing at air. Two knobs if it needs tuning: the FLOOR and    -->
+	<!-- the 0.5 factor.                                                    -->
+	<!--                                                                    -->
+	<!-- meleeHandMaster IS DELIBERATELY NOT SET. meleeHandPlayer extends   -->
+	<!-- it, so changing Master would cut the player's own bare-hand reach  -->
+	<!-- by the same amount. The seven zombie items that inherit from it    -->
+	<!-- are therefore set INDIVIDUALLY below. Do not "simplify" this into  -->
+	<!-- a single set on Master.                                            -->
+	<!--                                                                    -->
+	<!-- Untouched on purpose: meleeHandZombieBoar, all meleeHandAnimal*    -->
+	<!-- wildlife (bears, wolves, coyotes, snakes, swarms), and             -->
+	<!-- meleeHandZombieTest.                                               -->
+	<!-- ================================================================== -->
+
+
+	<!-- vanilla 1.75 -> 1.48 -->
+	<set xpath="/items/item[@name='meleeHandZombieChuck']/property[@class='Action0']/property[@name='Range']/@value">1.48</set>
+	<set xpath="/items/item[@name='meleeHandZombieCop']/property[@class='Action0']/property[@name='Range']/@value">1.48</set>
+	<set xpath="/items/item[@name='meleeHandZombieRancher']/property[@class='Action0']/property[@name='Range']/@value">1.48</set>
+
+	<!-- vanilla 1.70 -> 1.45 -->
+	<set xpath="/items/item[@name='meleeHandzombieMutated']/property[@class='Action0']/property[@name='Range']/@value">1.45</set>
+	<set xpath="/items/item[@name='meleeHandzombieMutatedCharged']/property[@class='Action0']/property[@name='Range']/@value">1.45</set>
+	<set xpath="/items/item[@name='meleeHandzombieMutatedFeral']/property[@class='Action0']/property[@name='Range']/@value">1.45</set>
+	<set xpath="/items/item[@name='meleeHandzombieMutatedInfernal']/property[@class='Action0']/property[@name='Range']/@value">1.45</set>
+	<set xpath="/items/item[@name='meleeHandzombieMutatedRadiated']/property[@class='Action0']/property[@name='Range']/@value">1.45</set>
+
+	<!-- vanilla 1.60 -> 1.40 -->
+	<set xpath="/items/item[@name='meleeHandZombie01']/property[@class='Action0']/property[@name='Range']/@value">1.4</set>
+
+	<!-- vanilla 1.40 -> 1.30 -->
+	<set xpath="/items/item[@name='meleeHandZombieBurning']/property[@class='Action0']/property[@name='Range']/@value">1.3</set>
+	<set xpath="/items/item[@name='meleeHandZombieBurningFeral']/property[@class='Action0']/property[@name='Range']/@value">1.3</set>
+	<set xpath="/items/item[@name='meleeHandZombieShort']/property[@class='Action0']/property[@name='Range']/@value">1.3</set>
+	<set xpath="/items/item[@name='meleeHandZombieShortFeral']/property[@class='Action0']/property[@name='Range']/@value">1.3</set>
+
+	<!-- vanilla 1.30 -> 1.25 -->
+	<set xpath="/items/item[@name='meleeHandZombie02']/property[@class='Action0']/property[@name='Range']/@value">1.25</set>
+	<set xpath="/items/item[@name='meleeHandZombie02Feral']/property[@class='Action0']/property[@name='Range']/@value">1.25</set>
+	<set xpath="/items/item[@name='meleeHandZombieBurningCrawler']/property[@class='Action0']/property[@name='Range']/@value">1.25</set>
+
+	<!-- vanilla 1.65 -> 1.42 -->
+
+
+	<!-- These seven have NO Range node of their own - they inherit 1.65 from
+	     meleeHandMaster. A <set> cannot change a node that does not exist, so the
+	     property is APPENDED into their Action0 block instead. This is why they
+	     are handled separately from the <set> ops above, and why setting Master
+	     directly is not an option: meleeHandPlayer inherits from it too. -->
+	<append xpath="/items/item[@name='meleeHandAnimalZombieDog']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandAnimalZombieVulture']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandZombieDemolition']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandZombieHazMat']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandZombiePartyGirl']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandZombieStrong']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
+	</append>
+	<append xpath="/items/item[@name='meleeHandZombieWorker']/property[@class='Action0']">
+		<property name="Range" value="1.42"/>
 	</append>
 
 </configs>

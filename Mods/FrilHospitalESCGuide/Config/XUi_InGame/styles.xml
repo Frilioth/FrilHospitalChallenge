@@ -1,0 +1,36 @@
+<FrilHospitalESCGuide>
+   <append xpath="/styles/global">
+
+      <!--
+         Hospital Challenge palette. Clinical: near-black panels, hazard red for
+         headings, warm off-white body text. Deliberately distinct from the amber
+         and hazard-yellow used by the Area 7 guide so the two windows are not
+         mistaken for each other.
+      -->
+      <style_entry name="hcHeaderBgColor"      value="26,26,30"/>
+      <style_entry name="hcPageBgColor"        value="20,22,26"/>
+      <style_entry name="hcPanelBorderColor"   value="0,0,0"/>
+      <style_entry name="hcHeaderTitleColor"   value="220,60,60"/>    <!-- hazard red -->
+      <style_entry name="hcHeaderMottoColor"   value="150,155,165"/>  <!-- cold grey -->
+      <style_entry name="hcTabBgColor"         value="16,17,20"/>
+      <style_entry name="hcTabBorderColor"     value="0,0,0"/>
+      <style_entry name="hcTabSelectedColor"   value="120,26,26"/>    <!-- selected tab: deep red -->
+      <style_entry name="hcPageTitleColor"     value="220,60,60"/>
+      <style_entry name="hcPageBodyColor"      value="228,228,232"/>
+
+      <!--
+         Emphasis inside body text. Referenced from Localization.csv as [6eafeb].
+
+         TWO FAILED ATTEMPTS ARE WORTH RECORDING, because both LOOKED applied:
+         v1.0.0 used a hardcoded [e4e4e8], which is the SAME value as
+         hcPageBodyColor above, so every emphasis tag did nothing at all.
+         v1.0.1 changed it to near-white 244,246,250, only 16 points of 255
+         away from the body grey. Applied, and still invisible in game.
+         The lesson: an accent needs a different HUE, not a brighter grey.
+         Clinical blue now, which gives three readable tiers on the dark panel:
+         red for danger, blue for key terms, grey for body.
+      -->
+      <style_entry name="hcPageAccentColor"    value="110,175,235"/>
+
+   </append>
+</FrilHospitalESCGuide>

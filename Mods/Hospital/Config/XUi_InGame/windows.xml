@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Hospital Challenge - UI Modifications
+	Author: Frilioth
+	Version: 2.5.0
+
+	v2.5.0: windowTip restyled to match the ESC guide palette, and body text
+	raised to 28. See the PALETTE note.
+
+	v2.4.0: windowTip rebuilt against real 3.2 geometry. The old block was 2.6
+	values and produced tiny text in a large empty panel. See the notes on it.
+
+	v2.3.0: windowTip header title font size set explicitly, and the "-0 TIER
+	POINTS" label removed from the quest offer window with the title widened to
+	suit. See the notes at each op.
+
+	v2.2.0: windowLocation now removed as a whole window rather than by its
+	three children. See the note at that op.
+
+	v2.1.0 (3.2 PORT):
+	- Folder moved Config/XUi/ -> Config/XUi_InGame/ (3.x ignores Config/XUi/ silently).
+	- windowTip header selector changed from panel[@name='header'] to
+	  rect[@name='header']; verified against vanilla 3.2 XUi_InGame/windows.xml.
+	- All other windowTip / windowEntering / windowLocation / windowTargetBar
+	  xpaths in this file were checked against vanilla 3.2 and still resolve.
+	- NOTE: 3.x routes quest messages to the engine's unresizable message box,
+	  so the windowTip sizing below may no longer be reached. Unchanged for now;
+	  needs the message-redirect patch on the DLL side, same as Area 7.
+	
+	MODIFICATIONS:
+	- Enlarge ShowMessageWindow (windowTip) for better readability
+	- Increase font size for message text
+	- Centre-align title and body text
+	- Zombie HP bar always visible
+	- Push windowEntering (area/storm notifications) down so it doesn't overlap health bar
+	- Hide POI name and difficulty skulls from windowEntering
+-->
+<configs>	
+	<!-- ================================================================
+	     windowTip  -  REBUILT v2.4.0 against real 3.2 geometry.
+
+	     The previous block was 2.6 values and did not fit 3.2, which is why the
+	     note rendered as tiny text floating in a large empty panel. What was wrong:
+	       - height was raised to 663 but the WIDTH was left at vanilla 603, so
+	         descriptionText stayed 590 wide. A long note wraps into many lines, and
+	         this label's style SHRINKS TEXT TO FIT, so it crushed the text down
+	         until it fitted instead of honouring the font_size that was set.
+	       - content height 663 and descriptionText height 633 were both taller than
+	         the 663 window containing them, once the 43-high header is allowed for.
+	       - header pos "0,190" and content pos "0,146" are POSITIVE Y, which moves
+	         them UP and out of the window. Down is negative.
+
+	     VANILLA 3.2 FOR REFERENCE: window 603x363, header 43 high, content at
+	     0,-46 and 319 high, descriptionText 590x265 at font 30, btnContinue at
+	     0,-277. Below is that layout scaled up coherently to 1000x700. Every
+	     sprite that draws a background is widened too, or the panel art stops
+	     short of the text.
+	     ================================================================ -->
+
+	<set xpath="//window[@name='windowTip']/@width">1000</set>
+	<set xpath="//window[@name='windowTip']/@height">700</set>
+	<!-- pos is the top-left offset from the Center anchor: half of each dimension. -->
+	<set xpath="//window[@name='windowTip']/@pos">-500,350</set>
+
+	<!-- Header: vanilla position and height are correct. Only the title is centred
+	     and sized. font_size is the real dial, NOT width: this label's style shrinks
+	     to fit and only steps between whole sizes. -->
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='header']/label[@style='header.name']" name="justify">center</setattribute>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='header']/label[@text='{tiptitle}']" name="width">1000</setattribute>
+
+	<!-- Content sits below the header. NEGATIVE Y is down. -->
+	<set xpath="//window[@name='windowTip']/rect[@name='content']/@height">654</set>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/sprite[@name='backgroundMain']" name="width">1000</setattribute>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/sprite[@name='backgroundMain']" name="height">654</setattribute>
+
+	<!-- Body text. Left-justified: centring every line of a long note is hard to
+	     read. Width is generous so shrink-to-fit has no reason to fire and the
+	     font_size actually takes effect. -->
+	<set xpath="//window[@name='windowTip']/rect[@name='content']/label[@name='descriptionText']/@width">960</set>
+	<set xpath="//window[@name='windowTip']/rect[@name='content']/label[@name='descriptionText']/@height">580</set>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/label[@name='descriptionText']" name="pos">20,-12</setattribute>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/label[@name='descriptionText']" name="font_size">28</setattribute>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/label[@name='descriptionText']" name="justify">left</setattribute>
+
+	<!-- ================================================================
+	     PALETTE, v2.5.0. Match the ESC guide (FrilHospitalESCGuide) so the note
+	     and the guide look like the same mod rather than one styled window and
+	     one vanilla one. Same three tiers: near-black panel, hazard red title,
+	     off-white body.
+	     Colours are raw RGB rather than a style_entry reference, because the ESC
+	     guide's style entries live in a DIFFERENT mod and cannot be relied on to
+	     be loaded. Vanilla XUi uses raw RGB in 136 places, so it is well supported.
+	     If these ever need to change, they must be changed in BOTH mods.
+	     ================================================================ -->
+
+	<!-- Panel fill. This is the only unnamed sprite in the content rect, hence
+	     the not(@name) predicate; it is vanilla [darkGrey] and is what made the
+	     window read as a stock 7DTD panel. -->
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/sprite[not(@name)]" name="color">20,22,26</setattribute>
+
+	<!-- Title in hazard red, matching the ESC guide header. The header rect is
+	     only 43 high, so 34 is about the ceiling before it starts to clip.
+	     This label uses style="header.name", which SHRINKS TEXT TO FIT and only
+	     steps between whole sizes, so font_size is the real dial and @width above
+	     is set generously purely to stop it shrinking. There is deliberately only
+	     ONE font_size op for this label: v2.3.0 and v2.5.0 each added one and the
+	     later one silently won, which is why the title came out at 27 not 34. -->
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='header']/label[@style='header.name']" name="color">220,60,60</setattribute>
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='header']/label[@text='{tiptitle}']" name="font_size">34</setattribute>
+
+	<!-- Continue button: darker than vanilla [darkGrey] so the bottom band does
+	     not dominate the panel. -->
+	<setattribute xpath="//window[@name='windowTip']/rect[@name='content']/rect[@name='btnContinue']/sprite[@name='background']" name="color">40,42,48</setattribute>
+
+	<!-- Continue button pinned near the bottom of the taller content rect. -->
+	<set xpath="//window[@name='windowTip']/rect[@name='content']/rect[@name='btnContinue']/@pos">0,-604</set>
+
+    <!-- Zombie HP bar -->
+    <set xpath="/windows/window[@name='windowTargetBar']/@visibility">always</set>
+
+	<!-- Push area/storm notifications down so they don't overlap the health bar -->
+	<set xpath="//window[@name='windowEntering']/rect/@pos">-170,-140</set>
+
+	<!-- windowEntering centre popup: keep POI name, remove difficulty skulls only -->
+	<remove xpath="//window[@name='windowEntering']/rect/grid"/>
+
+	<!-- Quest OFFER window: remove the "-0 TIER POINTS" label.
+	     This mod's challenges carry no tier points, so vanilla prints "-0 TIER
+	     POINTS" across the header. Only the offer window's header label is
+	     touched; the quest title itself is untouched, and the same label in
+	     windowQuestObjectives is deliberately left alone. -->
+	<remove xpath="//window[@name='windowQuestOffer']/rect[@name='header']/label[@text='{tieradd}']"/>
+
+	<!-- With the tier label gone, give the title the rest of the header.
+	     Vanilla pins it to width 450 purely to leave room for that tier text.
+	     Same shrink-to-fit caveat as above: the width is set generously so it
+	     never shrinks, and font_size is what actually controls the size. Kept
+	     matched to the windowTip title above so both popups look the same. -->
+	<set xpath="//window[@name='windowQuestOffer']/rect[@name='header']/label[@text='{questname}']/@width">560</set>
+	<setattribute xpath="//window[@name='windowQuestOffer']/rect[@name='header']/label[@text='{questname}']" name="font_size">27</setattribute>
+
+	<!-- windowLocation top-right persistent display: remove entirely.
+	     v2.2.0: was three separate <remove> ops on the label, grid and sprite
+	     children, which left an empty window behind. Now removes the whole
+	     window, matching what Frils-HUD does.
+	     NOTE: Frils-HUD removes the same window. Whichever mod patches first
+	     wins and the other logs "did not apply", which is harmless. Keeping the
+	     op here means Hospital still hides the readout when the HUD is not
+	     installed. The single op means one warning per patch pass instead of
+	     three when it is. -->
+	<remove xpath="//window[@name='windowLocation']"/>
+
+    <!-- Congratulations panel — shown in trader window group Center slot when talking to Jen -->
+    <!-- This is a standalone window added to the trader window group via xui.xml patch.      -->
+    <!-- It only ever appears when the trader UI is open, so no visibility gating needed.     -->
+</configs>

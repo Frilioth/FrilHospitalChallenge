@@ -2,65 +2,180 @@
 <!--
 	Navezgane Hospital Challenge — UI/Menu
 	Author: Frilioth
-	Version: 0.3.4
+	Version: 1.9.0
 
-	PLANNED:
-	- Custom menu background
-	- Remove 7DTD logo from title screen
-	- Hide irrelevant new game options
-	- Custom spawn menu labels
+	v1.9.0: the two Increasing Infection labels use text_key instead of literal
+	text, so they translate. A literal text= attribute is never localised.
+
+	v1.8.1: the preset values panel is now SHRUNK by the same amount it was moved
+	down, so it no longer runs off the bottom over the Sandbox Options button.
+
+	v1.8.0: Increasing Infection moved from the Advanced tab to the BASIC tab,
+	directly under the Preset combo, styled to match Group and Preset.
+
+	v1.7.0: the Increasing Infection control is now a vanilla ComboBoxBool, so it
+	matches the other rows and greys correctly. It was two SimpleButtons.
+
+	v1.6.0: section moved to the true bottom of the tab, and the Increasing
+	Infection description corrected - with it Off the virus is disabled entirely,
+	not merely held steady. Zombie hits are gated on the same cvar.
+
+	v1.5.0: the Increasing Infection row now sits under its own heading and an
+	explanation, instead of trying to pass as a vanilla gameoption row.
+
+	v1.4.0: Increasing Infection row RESTORED. It is now recorded in flags bit 2
+	of the HC-1 completion code, so a run carries proof of the setting.
+
+	v1.3.0: Increasing Infection row removed for the v1 release. See the note
+	where it used to be.
+
+	v1.2.1: promo boxes actually hidden now - the v1.2.0 attempt targeted the
+	window, which does not honour "visible". See the note above them.
+
+	v1.2.0: title screen now shows the Hospital logo in place of the 7DTD one
+	(texture swap, not a removal); the two promo boxes top-right are hidden;
+	the new game logo is smaller and moved right to clear Chunk Persistence.
+
+	v1.1.0: the three hidden options are now hidden with visible="false"
+	instead of <remove>. See the note above them - removing them threw
+	KeyNotFoundException and made the New Game screen unopenable.
+
+	v1.0.0 (3.2 PORT) — FULL REBUILD. Every xpath in v0.3.4 was dead.
+
+	WHAT CHANGED IN 3.2, all verified against the real vanilla file:
+
+	1. The New Game screen was split into TWO windows.
+	     newGame                  - game mode, world type, world name (leftPanel)
+	     newContinueGameSettings  - the options, now spread across FOUR tabs
+	   The old single window "newContinueGame" no longer exists, and the flat
+	   .../rect/rect/rect/rect/grid path with it. Options now live at
+	     newContinueGameSettings/rect[@name='tabs']/rect[@name='tabsContents']/rect/scrollview/grid
+
+	2. Of the 17 options v0.3.4 hid, only THREE still exist as <gameoption>:
+	     MaxChunkAge, BuildCreate (x3), CameraRestrictionMode
+	   The other 14 moved into the Sandbox Options system, so they are already
+	   absent from this screen and their <remove> ops are dropped rather than
+	   retargeted. For the record, the 14: XPMultiplier, DayNightLength,
+	   BlockDamagePlayer, BlockDamageAI, BlockDamageAIBM, LootAbundance,
+	   DeathPenalty, DropOnDeath, DropOnQuit, QuestProgressionDailyLimit,
+	   EnemySpawnMode, AirDropMarker, AirDropFrequency, BiomeProgression.
+	   NOTE: DeathPenalty IS in vanilla's file but COMMENTED OUT, which is why a
+	   plain text search suggests it survives. It does not.
+
+	3. The Increasing Infection row's anchor, gameoption JarRefund, is gone
+	   entirely (JarRefund is a Sandbox option now). It is re-anchored to
+	   PersistentPlayerProfiles, which sits in the same tab and is NOT hidden by
+	   this mod. Anchoring to any of the three hidden options would break as soon
+	   as the <remove> ops ran, which is why the insert comes first.
+
+	4. The Starting Weapon row is REMOVED, not retargeted. That feature was
+	   dropped: every run now starts with the same fixed kit, given by
+	   game_first_spawn in gameevents.xml v1.3.0.
+
+	5. Window "mainMenuLogo" no longer exists. gameLogo now lives in two places,
+	   the mainMenu window and the newsScreen window. Only the mainMenu one is
+	   removed here, matching the original intent of clearing the title screen.
+
+	6. The left panel path changed. The old
+	     newContinueGame/rect[@name='leftPanel']/rect[@name='newContent']
+	   is gone; the world controls now sit in the separate newGame window.
+	   PLAYTEST: the hospital logo position below is carried over unchanged and
+	   very likely needs nudging, because it was tuned against the old panel.
+
+	   menuBackground/bgTexture is unchanged in 3.2 and still resolves.
 -->
 <configs>
 
 	<!-- Hospital custom menu background -->
 	<set xpath="/windows/window[@name='menuBackground']/texture[@name='bgTexture']/@texture">@modfolder:UIAtlases/ItemIconAtlas/background.jpg</set>
-	
-	<!-- Remove 7DTD logo from main menu -->
-	<remove xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']"/>
-	
-	<!-- NEW GAME MENU - Hide irrelevant options -->
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='XPMultiplier']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DayNightLength']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamagePlayer']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamageAI']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BlockDamageAIBM']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='LootAbundance']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='MaxChunkAge']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DeathPenalty']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DropOnDeath']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='DropOnQuit']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BuildCreate']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='QuestProgressionDailyLimit']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='EnemySpawnMode']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='CameraRestrictionMode']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='AirDropMarker']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='AirDropFrequency']" />
-	<remove xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='BiomeProgression']" />
 
-	<!-- Increasing Infection toggle — custom controller row, no vanilla pref hijacking -->
-	<insertafter xpath="/windows/window[@name='newContinueGame']/rect/rect/rect/rect/grid/gameoption[@name='JarRefund']">
-		<rect height="45" controller="HospitalIncreasingInfection">
-			<label name="lblTitle" text="Increasing Infection" style="hover" font_size="28" color="[white]" width="260" justify="right" pivot="topleft" pos="0,-8" />
-			<button name="btnLeft" controller="SimpleButton" pos="288,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" pivot="center" />
-			<sprite pos="303,-1" width="233" height="34" color="[black]" type="sliced" sprite="menu_empty" />
-			<label name="lblValue" text="On" style="hover" font_size="28" color="[white]" width="233" justify="center" pivot="topleft" pos="303,-4" />
-			<button name="btnRight" controller="SimpleButton" pos="553,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" flip="Horizontally" pivot="center" />
-		</rect>
-		<rect height="45" controller="HospitalWeaponChoice">
-			<label name="lblTitle" text="Starting Weapon" style="hover" font_size="28" color="[white]" width="260" justify="right" pivot="topleft" pos="0,-8" />
-			<button name="btnLeft" controller="SimpleButton" pos="288,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" pivot="center" />
-			<sprite pos="303,-1" width="233" height="34" color="[black]" type="sliced" sprite="menu_empty" />
-			<label name="lblValue" text="Hunting Knife" style="hover" font_size="28" color="[white]" width="233" justify="center" pivot="topleft" pos="303,-4" />
-			<button name="btnRight" controller="SimpleButton" pos="553,-18" style="icon32px, press" sprite="ui_game_symbol_arrow_menu" flip="Horizontally" pivot="center" />
+	<!-- Title screen logo: SWAP the texture rather than removing the element.
+	     Keeps vanilla's element, anchor and depth, and avoids deleting something
+	     the MainMenuButtons controller may hold a reference to.
+	     The vanilla element uses keep_aspect_ratio="BasedOnHeight" with
+	     aspect_ratio="0.608" and height="400", so the SIZE must not be set here -
+	     that would fight the aspect logic and squash the image. Only the ratio
+	     changes: the hospital logo is 541x463, so 541/463 = 1.168. -->
+	<set xpath="/windows/window[@name='mainMenu']/texture[@name='gameLogo']/@texture">@modfolder:UIAtlases/ItemIconAtlas/hospitalLogo.png</set>
+	<set xpath="/windows/window[@name='mainMenu']/texture[@name='gameLogo']/@aspect_ratio">1.168</set>
+
+	<!-- Hide the two promo boxes top-right of the title screen.
+	     TARGET THE CHILD RECTS, NOT THE WINDOW. v1.2.0 set visible="false" on the
+	     mainMenuNews <window> and it had no effect: vanilla never uses "visible"
+	     on a window element (its only two uses in this file are on a rect and a
+	     captionedtextbox), and each promo box carries its OWN binding,
+	       visible="{% news_count > 0 }"
+	     which is what actually decides whether it draws. Overriding that binding
+	     with a literal false on each rect is what hides them.
+	     HIDDEN, NOT REMOVED: both rects carry controller="NewsWindow" and the
+	     parent carries controller="MainMenuButtons", so deleting them risks the
+	     same class of failure as removing the BuildCreate gameoption did. -->
+	<setattribute xpath="/windows/window[@name='mainMenuNews']/rect[@name='game']" name="visible">false</setattribute>
+	<setattribute xpath="/windows/window[@name='mainMenuNews']/rect[@name='featured']" name="visible">false</setattribute>
+
+
+	<!-- ================================================================
+	     INCREASING INFECTION  -  BASIC tab, directly under the Preset combo.
+	     It lived on the Advanced tab until v1.8.0; nobody looks there, and this
+	     is the one setting in the mod a player actually needs to see.
+
+	     Laid out to match the Group and Preset controls immediately above it,
+	     copied from vanilla's presetSelector: label at 0,-20 font 28 centred,
+	     full-width combo at 0,-40 height 38 font 30, same border colour.
+
+	     ComboBoxBool is what vanilla uses for on/off options, so the arrows, the
+	     boxed value, the On/Off text (localization_prefix="xuiComboOnOff", vanilla's
+	     own keys) and the disabled styling all come from the engine.
+
+	     GEOMETRY, AND THE ARITHMETIC THAT MUST HOLD:
+	       vanilla   sandboxPresetValues pos 0,-250 height 320  -> bottom edge -570
+	       here      this block 120 high at -250
+	                 sandboxPresetValues pos 0,-370 height 200  -> bottom edge -570
+	     The BOTTOM EDGE must stay at -570. v1.8.0 pushed the panel down 130 but
+	     left its height at 320, so its bottom went to -700, past the window and
+	     straight over the Sandbox Options button. The panel contains a scrollview,
+	     so losing height costs scrolling, not content.
+	     If this block's height changes, BOTH the panel's pos AND its height must
+	     change by the same amount, in opposite directions.
+	     ================================================================ -->
+	<insertafter xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/rect[@name='presetSelector']">
+		<rect name="hospitalIncreasingInfection" pos="190,-250" width="${parentinnerwidth-190}" height="120" controller="HospitalIncreasingInfection">
+			<label depth="4" pos="0,-20" height="30" style="hover" text_key="hospitalIncreasingInfectionLabel" font_size="28" color="[white]" justify="center" pivot="left"/>
+			<combobox name="ControlCombo" type="ComboBoxBool" localization_prefix="xuiComboOnOff" pos="0,-40" width="${parentinnerwidth}" height="38" font_size="30" value_wrap="false" border_color="64,64,64,255"/>
+			<label name="lblHospitalHelp" depth="4" pos="0,-82" width="${parentinnerwidth}" height="38" font_size="18" color="150,155,165" justify="center" pivot="topleft" text_key="hospitalIncreasingInfectionHelp"/>
 		</rect>
 	</insertafter>
 
-	<!-- Hospital logo — displayed below Game World options in new game left panel.
-	     Size 400x342 maintains the original 541x463 aspect ratio.
-	     Centred horizontally in the 590px left panel (x = (590-400)/2 = 95).
-	     y=-310 places it below the visible Game World rows. -->
-	<append xpath="/windows/window[@name='newContinueGame']/rect[@name='leftPanel']/rect[@name='newContent']">
-		<texture name="hospitalLogoImg" depth="5" pos="95,-310" size="400,342" material="Materials/Transparent Colored" texture="@modfolder:UIAtlases/ItemIconAtlas/hospitalLogo.png" />
+	<!-- Move the preset values panel down by the block height AND shrink it by
+	     the same amount, so its bottom edge stays at -570 where vanilla put it. -->
+	<set xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/rect[@name='sandboxPresetValues']/@pos">0,-370</set>
+	<set xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/rect[@name='sandboxPresetValues']/@height">200</set>
+
+	<!-- ================================================================
+	     NEW GAME MENU — hide irrelevant options
+	     Only the three that still exist. See note 2 in the header.
+
+	     HIDDEN, NOT REMOVED. XUiC_NewContinueGameSettings keeps a name-keyed
+	     dictionary "gameOptions" and looks entries up directly:
+	       ApplyCreativeModeChangeAllowed does gameOptions["BuildCreate"]
+	     A <remove> therefore threw KeyNotFoundException on OnOpen and made the
+	     New Game and Continue screens unopenable. v1.0.0 shipped with that bug.
+	     setattribute visible="false" keeps the element in the dictionary while
+	     hiding the row, and "visible" is a valid gameoption attribute in vanilla
+	     (ResetUnprotectedChunks uses visible="{%iscontinuegame}").
+	     ================================================================ -->
+	<setattribute xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/scrollview/grid/gameoption[@name='MaxChunkAge']" name="visible">false</setattribute>
+	<setattribute xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/scrollview/grid/gameoption[@name='BuildCreate']" name="visible">false</setattribute>
+	<setattribute xpath="/windows/window[@name='newContinueGameSettings']/rect[@name='tabs']/rect[@name='tabsContents']/rect/scrollview/grid/gameoption[@name='CameraRestrictionMode']" name="visible">false</setattribute>
+
+	<!-- Hospital logo — displayed in the new game left panel.
+	     v1.2.0: reduced from 400x342 and moved right, because at the old size and
+	     position it overlapped the Chunk Persistence row. 280x240 keeps the source
+	     image's 541x463 aspect ratio (280 / 1.168 = 240).
+	     These coordinates are an estimate against the 3.2 panel and may still need
+	     a nudge - adjust pos here, no rebuild needed. -->
+	<append xpath="/windows/window[@name='newGame']/rect[@name='leftPanel']">
+		<texture name="hospitalLogoImg" depth="5" pos="240,-360" size="280,240" material="Materials/Transparent Colored" texture="@modfolder:UIAtlases/ItemIconAtlas/hospitalLogo.png" />
 	</append>
 
 </configs>

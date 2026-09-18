@@ -108,16 +108,11 @@
   <decoration type="model" name="departure_city_blk_01" position="1618,60,-1947" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="departure_city_blk_01" position="1730,60,-1947" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="departure_city_blk_plaza" position="1730,61,-1835" rotation="0" y_is_groundlevel="true" />
-  <decoration type="model" name="departure_city_sign" position="1831,69,-1538" rotation="1" y_is_groundlevel="true" />
-  <decoration type="model" name="departure_city_sign" position="1548,61,-1846" rotation="2" y_is_groundlevel="true" />
   <decoration type="model" name="desert_town_blk_01" position="107,62,-1814" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="diersville_city_blk_01" position="935,60,697" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="diersville_city_blk_01" position="1079,60,697" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="diersville_city_blk_01" position="935,60,573" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="diersville_city_blk_02" position="1079,60,573" rotation="0" y_is_groundlevel="true" />
-  <decoration type="model" name="diersville_city_sign_01" position="910,61,686" rotation="2" y_is_groundlevel="true" />
-  <decoration type="model" name="diersville_city_sign_01" position="1236,61,686" rotation="0" y_is_groundlevel="true" />
-  <decoration type="model" name="diersville_city_sign_01" position="1068,61,423" rotation="3" y_is_groundlevel="true" />
   <decoration type="model" name="diner_02" position="-1910,76,634" rotation="1" y_is_groundlevel="true" />
   <decoration type="model" name="diner_03" position="81,78,-2321" rotation="3" y_is_groundlevel="true" />
   <decoration type="model" name="docks_01" position="-1323,48,680" rotation="3" y_is_groundlevel="true" />
@@ -171,10 +166,6 @@
   <decoration type="model" name="gravestowne_city_blk_quarter" position="-584,60,-364" rotation="1" y_is_groundlevel="true" />
   <decoration type="model" name="gravestowne_city_blk_quarter" position="-326,60,-364" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="gravestowne_city_blk_quarter" position="-550,60,-364" rotation="0" y_is_groundlevel="true" />
-  <decoration type="model" name="gravestowne_city_sign_01" position="-451,61,-629" rotation="3" y_is_groundlevel="true" />
-  <decoration type="model" name="gravestowne_city_sign_01" position="-444,61,-135" rotation="1" y_is_groundlevel="true" />
-  <decoration type="model" name="gravestowne_city_sign_01" position="-211,61,-489" rotation="0" y_is_groundlevel="true" />
-  <decoration type="model" name="gravestowne_city_sign_01" position="-588,61,-489" rotation="2" y_is_groundlevel="true" />
   <decoration type="model" name="gravestowne_street_crater_01" position="-447,57,-373" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="gravestowne_street_crater_01" position="-566,57,-373" rotation="3" y_is_groundlevel="true" />
   <decoration type="model" name="gravestowne_street_crater_01" position="-559,57,-471" rotation="0" y_is_groundlevel="true" />
@@ -1254,7 +1245,6 @@
   <decoration type="model" name="remnant_downtown_strip_20" position="-1765,54,-798" rotation="1" y_is_groundlevel="true" />
   <decoration type="model" name="sign_stop" position="-1715,54,-785" rotation="0" y_is_groundlevel="true" />
   <decoration type="model" name="bus_stop_01" position="-1724,54,-609" rotation="3" y_is_groundlevel="true" />
-  <decoration type="model" name="remnant_lot_industrial_01" position="-1869,54,-725" rotation="1" y_is_groundlevel="true" />
   <decoration type="model" name="remnant_selfstorage_02" position="1954,61,-1694" rotation="3" y_is_groundlevel="true" />
   <decoration type="model" name="countrytown_business_16" position="1710,66,-1082" rotation="3" y_is_groundlevel="true" />
   <decoration type="model" name="countrytown_business_17" position="-370,76,1781" rotation="0" y_is_groundlevel="true" />

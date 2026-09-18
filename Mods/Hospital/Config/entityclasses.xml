@@ -2,7 +2,14 @@
 <!--
 	Navezgane Hospital Challenge — Entity Classes
 	Author: Frilioth
-	Version: 0.4.0
+	Version: 0.5.0
+
+	v0.5.0 (3.2 PORT):
+	- LootListOnDeath renamed to LootList on all 5 bag classes.
+	  LootListOnDeath does not exist in 3.x and fails SILENTLY: the entity
+	  just inherits its parent's list (zPackReg from EntityLootContainerRegular).
+	  Verified against vanilla 3.2 entityclasses.xml: LootList 99 uses,
+	  LootListOnDeath 0 uses.
 
 	BAG TYPES:
 	- HospitalYellow  : medical supplies — Nurse, Lab, Hazmat
@@ -24,14 +31,14 @@
 
 		<!-- Yellow bag: medical / hospital supplies -->
 		<entity_class name="EntityLootContainerHospitalYellow" extends="EntityLootContainerRegular">
-			<property name="LootListOnDeath" value="HospitalYellow"/>
+			<property name="LootList" value="HospitalYellow"/>
 			<property name="OverrideName" value="lootHospitalYellow"/>
 			<property name="SizeScale" value="0.9"/>
 		</entity_class>
 
 		<!-- Books rucksack: skill magazines -->
 		<entity_class name="EntityLootContainerHospitalBooks" extends="EntityLootContainerRegular">
-			<property name="LootListOnDeath" value="HospitalBooks"/>
+			<property name="LootList" value="HospitalBooks"/>
 			<property name="OverrideName" value="lootHospitalBooks"/>
 			<property name="Mesh" value="@:Entities/LootContainers/backpack_vehicleDroppedPrefab.prefab"/>
 			<property name="SizeScale" value="0.75"/>
@@ -39,21 +46,21 @@
 
 		<!-- Cops bag: acid + tail assembly -->
 		<entity_class name="EntityLootContainerHospitalCops" extends="EntityLootContainerRegular">
-			<property name="LootListOnDeath" value="HospitalCops"/>
+			<property name="LootList" value="HospitalCops"/>
 			<property name="OverrideName" value="lootHospitalCops"/>
 			<property name="SizeScale" value="0.9"/>
 		</entity_class>
 
 		<!-- Biker bag: spark plugs -->
 		<entity_class name="EntityLootContainerHospitalBiker" extends="EntityLootContainerRegular">
-			<property name="LootListOnDeath" value="HospitalBiker"/>
+			<property name="LootList" value="HospitalBiker"/>
 			<property name="OverrideName" value="lootHospitalBiker"/>
 			<property name="SizeScale" value="0.85"/>
 		</entity_class>
 
 		<!-- Heavy bag: engine parts -->
 		<entity_class name="EntityLootContainerHospitalHeavy" extends="EntityLootContainerRegular">
-			<property name="LootListOnDeath" value="HospitalHeavy"/>
+			<property name="LootList" value="HospitalHeavy"/>
 			<property name="OverrideName" value="lootHospitalHeavy"/>
 			<property name="SizeScale" value="0.9"/>
 		</entity_class>

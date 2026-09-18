@@ -1,135 +1,173 @@
 # Navezgane Hospital Challenge
-### A 7 Days to Die Challenge Mod — v1.1.0
-**Author:** Frilioth | **Game Version:** V2.6 | **World:** Navezgane
+
+### A 7 Days to Die challenge mod
+
+**Author:** Frilioth · **Game version:** 3.2 · **Mod version:** 0.22.0
 
 ---
 
 ## What is this?
 
-You wake up in Navezgane Hospital, infected with the **Voss-7 Virus** — a mutated strain of the Septdiurnal Virus resistant to honey and antibiotics. The virus is killing you. The only cure is at Trader Jen's clinic, 1.4km away. The only way to reach her is by gyrocopter. The only gyrocopter is broken on the hospital roof.
+You wake up in Navezgane Hospital, infected with **Voss-7** — a mutated strain of the Septdiurnal Virus, resistant to honey and antibiotics. It is killing you. The only cure is at Trader Jen's clinic, and the only way to reach her is the wrecked gyrocopter on the hospital roof.
 
-This is a **permadeath challenge mod** with a single objective: fix the gyro and fly to Trader Jen before the virus kills you.
-
----
-
-## Key Features
-
-- **One life.** Die and your run is over.
-- **Voss-7 Virus** ticks up constantly, causing progressive stat debuffs as it climbs. At 100% you die. Suppressants slow it. Only The Cure stops it.
-- **8 gyro parts** to find and install in a fixed order — each from a different source, each requiring you to explore a different part of the hospital.
-- **Outside the hospital, a horde follows you** at nightmare speed. Running is not an option.
-- **Permadeath escape** — fly to Trader Jen, receive The Cure, survive.
-- **Target run time:** 7–10 days on Nomad difficulty.
-- **Multiplayer supported** — designed for co-op.
+One life. Eight parts. About eight days before the virus finishes the job.
 
 ---
 
-## The Voss-7 Virus
+## Key features
 
-The virus ticks upward throughout your run. Vanilla antibiotics have been removed — they don't work on Voss-7.
+- **Permadeath.** Die and the run is over.
+- **A clock that never stops.** Voss-7 climbs from 5% at a flat rate and kills you at 100%. Suppressants push it back down; only The Cure ends it.
+- **Eight gyro parts**, each from a different source, each pushing you into a different part of the building.
+- **Six difficulty presets**, from learning the layout to not expected to be survivable.
+- **A debrief page** written at the end of every run, with a verifiable completion code.
+- **Eleven languages.**
 
-| Infection % | Effect |
+---
+
+## Installing
+
+Copy each folder into your `Mods` directory.
+
+**Required**
+
+| Folder | |
 |---|---|
-| 25% | -10% stamina regen |
-| 50% | -15% move speed |
-| 75% | Beer buzz + -25% stamina regen, -20% move speed |
-| 90% | Weapon sway |
-| 99% | Final warning — unmistakable visual effect |
-| 100% | Death |
+| `Hospital` | the mod, including its five maps in `Worlds` |
+| `0_HospitalItems` | items |
+| `zzzz_FrilBlocks` | adds blocks needed for the challenge |
+| `GyroRepairMod` | builds and launches the gyrocopter |
+| `FrilHospitalESCGuide` | the in-game survival guide |
 
-### Virus Suppressants
+**Recommended**
 
-Crafted at the Chemistry Station. Suppressants slow the virus — they don't cure it.
+`Frils-HUD` · `FrilRagdollFloorFix` · `FrilHospitalMenuVideoCycler` · `FrilHospitalRotateLoadingscreens`
 
-| Tier | Ingredients | Effect |
+Folder names are only what the download ships as. The game identifies a mod by the `Name` in its `ModInfo.xml`, so you can rename them.
+
+This mod contains code, so **EAC must be off**.
+
+### Single player only
+
+**Do not run this on a dedicated server yet.** The challenge itself is per-player and works, but the rest of the mod assumes one player, so the host gets a working game and nobody else does. A co-op version is planned.
+
+---
+
+## Difficulty
+
+| Preset | |
+|---|---|
+| Walk-In | ill, but not dying yet. For learning the hospital. |
+| Under Observation | stable for now. Forgiving, still expects attention. |
+| Critical | **the challenge as intended. Recommended.** |
+| Code Blue | deteriorating. Faster infected, heavier hits. |
+| Terminal | everything sprints. The roof is a long way up. |
+| Flatline | not expected to be survivable. Prove otherwise. |
+
+There is also an **Increasing Infection** toggle on the Basic tab. Leave it on for the real challenge. Turned off, the virus is disabled and your first suppressant ends it for the whole run — for players who want the hospital without the clock. Runs with it off are marked as such and are not ranked.
+
+---
+
+## Voss-7
+
+Starts at **5%** and climbs about **1% every five minutes**, flat, nothing accelerates it. A zombie hit adds 0.2%. Untouched, that is roughly day 8.
+
+| Infection | Effect |
+|---|---|
+| 25% | stamina regen −10% |
+| 50% | movement speed −15% |
+| 75% | stamina a further −15%, movement a further −5% |
+| 90% | weapon handling −30% |
+| 100% | death |
+
+**The effects stack, and they lift again.** Each threshold costs you something only while you are above it — push the level back down and you get it back. From 75% the screen begins to sway; at 99% it turns properly bad and you have about a minute left.
+
+### Suppressants
+
+Crafted at a Chemistry Station. They push the infection **down**, never to zero, and the climb resumes when they run out.
+
+| Tier | Cost | Reduces |
 |---|---|---|
-| Weak | 1 Painkiller + Voss-7 Reagent | Slows progression |
-| Standard | 2 Painkillers + 2 Voss-7 Reagent | Slows more |
-| Strong | 3 Painkillers + 3 Voss-7 Reagent | Slows significantly |
+| Weak | 1 painkiller + 1 reagent | 1% |
+| Standard | 2 painkillers + 2 reagents | 2.5% |
+| Strong | 3 painkillers + 3 reagents | 6.25% |
 
-**Voss-7 Reagent** is crafted at the Chemistry Station from Acid + Blood Bags + Rotting Flesh. Acid drops from cop and mutated zombies. Blood bags drop from IV stands throughout the hospital.
+**Voss-7 Reagent** is crafted from 1 acid + 1 blood bag + 10 rotting flesh, and **yields 3**. Acid is the bottleneck of the whole chain: it comes from medical containers, and from the bags dropped by cops, soldiers and mutated zombies.
 
 ---
 
-## The Gyrocopter — 8 Parts
+## The eight parts
 
-Find and install all 8 parts at the repair block on the hospital roof. Order is fixed — it makes mechanical sense.
+Install them into the wrecked gyro on the roof. The order is fixed.
 
-| Stage | Part | Where to find it |
+| Stage | Part | Where |
 |---|---|---|
-| 1 | Radiator | Loot / wrench vehicles and AC units |
-| 2 | Water (jar) | Any water source |
-| 3 | Small Engine | Utility Worker zombie bags (15%), craftable |
-| 4 | Car Battery | car loot, craftable |
-| 5 | Spark Plugs | Biker zombie bags, vehicle wrenching (10%), garage containers |
-| 6 | Control Cables | Craft at Workbench (Electrical Parts + Duct Tape) |
-| 7 | Tail Assembly | Cop/Soldier zombie bags (15%), craftable |
-| 8 | Rotor Blades | Wrench AC units (10% per unit), craftable with Forged Steel |
+| 1 | Radiator | wrench the hospital's air conditioning units, 25% each |
+| 2 | Water | standing water in the basement |
+| 3 | Engine | heavy loot bags, or craft at a workbench |
+| 4 | Battery | vehicles, janitor trolleys, or craft at a chemistry station |
+| 5 | Spark Plugs | carried by bikers |
+| 6 | Control Cables | craft at a workbench from electrical parts and duct tape |
+| 7 | Tail Assembly | carried by cop zombies |
+| 8 | Rotor Blades | wrench air conditioning units, 10% each, or craft from forged steel |
 
-Fuel is not a part — fuel the gyro normally once it spawns.
+Fuel is not a part. Fuel the gyro normally once it spawns.
 
----
+### Two things that catch people out
 
-## Workstations
+**The engine is not in the cars.** Wrecked vehicles give engines in the base game. They do not here, no matter how long you wrench. It comes from a heavy loot bag or the workbench, and the recipe needs **forged steel** — so you need a forge and a crucible.
 
-Three Workbenches and three Chemistry Stations are pre-placed in the hospital. They are indestructible. You cannot build or pick up workstations — plan your routes carefully.
-
----
-
-## Starting Loadout
-
-Every run starts with the same core items — but you choose your weapon.
-
-**Core:** Hospital Survival Guide, Stone Axe, 2× First Aid Bandage, 2× Boiled Water, 2× Chilli, 1× Strong Suppressant
-
-**Weapon choice** (set in New Game → Advanced):
-- **Hunting Knife** — highest sneak damage, best for stealth
-- **Baseball Bat** + Bone Knife
-- **Iron Spear** + Bone Knife
-- **Wooden Bow** + 30 Stone Arrows + Bone Knife
+**You cannot build a workbench or a chemistry station.** Several of each are fixed around the hospital; find them and learn where the nearest are. **The forge is the exception** — you can and should build one.
 
 ---
 
-## New Game Options
+## Starting kit
 
-Two custom options appear in the Advanced tab of the new game menu:
+Every run starts the same: Hospital Survival Guide, Stone Axe, 2× First Aid Bandage, 2× Boiled Water, 2× Chilli, 1× Strong Suppressant, Hunting Knife.
 
-**Increasing Infection** — On/Off. When Off, the virus stays at 0.1% indefinitely — the pressure is removed for a more relaxed experience. The cure is still required to escape.
-
-**Starting Weapon** — Choose your opening loadout from four options.
+The starting-weapon choice from earlier versions has been removed.
 
 ---
 
-## The Escape
+## The survival guide
 
-Once all 8 parts are installed the gyrocopter spawns on the roof. Trader Jen's waypoint appears on your compass. Fly to her clinic (1.4km southwest), talk to her, receive The Cure, use it. Your run is complete.
-
-**Warning:** The moment you leave the hospital grounds, a horde spawns around you at nightmare speed. They don't stop. Fly fast.
+Press **ESC** in game for a four-tab guide: what the virus is and how it behaves, what each stage costs you, where all eight parts come from, and practical advice on staying alive. Translated into every supported language.
 
 ---
 
-## Tips
+## If you escape
 
-- Read the **Hospital Survival Guide** in your starting inventory — it explains the mechanics in-game.
-- Suppressants buy time but never fully stop the virus. Keep crafting.
-- The basement battery has the toughest guarded encounter in the hospital. Come prepared.
-- Blood moons happen every 7 days. The hospital is not a safe place to be during one.
-- Crops grow without sunlight inside the hospital — aloe and food can be farmed indoors.
-- Loot respawns every 5 days. If you're struggling for parts, survive long enough for a second pass.
+The run writes a full debrief to `stats/Hospital_Debrief.html` inside the mod folder — the in-game message tells you the exact path. It has your timeline, kills, suppressant use, peak infection, and when you found each part.
+
+It also contains a **leaderboard code** beginning `HC-1-`, which encodes your run so it can be verified. You can print it at any time with the console command `hospitalcode`.
+
+*The leaderboard is not live yet. Hold on to your code until it is.*
 
 ---
 
-## Compatibility
+## Languages
 
-- **7 Days to Die V2.6** — required
-- **Navezgane** world only
-- Works in multiplayer / co-op
+English, French, German, Spanish, Italian, Polish, Brazilian Portuguese, Russian, Turkish, Japanese and Simplified Chinese.
+
+Everything the mod adds is translated. Place and character names are left in English in the Latin-script languages on purpose; Japanese and Chinese follow the game's own conventions for them.
+
+Corrections are welcome — several of these have been checked by native speakers and several have not.
+
+---
+
+## Known issues
+
+- Multiplayer is not supported. See above.
+- The vanilla **Infection Chance** and **Infection Rate** sandbox options do nothing here. Voss-7 replaces the vanilla infection entirely, but they still appear in the options list because they are vanilla settings.
+- Loot respawns every 5 days, so the hospital feels picked clean before then. That is intended.
+- Rain is disabled in all biomes, which was a performance decision rather than a design one.
+
+If you hit something else, a copy of your `Player.log` is far more useful than a description.
 
 ---
 
 ## Credits
 
-Developed and modded by **Frilioth**  
-Twitch: [twitch.tv/frilioth](https://twitch.tv/frilioth)
+Developed by **Frilioth** — [twitch.tv/Frilioth](https://twitch.tv/Frilioth)
 
-
+Thanks to the playtesters who died a great many times so this could be balanced, and to **AuroraGiggleFairy**, whose AGF-ESCWindow showed how to hang a window off the ESC menu without a line of code.
