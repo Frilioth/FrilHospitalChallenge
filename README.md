@@ -35,7 +35,7 @@ Copy each folder into your `Mods` directory.
 |---|---|
 | `Hospital` | the mod, including its five maps in `Worlds` |
 | `0_HospitalItems` | items |
-| `zzzz_FrilBlocks` | adds blocks needed for the challenge |
+| `zzzz_FrilBlocks` | restricts the creative menu |
 | `GyroRepairMod` | builds and launches the gyrocopter |
 | `FrilHospitalESCGuide` | the in-game survival guide |
 
