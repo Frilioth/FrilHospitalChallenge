@@ -115,8 +115,6 @@
 	<!-- Continue button pinned near the bottom of the taller content rect. -->
 	<set xpath="//window[@name='windowTip']/rect[@name='content']/rect[@name='btnContinue']/@pos">0,-604</set>
 
-    <!-- Zombie HP bar -->
-    <set xpath="/windows/window[@name='windowTargetBar']/@visibility">always</set>
 
 	<!-- Push area/storm notifications down so they don't overlap the health bar -->
 	<set xpath="//window[@name='windowEntering']/rect/@pos">-170,-140</set>
