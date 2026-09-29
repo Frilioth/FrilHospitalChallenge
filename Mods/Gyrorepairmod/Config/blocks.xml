@@ -6,15 +6,19 @@
         Place all 8 required parts inside and close the window
         to trigger the repair and spawn a working gyrocopter.
 
-        Required parts:
-            resourceRadiator
-            drinkJarRiverWater
-            hospitalGyroEngine
-            hospitalGyroBattery
+        Required parts (8 slots):
+            smallEngine
+            carBattery
             hospitalGyroSparkPlugs
             hospitalGyroControlCables
             hospitalGyroTailAssembly
             hospitalGyroBlades
+            resourceRadiator
+            drinkJarRiverWater  OR  drinkJarBoiledWater   (coolant, either is fine)
+
+        The coolant slot takes murky or clean water. Pure mineral water is
+        deliberately not accepted. The authoritative list lives in
+        GyroRepairData.Parts in GyroRepairMod.cs — this comment mirrors it.
 
         NOTE: If the model sits raised off the floor, adjust
         ModelOffset Y downward in increments of 0.5 until it

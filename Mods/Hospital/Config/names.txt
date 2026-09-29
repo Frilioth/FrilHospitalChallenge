@@ -12,12 +12,16 @@
 # Not all zombies of that type will be renamed — roughly 1 in 3 will
 # show the completer's name, the rest keep their default name.
 
-Frilioth=Soldier
+Frilioth=zombieSoldier
 Devilskut=zombieYo
 Devilskut=zombieYoFeral
 Mink80=zombieBiker
-Mink80=zombieBikerFerral
+Mink80=zombieBikerFeral
 HumbleDonkey=zombieSteve
 HumbleDonkey=zombieSteveFeral
 Game Retainer=zombieFatHawaiian
 Game Retainer=zombieFatHawaiianFeral
+Frantic Dan=zombieTomClark
+Frantic Dan=zombieTomClark
+Frantic Dan=zombieTomClarkFeral
+Frantic Dan=zombieTomClarkFeral

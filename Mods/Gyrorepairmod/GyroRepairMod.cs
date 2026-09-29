@@ -1,7 +1,21 @@
 ﻿// File: GyroRepairMod.cs
 // Gyrocopter Repair Mod
 // Author: Frilioth
-// Version: 1.3.1
+// Version: 1.4.0
+//
+// v1.4.0 CHANGES (from v1.3.1)
+//   - The coolant slot now accepts MURKY OR CLEAN water: drinkJarRiverWater or
+//     drinkJarBoiledWater. Either one alone fills the slot.
+//     drinkJarPureMineralWater is deliberately NOT accepted.
+//   - This needed a structural change, not a name added to a list. The old
+//     RequiredParts was a flat HashSet of item names and the completion test was
+//     "found.Count < RequiredParts.Count". Adding a second water name to that set
+//     would have raised the count to 9 and demanded BOTH waters. Parts are now
+//     SLOTS, each accepting one or more item names, and completion counts
+//     SATISFIED SLOTS rather than distinct item names.
+//   - PartLabels and RequiredParts are replaced by Parts and AcceptedItems.
+//     Nothing outside this file referenced either, and both uses inside it
+//     (UpdateStatusLabels and the completion check) are updated below.
 //
 // v1.3.1 CHANGES (from v1.3.0)
 //   - Fixed the container clear on completion. te is ALREADY a TEFeatureStorage
@@ -44,7 +58,7 @@
 //
 // REQUIRED PARTS (one of each, any slot order):
 //   resourceRadiator
-//   drinkJarRiverWater
+//   drinkJarRiverWater  OR  drinkJarBoiledWater   (coolant, either is fine)
 //   smallEngine
 //   carBattery
 //   hospitalGyroSparkPlugs
@@ -60,7 +74,7 @@ using UnityEngine;
 
 public class GyroRepairMod : IModApi
 {
-    public const string ModVersion = "1.3.1";
+    public const string ModVersion = "1.4.0";
 
     public void InitMod(Mod _modInstance)
     {
@@ -73,26 +87,67 @@ public class GyroRepairMod : IModApi
 
 // ---------------------------------------------------------------
 // SHARED DATA
-// Maps internal item names to display labels for the status panel.
+//
+// A part is a SLOT, not an item name. Most slots accept exactly one item, but
+// the coolant slot accepts either murky or clean water, so the structure has to
+// carry a set of acceptable names per slot rather than a single name.
+//
+// This is why completion counts SATISFIED SLOTS and not distinct item names:
+// with a flat name list, adding a second accepted water would have raised the
+// required count and demanded both.
 // ---------------------------------------------------------------
+public sealed class GyroPart
+{
+    public readonly string Label;
+    public readonly string[] Accepts;
+
+    public GyroPart(string label, params string[] accepts)
+    {
+        Label = label;
+        Accepts = accepts;
+    }
+
+    // A slot is filled if ANY of its accepted items is present.
+    public bool IsSatisfiedBy(HashSet<string> present)
+    {
+        for (int i = 0; i < Accepts.Length; i++)
+            if (present.Contains(Accepts[i])) return true;
+        return false;
+    }
+}
+
 public static class GyroRepairData
 {
     // Order here must match the order of labels in windows.xml exactly.
-    public static readonly List<KeyValuePair<string, string>> PartLabels = new List<KeyValuePair<string, string>>
+    public static readonly List<GyroPart> Parts = new List<GyroPart>
     {
-        new KeyValuePair<string, string>("smallEngine",               "Engine"         ),
-        new KeyValuePair<string, string>("carBattery",                "Battery"        ),
-        new KeyValuePair<string, string>("hospitalGyroSparkPlugs",    "Spark Plugs"    ),
-        new KeyValuePair<string, string>("hospitalGyroControlCables", "Control Cables" ),
-        new KeyValuePair<string, string>("hospitalGyroTailAssembly",  "Tail Assembly"  ),
-        new KeyValuePair<string, string>("hospitalGyroBlades",        "Rotor Blades"   ),
-        new KeyValuePair<string, string>("resourceRadiator",          "Radiator"       ),
-        new KeyValuePair<string, string>("drinkJarRiverWater",        "Coolant Water"  )
+        new GyroPart("Engine",         "smallEngine"               ),
+        new GyroPart("Battery",        "carBattery"                ),
+        new GyroPart("Spark Plugs",    "hospitalGyroSparkPlugs"    ),
+        new GyroPart("Control Cables", "hospitalGyroControlCables" ),
+        new GyroPart("Tail Assembly",  "hospitalGyroTailAssembly"  ),
+        new GyroPart("Rotor Blades",   "hospitalGyroBlades"        ),
+        new GyroPart("Radiator",       "resourceRadiator"          ),
+
+        // Murky or clean. Boiled water counts because a player who has been
+        // purifying drinking water already has usable coolant, and the basement
+        // standing water stops being the only route to this part.
+        // drinkJarPureMineralWater is NOT accepted, on purpose.
+        new GyroPart("Coolant Water",  "drinkJarRiverWater", "drinkJarBoiledWater")
     };
 
-    public static readonly HashSet<string> RequiredParts = new HashSet<string>(
-        PartLabels.ConvertAll(kvp => kvp.Key)
-    );
+    // Flat set of every name any slot will take. Used only to decide whether an
+    // item in the container is worth looking at; it is NOT the completion count.
+    public static readonly HashSet<string> AcceptedItems = BuildAcceptedItems();
+
+    private static HashSet<string> BuildAcceptedItems()
+    {
+        HashSet<string> set = new HashSet<string>();
+        foreach (GyroPart p in Parts)
+            foreach (string name in p.Accepts)
+                set.Add(name);
+        return set;
+    }
 }
 
 // ---------------------------------------------------------------
@@ -223,7 +278,7 @@ public class GyroRepairWindowOpenPatch
         {
             if (labels == null) return;
 
-            // Collect which required parts are currently in the container
+            // Collect which accepted items are currently in the container
             HashSet<string> foundParts = new HashSet<string>();
             if (te.items != null)
             {
@@ -231,19 +286,19 @@ public class GyroRepairWindowOpenPatch
                 {
                     if (stack == null || stack.IsEmpty()) continue;
                     string itemName = stack.itemValue?.ItemClass?.GetItemName();
-                    if (itemName != null && GyroRepairData.RequiredParts.Contains(itemName))
+                    if (itemName != null && GyroRepairData.AcceptedItems.Contains(itemName))
                         foundParts.Add(itemName);
                 }
             }
 
             // Update labels by index — array contains exactly our 8 part labels, no header
-            for (int i = 0; i < GyroRepairData.PartLabels.Count && i < labels.Length; i++)
+            for (int i = 0; i < GyroRepairData.Parts.Count && i < labels.Length; i++)
             {
-                KeyValuePair<string, string> entry = GyroRepairData.PartLabels[i];
-                bool found = foundParts.Contains(entry.Key);
+                GyroPart entry = GyroRepairData.Parts[i];
+                bool found = entry.IsSatisfiedBy(foundParts);
                 // 3.2: XUiV_Label.IsDirty is gone; SetTextImmediately replaces
                 // the old Text + IsDirty pair.
-                labels[i].SetTextImmediately((found ? "[00ff00][+][-] " : "[ff0000][x][-] ") + entry.Value);
+                labels[i].SetTextImmediately((found ? "[00ff00][+][-] " : "[ff0000][x][-] ") + entry.Label);
             }
         }
         catch (Exception e)
@@ -319,13 +374,24 @@ public class GyroRepairContainerPatch
             {
                 if (stack == null || stack.IsEmpty()) continue;
                 string itemName = stack.itemValue?.ItemClass?.GetItemName();
-                if (itemName != null && GyroRepairData.RequiredParts.Contains(itemName))
+                if (itemName != null && GyroRepairData.AcceptedItems.Contains(itemName))
                     found.Add(itemName);
             }
 
-            Debug.Log("[GyroRepair] Parts present on close: " + found.Count + "/" + GyroRepairData.RequiredParts.Count);
+            // Count SATISFIED SLOTS, not distinct item names. A slot with two
+            // acceptable items must not count as two, and must not need both.
+            int satisfied = 0;
+            string missing = "";
+            foreach (GyroPart part in GyroRepairData.Parts)
+            {
+                if (part.IsSatisfiedBy(found)) satisfied++;
+                else missing += (missing.Length > 0 ? ", " : "") + part.Label;
+            }
 
-            if (found.Count < GyroRepairData.RequiredParts.Count) return;
+            Debug.Log("[GyroRepair] Parts present on close: " + satisfied + "/" + GyroRepairData.Parts.Count
+                + (missing.Length > 0 ? " — missing: " + missing : ""));
+
+            if (satisfied < GyroRepairData.Parts.Count) return;
 
             Debug.Log("[GyroRepair] All parts placed — spawning gyrocopter.");
 
