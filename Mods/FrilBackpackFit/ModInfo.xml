@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="FrilBackpackFit" />
+	<DisplayName value="Fril's Backpack Fit" />
+	<Version value="2.2.0" />
+	<Description value="A no scroll backpack. Every slot on screen at once and the slots grow to fill the panel, with a button in the backpack header to switch back to a scrolling backpack with bigger slots. Standalone, no other backpack mod needed." />
+	<Author value="Frilioth" />
+	<Website value="https://twitch.tv/Frilioth" />
+</xml>

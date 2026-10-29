@@ -1,7 +1,24 @@
 ﻿// File: GyroRepairMod.cs
 // Gyrocopter Repair Mod
 // Author: Frilioth
-// Version: 1.4.0
+// Version: 1.5.0
+//
+// v1.5.0 CHANGES - ported from 7 Days to Die 3.2 to 3.4
+//   This mod was the loudest failure on 3.3/3.4. It referenced
+//   ITileEntityLootable, which no longer exists, so the assembly could not even
+//   have its types enumerated. That threw on every GetTypes() sweep the game
+//   does, which is why one broken mod produced six separate walls of errors in
+//   the log under console command registration, authorisation and more.
+//
+//   ITileEntityLootable is GONE. TEFeatureStorage was its only implementor, and
+//   XUiC_LootWindowGroup.te and openContainer's _te parameter are both typed
+//   TEFeatureStorage directly in 3.4. Every occurrence is retyped. No behaviour
+//   change: the objects arriving at runtime were always TEFeatureStorage.
+//
+//   Container contents moved onto ItemStackGrid behind TEFeatureStorage.ItemGrid,
+//   so te.items is now te.ItemGrid.items.
+//
+//   NOT TESTED IN GAME.
 //
 // v1.4.0 CHANGES (from v1.3.1)
 //   - The coolant slot now accepts MURKY OR CLEAN water: drinkJarRiverWater or
@@ -74,7 +91,7 @@ using UnityEngine;
 
 public class GyroRepairMod : IModApi
 {
-    public const string ModVersion = "1.4.0";
+    public const string ModVersion = "1.5.0";
 
     public void InitMod(Mod _modInstance)
     {
@@ -170,11 +187,13 @@ public class GyroRepairWindowOpenPatch
     // Set to false by the close patch to stop the coroutine.
     public static bool statusWindowOpen = false;
 
-    static void Postfix(XUiC_LootWindowGroup __instance, ITileEntityLootable _te)
+    // 3.4 PORT: openContainer's _te parameter is typed TEFeatureStorage now.
+    // Harmony matches injected parameters by NAME, but the type must match too.
+    static void Postfix(XUiC_LootWindowGroup __instance, TEFeatureStorage _te)
     {
         try
         {
-            ITileEntityLootable te = _te;
+            TEFeatureStorage te = _te;                 // 3.4 PORT
             if (te == null) return;
 
             Block block = null;
@@ -203,7 +222,7 @@ public class GyroRepairWindowOpenPatch
         }
     }
 
-    static IEnumerator DelayedHeaderFix(XUi xui, ITileEntityLootable te)
+    static IEnumerator DelayedHeaderFix(XUi xui, TEFeatureStorage te)   // 3.4 PORT
     {
         yield return new WaitForSeconds(0.1f);
         try
@@ -242,7 +261,7 @@ public class GyroRepairWindowOpenPatch
         }
     }
 
-    static IEnumerator LiveUpdateLoop(ITileEntityLootable te, XUi xui)
+    static IEnumerator LiveUpdateLoop(TEFeatureStorage te, XUi xui)     // 3.4 PORT
     {
         // Wait one frame for the window to fully initialise before grabbing labels
         yield return new WaitForSeconds(0.1f);
@@ -272,7 +291,7 @@ public class GyroRepairWindowOpenPatch
         Debug.Log("[GyroRepair] Live update loop stopped.");
     }
 
-    static void UpdateStatusLabels(ITileEntityLootable te, XUiV_Label[] labels)
+    static void UpdateStatusLabels(TEFeatureStorage te, XUiV_Label[] labels)  // 3.4 PORT
     {
         try
         {
@@ -280,9 +299,11 @@ public class GyroRepairWindowOpenPatch
 
             // Collect which accepted items are currently in the container
             HashSet<string> foundParts = new HashSet<string>();
-            if (te.items != null)
+            // 3.4 PORT: contents live on ItemStackGrid behind the ItemGrid property.
+            ItemStack[] gridItems = te.ItemGrid != null ? te.ItemGrid.items : null;
+            if (gridItems != null)
             {
-                foreach (ItemStack stack in te.items)
+                foreach (ItemStack stack in gridItems)
                 {
                     if (stack == null || stack.IsEmpty()) continue;
                     string itemName = stack.itemValue?.ItemClass?.GetItemName();
@@ -321,7 +342,7 @@ public class GyroRepairContainerPatch
     {
         try
         {
-            ITileEntityLootable te = __instance.te;
+            TEFeatureStorage te = __instance.te;       // 3.4 PORT
             if (te == null) return;
 
             Block block = null;
@@ -366,7 +387,7 @@ public class GyroRepairContainerPatch
 
             // --- Completion check ---
 
-            ItemStack[] items = te.items;
+            ItemStack[] items = te.ItemGrid != null ? te.ItemGrid.items : null;   // 3.4 PORT
             if (items == null) return;
 
             HashSet<string> found = new HashSet<string>();
@@ -414,10 +435,15 @@ public class GyroRepairContainerPatch
             }
             else
             {
+                // 3.4 PORT: te is now DECLARED as TEFeatureStorage, so the cast above
+                // cannot fail and this branch is unreachable. Left in place rather than
+                // deleted so the removal is a deliberate decision and not a side effect
+                // of the port. Retyped only so it still compiles.
                 Debug.LogWarning("[GyroRepair] TEFeatureStorage cast failed — clearing items directly.");
-                if (te.items != null)
-                    for (int i = 0; i < te.items.Length; i++)
-                        te.items[i] = ItemStack.Empty.Clone();
+                ItemStack[] raw = te.ItemGrid != null ? te.ItemGrid.items : null;
+                if (raw != null)
+                    for (int i = 0; i < raw.Length; i++)
+                        raw[i] = ItemStack.Empty.Clone();
             }
 
             // Remove the block

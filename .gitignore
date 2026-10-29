@@ -1,0 +1,16 @@
+# Build output. tools\pack.py writes the two release zips here.
+dist/
+
+# The old hand-built release zips. pack.py replaces them, and they are ~954MB each,
+# so they do not belong in git. This line stops new ones being committed; the two
+# already in history have to be removed deliberately:
+#
+#     git rm --cached Mods.zip "Mods/Mods.zip"
+#
+Mods.zip
+Mods/Mods.zip
+
+# Runtime files written by the mod on whichever machine ran it. pack.py already holds
+# these out of a release; this keeps them out of the repo as well.
+Mods/Hospital/stats/
+Mods/Hospital/hospital_state_*.txt

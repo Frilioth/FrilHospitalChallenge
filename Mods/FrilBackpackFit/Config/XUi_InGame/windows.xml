@@ -1,0 +1,59 @@
+<FrilBackpackFit>
+
+	<!-- ============================================================================================ -->
+	<!-- FrilBackpackFit v2.2.0                                                                       -->
+	<!--                                                                                              -->
+	<!-- A backpack that can show every slot on screen at once, with a button in the window header    -->
+	<!-- that switches between that and the stock scrolling backpack.                                 -->
+	<!--                                                                                              -->
+	<!-- DELETE the AGF-V3-SERVER-NoScrollBackpack folder if it is still there. This mod does the     -->
+	<!-- whole job on its own and the two will fight over the same grid.                              -->
+	<!--                                                                                              -->
+	<!-- THIS FILE DELIBERATELY CHANGES ALMOST NOTHING. Two additions, and not one vanilla value      -->
+	<!-- touched: no window size, no content size, no rows, columns or cell sizes. Everything about   -->
+	<!-- the no scroll layout is done by the DLL at runtime instead.                                  -->
+	<!--                                                                                              -->
+	<!-- WHY, and it is the whole design. In multiplayer the server's interface wins. WorldStaticData -->
+	<!-- registers XUi_InGame/windows with SendToClients true and LoadClientFile false, so the server -->
+	<!-- patches its own copy, compresses it and pushes it, and every client renders the server's     -->
+	<!-- version rather than its own. Anything written into this file therefore lands on players who  -->
+	<!-- do not have the mod, and they cannot undo it.                                                -->
+	<!--                                                                                              -->
+	<!-- Up to v2.1.2 this file carried the layout, so a player without the mod was given the no      -->
+	<!-- scroll grid whether they wanted it or not, could not switch back, and did not even get the   -->
+	<!-- slot resizing that makes it worth having. Now they get the stock backpack, because that is   -->
+	<!-- what this file still says, and only a machine with the DLL on it changes anything.           -->
+	<!--                                                                                              -->
+	<!-- An <if cond="mod_loaded(...)"> cannot be used for this. The condition is evaluated by        -->
+	<!-- whoever does the patching, which is the server, and on the server the answer is always yes.  -->
+	<!--                                                                                              -->
+	<!-- THE TWO ADDITIONS:                                                                           -->
+	<!--                                                                                              -->
+	<!--   1. A controller on the inventory grid. Without the DLL this logs "Controller not found,    -->
+	<!--      using base XUiController" once and is inert. The backpack still works, because 3.4 puts -->
+	<!--      the real Backpack controller on the content rect above and it finds the slots by        -->
+	<!--      walking its children rather than by looking at the grid.                                -->
+	<!--                                                                                              -->
+	<!--   2. The mode button, SHIPPED HIDDEN. The DLL is what reveals it, so a player without the    -->
+	<!--      mod never sees a button that would do nothing. It sits between the window name, which   -->
+	<!--      ends at 222, and the creative bin button at 380, which is the only clear stretch in the -->
+	<!--      header. There is no room for it beside the lock: at 603 wide the category filter row    -->
+	<!--      ends at x442 and the button cluster starts at x441.                                     -->
+	<!--                                                                                              -->
+	<!-- WHAT THE DLL DOES WITH THE VANILLA LAYOUT. Vanilla's scroll view is 587 by 384, and twelve   -->
+	<!-- columns of 48px is 576 by 384, so the largest backpack the game allows fits inside the stock -->
+	<!-- panel exactly. Nothing had to be made bigger. In scroll mode eight columns across 587 comes  -->
+	<!-- out at the 73px the XML already declares, so that mode is not an imitation of vanilla, it is -->
+	<!-- vanilla.                                                                                     -->
+	<!-- ============================================================================================ -->
+
+	<!-- 1. The grid has no controller of its own in 3.4, TFP moved it up to the content rect, so
+	     this one is added rather than changed. -->
+	<setattribute xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid[@name='inventory']" name="controller">FrilBackpackFit, FrilBackpackFit</setattribute>
+
+	<!-- 2. The mode button. Hidden here, revealed by the DLL. Read the note above before changing that. -->
+	<append xpath="/windows/window[@name='windowBackpack']/rect[@name='header']">
+		<button depth="3" name="btnFrilBackpackMode" visible="false" controller="FrilBackpackToggle, FrilBackpackFit" sprite="ui_game_symbol_arrow_max" tooltip_key="frilBackpackModeToggle" pos="300,-22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" defaultcolor="[iconColor]" hovercolor="[hoverColor]" selectedcolor="[selectedColor]" />
+	</append>
+
+</FrilBackpackFit>
