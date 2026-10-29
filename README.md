@@ -2,7 +2,7 @@
 
 ### A 7 Days to Die challenge mod
 
-**Author:** Frilioth · **Game version:** 3.2 · **Mod version:** 0.22.0
+**Author:** Frilioth · **Game version:** 3.4 · **Mod version:** 1.5.0
 
 ---
 
@@ -22,6 +22,7 @@ One life. Eight parts. About eight days before the virus finishes the job.
 - **Six difficulty presets**, from learning the layout to not expected to be survivable.
 - **A debrief page** written at the end of every run, with a verifiable completion code.
 - **Eleven languages.**
+- **Emptied containers tell you the day and hour they restock**, including safes and other lockable ones.
 
 ---
 
@@ -35,13 +36,13 @@ Copy each folder into your `Mods` directory.
 |---|---|
 | `Hospital` | the mod, including its five maps in `Worlds` |
 | `0_HospitalItems` | items |
-| `zzzz_FrilBlocks` | restricts the creative menu |
-| `GyroRepairMod` | builds and launches the gyrocopter |
+| `0_TFP_Harmony` | the Harmony library the code mods need |
+| `Gyrorepairmod` | builds and launches the gyrocopter |
 | `FrilHospitalESCGuide` | the in-game survival guide |
 
 **Recommended**
 
-`Frils-HUD` · `FrilRagdollFloorFix` · `FrilHospitalMenuVideoCycler` · `FrilHospitalRotateLoadingscreens`
+`Frils_HUD` · `Frilragdollfloorfix` · `FrilHospitalMenuVideoCycler` · `FrilHospitalRotateLoadingscreens` · `FrilBackpackFit`
 
 Folder names are only what the download ships as. The game identifies a mod by the `Name` in its `ModInfo.xml`, so you can rename them.
 
@@ -159,7 +160,7 @@ Corrections are welcome — several of these have been checked by native speaker
 
 - Multiplayer is not supported. See above.
 - The vanilla **Infection Chance** and **Infection Rate** sandbox options do nothing here. Voss-7 replaces the vanilla infection entirely, but they still appear in the options list because they are vanilla settings.
-- Loot respawns every 5 days, so the hospital feels picked clean before then. That is intended.
+- Loot respawns every 5 days, so the hospital feels picked clean before then. That is intended. Look at an emptied container and it will tell you the day and hour it comes back.
 - Rain is disabled in all biomes, which was a performance decision rather than a design one.
 
 If you hit something else, a copy of your `Player.log` is far more useful than a description.

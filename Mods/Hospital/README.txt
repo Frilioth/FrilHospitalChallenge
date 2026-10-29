@@ -1,6 +1,6 @@
 ================================================================================
   NAVEZGANE HOSPITAL CHALLENGE
-  A single-player survival challenge for 7 Days to Die 3.2
+  A single-player survival challenge for 7 Days to Die 3.4
   by Frilioth  -  twitch.tv/Frilioth
 ================================================================================
 
@@ -63,7 +63,9 @@ Copy each folder into your 7 Days to Die "Mods" directory, e.g.
 REQUIRED - the challenge will not work without these:
 
     Hospital                     the mod itself
-    GyroRepairMod                builds and launches the gyrocopter
+    0_HospitalItems              the items the mod adds
+    0_TFP_Harmony                the Harmony library the code mods need
+    Gyrorepairmod                builds and launches the gyrocopter
     FrilHospitalESCGuide         the ESC survival guide
 
 The folder names above are just what the download ships as. You can rename any of
@@ -72,9 +74,11 @@ by its folder.
 
 RECOMMENDED - included, and safe to leave out if you prefer:
 
-    Frils-HUD                    custom HUD
-    FrilRagdollFloorFix          stops bodies sinking through floors
-    FrilHospitalMenuVideoCycler  rotating main-menu background videos
+    Frils_HUD                        custom HUD
+    Frilragdollfloorfix              stops bodies sinking through floors
+    FrilHospitalMenuVideoCycler      rotating main-menu background videos
+    FrilHospitalRotateLoadingscreens rotating loading screens
+    FrilBackpackFit                  fits the whole backpack on screen
 
 This mod contains code and must be enabled as such. EAC must be OFF.
 Start the game, choose NEW GAME, and pick the Hospital Challenge group.
@@ -143,7 +147,7 @@ The leaderboard is not live yet. Hold on to your code until it is.
 --------------------------------------------------------------------------------
 
 English, French, German, Spanish, Italian, Polish, Brazilian Portuguese,
-Russian, Turkish and Japanese.
+Russian, Turkish, Japanese and Simplified Chinese.
 
 Everything the mod adds is translated - items, objectives, the ESC guide, the
 menu, the loading tips and the debrief messages. Place and character names
@@ -163,7 +167,8 @@ welcome and easy to apply.
     nothing in this mod. Voss-7 replaces the vanilla infection entirely. They
     still appear in the options list because they are vanilla settings.
   - Loot respawns every 5 days. The hospital will feel picked clean before then.
-    That is intended.
+    That is intended. Look at an emptied container and it will tell you the day
+    and hour it restocks. Opening it again does not restart the countdown.
 
 If you hit something else, a copy of your Player.log is far more useful than a
 description. Thank you.
