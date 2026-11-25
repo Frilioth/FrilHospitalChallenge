@@ -25,3 +25,5 @@ Frantic Dan=zombieTomClark
 Frantic Dan=zombieTomClark
 Frantic Dan=zombieTomClarkFeral
 Frantic Dan=zombieTomClarkFeral
+Molly Magoo=zombieMarlene
+Molly Magoo=zombieMarleneFeral

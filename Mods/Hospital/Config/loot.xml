@@ -2,7 +2,7 @@
 <!--
 	Navezgane Hospital Challenge — Loot
 	Author: Frilioth
-	Version: 1.4.1
+	Version: 1.4.2
 	
 	REMOVES:
 	- All drugAntibiotics from loot groups
@@ -22,7 +22,8 @@
 	- Weak suppressant to survivalMedical (very low)
 	- carBattery 30% to groupUtilityCart (janitor trolley)
 	- workstation/vehicles/electrician/medical mags boosted in booksAllScaled pool
-	- resourceAcid (veryLow) to groupMedicalAll, Small01, Small02, Small03
+	- resourceAcid to groupMedicalAll (low) and Small01, Small02, Small03 (veryLow)
+	- resourceAcid 30% in the Yellow bag (was 8%). See the container's own note.
 	- junk and laundryBasket set destroy_on_close=empty
 	- groupFoodCommon in groupCupboard01 bumped from veryLow to low (more tins in cupboards)
 	- groupFoodUncommon appended to groupCupboard01 at veryLow (beef, chili, tuna, salmon etc)
@@ -105,7 +106,20 @@
 
 	<insertafter xpath="//lootcontainer[@name='playerBackpack']">
 
-		<!-- Yellow bag: medical supplies (mirrors Area7Medical) -->
+		<!-- Yellow bag: medical supplies (mirrors Area7Medical)
+
+		     Acid 0.08 -> 0.30 on 3 Nov. Acid was still scarce in play. The
+		     reason is NOT the rate inside the Cops bag, which is already 0.50:
+		     it is that cop sleepers explode on death and usually destroy that
+		     bag, so the route carrying most of the acid is the one that often
+		     never survives to be opened. Raising it again would be patching a
+		     container the player rarely sees.
+		     Nurses, Lab Workers and Hazmats do not explode and are the
+		     commonest zombies in the building, so the Yellow bag is the route
+		     that actually arrives. Per kill this takes acid from 1.6% to 6%
+		     (0.20 bag drop x 0.30), roughly doubling total acid for a run.
+		     The medical loot GROUPS are deliberately untouched. Raising those
+		     is what overshot on 14 Sep and stopped the virus being a threat. -->
 		<lootcontainer id="HospitalYellow" name="HospitalYellow" count="2,4" size="6,2"
 			destroy_on_close="true"
 			sound_open="UseActions/open_backpack"
@@ -113,7 +127,7 @@
 			loot_quality_template="qualBaseTemplate">
 			<item group="groupMedicalAll"/>
 			<item name="drugPainkillers" count="1,2" prob="0.4"/>
-			<item name="resourceAcid" count="1" prob="0.08"/>
+			<item name="resourceAcid" count="1" prob="0.30"/>
 		</lootcontainer>
 
 		<!-- Books rucksack: skill magazines (mirrors Area7Books) -->
